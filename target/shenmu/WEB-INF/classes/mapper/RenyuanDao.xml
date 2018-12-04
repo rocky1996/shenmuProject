@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.acat.dao.IRenyuanDao">
+
+    <insert id="addRunyuan" parameterType="com.acat.model.Renyuan">
+        insert into jw_renyuan (gonghao, shenfenzheng, xingming, xingbie, nianling, dianhua, zhiwei, ruzhishijian,
+                                chezu,
+                                jibengongzi, xueli, minzu, zaizhi, beizhu)
+        values (#{gonghao}, #{shenfenzheng}, #{xingming}, #{xingbie}, #{nianling}, #{dianhua},
+                   , #{zhiwei}, #{ruzhishijian}, #{chezu},
+                #{jibengongzi}, #{xueli}, #{minzu}, #{zaizhi}, #{beizhu})
+    </insert>
+
+    <delete id="deleteRenyuanById" parameterType="java.lang.Integer">
+        delete
+        from jw_renyuan
+        where ID = #{ID}
+    </delete>
+
+    <update id="updateRenyuan" parameterType="java.lang.Integer">
+        update jw_renyuan
+        set gonghao      = #{gonghao},
+            shenfenzheng = #{shenfenzheng},
+            xingming     = #{xingming},
+            xingbie      = #{xingbie},
+            nianling     = #{nianling},
+            dianhua      = #{dianhua},
+            zhiwei       = #{zhiwei},
+            ruzhishijian = #{ruzhishijian},
+            chezu        = #{chezu},
+            jibengongzi  = #{jibengongzi},
+            xueli        = #{xueli},
+            minzu        = #{minzu},
+            zaizhi       = #{zaizhi},
+            beizhu       = #{beizhu}
+        where ID = #{ID}
+    </update>
+
+    <select id="getRenyuanById" resultType="com.acat.model.Renyuan" parameterType="java.lang.Integer">
+        select *
+        from jw_renyuan
+        where ID = #{ID}
+    </select>
+    <select id="findRenyuanVo" resultType="map">
+        select gonghao,xingming,xingbie,beizhu
+        from jw_renyuan
+    </select>
+
+</mapper>

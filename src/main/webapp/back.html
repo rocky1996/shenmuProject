@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+                <meta name="applicable-device" content="pc,mobile">
+                <meta http-equiv="Cache-Control" content="no-transform ">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>后台管理</title>
+<link rel="stylesheet" type="text/css" href="back/css/index.css">
+<link rel="stylesheet" type="text/css" href="back/css/htgl.css">
+<link rel="stylesheet" type="text/css" href="back/css/gzlu.css">
+<link rel="stylesheet" type="text/css" href="back/css/culture.css">
+<link rel="stylesheet" type="text/css" href="back/css/integral.css">
+<link rel="stylesheet" type="text/css" href="back/css/chuxian.css">
+
+<link rel="stylesheet" type="text/css" href="back/css/beau.css">
+<script src="back/js/jquery.js"></script>
+<script src="back/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="back/css/bootstrap.css">
+<script src="back/js/beau.js"></script>
+<style>
+.table tbody tr td{
+vertical-align: middle;
+}
+.table tbody tr td{
+text-align: middle;
+}
+.table th, .table td {
+text-align: center;
+vertical-align: middle!important;
+}
+#leftNave h3{
+margin-top: 0;
+background-color: #007D71;
+height: 50px;
+line-height: 50px;
+text-align: center;
+font-size: 16px;
+}
+#banzuwenhua input[type="file"]{
+display: inline-block;
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 0px;}
+</style>
+</head>
+<body>
+<div id="leftNave" style="height: 100%;">
+<h3>
+后台管理
+</h3>
+<ul>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+个人信息
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+班前班后会
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+班组文化
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+职工积分
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+文件管理
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+请销假
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+审批管理
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+安全关键作业
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+6S &amp; TPM
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;" class="Leftnav">
+<img src="back/imgs/hot.png">
+<p>
+合理化建议
+</p>
+<span>
+&gt;
+</span>
+</li>
+
+<li style="margin-top:20px;color:white" class="Leftnav">
+      <a href="http://222.24.63.119/test/"><img src="back/imgs/hot.png">
+        <p>
+        考试管理
+        </p></a>
+        <span>
+        &gt;
+        </span>
+</li>
+
+</ul>
+</div>
+<div id="head">
+<a href="http://222.24.63.119/"><img src="back/imgs/blackperson.png" id="person"></a>
+</div>
+<!-- 移动端设置的导航栏 -->
+<ul id="secondNav">
+<li>
+
+<span>
+个人信息
+</span>
+
+<span>
+班前班后会
+</span>
+
+<span>
+班组文化
+</span>
+
+<span>
+职工积分
+</span>
+
+<span>
+文件管理
+</span>
+
+<span>
+请销假
+</span>
+
+<span>
+审批管理
+</span>
+
+<span>
+安全作业
+</span>
+
+<span>
+6S &amp; TPM
+</span>
+
+<span>
+合理化建议
+</span>
+
+<span >
+        <a href="http://222.24.63.119/test/" style="color:white">考试管理</a>
+</span>
+</li>
+</ul>
+<!-- 这里是其中的个人信息的 -->
+<div class="content" style="display: block; height: 100%;">
+<div class="inform">
+                
+    <span class="btn btn-primary btn-lg active" onclick="view1()">个人信息：</span>&nbsp;&nbsp;&nbsp;
+    <span class="btn btn-primary btn-lg active" onclick="view2()">人员信息表：</span>
+    <br><br><br>
+<div id="gerenxinxi1">
+
+<table cellspacing="0" class="table table-hover  table-striped" id="diyilie-color">
+<tbody><tr id="thead">
+<td>名称</td>
+<td>资料</td>
+</tr>
+
+<tr>
+<td>ID</td>
+<td>106</td>
+</tr>
+
+<tr>
+<td>工号</td>
+<td>2000</td>
+</tr>
+
+<tr>
+<td>身份证号</td>
+<td>610113000000000000</td>
+</tr>
+
+<tr>
+<td>姓名</td>
+<td>丁建峰</td>
+</tr>
+
+<tr>
+<td>性别</td>
+<td>男</td>
+</tr>
+
+<tr>
+<td>年龄</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>电话</td>
+<td>13636841516</td>
+</tr>
+
+<tr>
+<td>职位</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>入职时间</td>
+<td>None</td>
+</tr>
+
+<tr>
+<td>车组</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>基本工资</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>学历</td>
+<td></td>
+</tr>
+
+<tr>
+<td>民族</td>
+<td></td>
+</tr>
+
+<tr>
+<td >在职</td>
+<td>1</td>
+</tr>
+<tr>
+<td>备注</td>
+<td></td>
+</tr>
+
+</tbody></table>
+</div>
+
+<div id="gerenxinxi2" style="display:none">
+        <h1 class="renyuanyidong" style="margin-left:30%;" >人员信息表<button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show0()">添加</button></h1>
+<table class=" table table-hover table-striped" id="get_renyuan">
+        <tr id="thead">
+        <td>序号</td>
+        <td>ID</td>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>备注</td>
+        <td>操作</td>
+        </tr>
+        <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>sdafa</td>
+        <td><div class="1">
+                <button type="button" class="btn btn-primary" >修改</button>
+                <button type="button" class="btn btn-danger" >删除</button></div>
+        </td>
+        </tr>
+        <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>fdssdf</td>
+                <td><div class="2">
+                        <button type="button" class="btn btn-primary" >修改</button>
+                        <button type="button" class="btn btn-danger" >删除</button></div>
+                </td>
+                </tr>
+        </table>
+       
+</div>
+</div>
+</div>
+
+  <!--人员信息的添加表单-->
+  <div id="renyuan">
+        <div class="renyuan-main">
+        <div style="margin-bottom:20px;">
+        
+        <h4>添加人员记录</h4>
+        </div>
+        <hr>
+        <div>
+        <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                <input type="hidden" name="renyuan" value="添加人员信息">
+                <input  type="hidden" name="biao" value="1">
+                <input type="hidden" name="tag" value="2">
+                <table cellspacing="0" class="table table-hover  table-striped" id="diyiliegai-color">
+                <tbody><tr id="thead">
+                <td>名称</td>
+                <td>资料</td>
+                </tr>
+                
+                
+                
+                
+                <tr>
+                <td>身份证号</td>
+                <td><input name="text1" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>姓名</td>
+                <td><input name="text2" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>性别</td>
+                <td><input name="text3" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>年龄</td>
+                <td><input name="text4" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>电话</td>
+                <td><input name="text5" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>职位</td>
+                <td><input name="text6" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>入职时间</td>
+                <td><input name="text7" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>车组</td>
+                <td><input name="text8" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>基本工资</td>
+                <td><input name="text9" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>学历</td>
+                <td><input name="text10" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>民族</td>
+                <td><input name="text11" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td >在职</td>
+                <td><input name="text12" type="text"></td>
+                </tr>
+                <tr>
+                <td>备注</td>
+                <td><textarea name="text13" style="width:100%" name="" id="" cols="30" rows="2" style="background-color:rgb(245, 245, 245)"></textarea></td>
+                </tr>
+                
+                </tbody></table>
+        <div style="text-align:center;margin-top:10px;margin-left:60%;margin-bottom: 10px;">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button type="reset" class="btn btn-warning" onclick="hiden0()">取消</button>
+        </div>
+        </form>
+        </div>
+        
+        </div>
+        </div>
+
+        <!--人员信息的修改-->
+        <div id="renyuangai">
+                <div class="renyuangai-main">
+                <div style="margin-bottom:20px;">
+                
+                <h4>人员信息修改</h4>
+                </div>
+                <hr>
+                <div id="rengai">
+                <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                
+                <input id="rensssss" type="hidden" name="id_renyuan" value="">
+                
+                <input  type="hidden" name="biao" value="1">
+                <input type="hidden" name="tag" value="1">
+        <table cellspacing="0" class="table table-hover  table-striped" id="diyiliegai-color">
+                <tbody><tr id="thead">
+                <td>名称</td>
+                <td>资料</td>
+                </tr>
+
+                <tr>
+                <td>身份证号</td>
+                <td><input name="text1" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>姓名</td>
+                <td><input name="text2" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>性别</td>
+                <td><input name="text3" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>年龄</td>
+                <td><input name="text4" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>电话</td>
+                <td><input name="text5" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>职位</td>
+                <td><input name="text6" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>入职时间</td>
+                <td><input name="text7" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>车组</td>
+                <td><input name="text8" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>基本工资</td>
+                <td><input name="text9" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>学历</td>
+                <td><input name="text10" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td>民族</td>
+                <td><input name="text11" type="text"></td>
+                </tr>
+                
+                <tr>
+                <td >在职</td>
+                <td><input name="text12" type="text"></td>
+                </tr>
+                <tr>
+                <td>备注</td>
+                <td><textarea name="text13" style="width:100%" name="" id="" cols="30" rows="2" style="background-color:rgb(245, 245, 245)"></textarea></td>
+                </tr>
+                
+                </tbody></table>
+                <div style="text-align:center;margin-top:10px;margin-left:60%;margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="button" class="btn btn-default" onclick="hiden0gai()">取消</button>
+                </div>
+                </form>
+                </div>
+                
+                </div>
+                </div>
+
+                <div class="renyuandelete delete" style="display:none;">
+                        <div class="delete-main">
+                                <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                                    <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                                    <input id="sssss" type="hidden" name="人员信息id" value="">
+                                    <input  type="hidden" name="biao" value="1">
+                                        <input type="hidden" name="tag" value="0">
+                                    
+                                    <div>
+                                     <h4 style="color:red;margin-left:33%;" >是否确认删除？</h4>
+                                    </div>
+                                    <div style="margin-left:30%;" >
+                                            <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                                    <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default" onclick="renyuanhiden()">取消</button>
+                                    
+                                    </div>
+                            </form>
+                            </div>
+                              
+                        </div>
+
+<!-- 班前、班后会 --> 
+  
+<div class="content" style="height: 100%;">
+        
+    <div class="inform" >
+            <h1  class="renyuanyidong" id="banqianh1">班前班后会汇总表<button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show1()">添加</button></h1>
+           
+        <table id="banqianAdd" class=" table table-hover table-striped" style="text-align:center">
+                    <tbody><tr id="thead">
+                    <td>序号</td>
+                    <td>会议名称</td>
+                    
+                    <td>出勤人数</td>
+                    <td>发布人</td>
+                    <td>操作</td>
+                    </tr>
+                    <tr>
+                    <td>1</td>
+                    <td>员工大会</td>
+                    
+                    <td>106</td>
+                    <td>1</td>
+                    <td><div class="1">
+                    <button type="submit" class="btn btn-primary" >修改</button>
+                    <button type="button" class="btn btn-danger">删除</button></div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>员工大会</td>
+                        
+                        <td>106</td>
+                        <td>1</td>
+                        <td><div class="2">
+                        <button type="submit" class="btn btn-primary" >修改</button>
+                        <button type="button" class="btn btn-danger">删除</button></div>
+                        </td>
+                        </tr>
+                    </tbody></table>
+               
+</div>
+</div>
+
+           <!-- 班前班后会隐藏的表单 -->
+<div id="banqianbanhou">
+<div class="banqianbanhou-main">
+                <div style="margin-bottom:20px;">
+            
+                                <h4>班会记录的添加</h4>
+                                </div>
+                                <hr>
+<form action="http://222.24.63.119/ublack" class="meetingForm" method="POST"  enctype="multipart/form-data" class="meetingForm" style="width:100%;">
+        <input type="hidden" name="_xsrf" value="2|4407c9e9|ae825f12097c0e3a40277405acd7c4fe|1543592847">
+<input type="hidden" name="formname1" value="3">
+<input type="hidden" name="formname2" value="9">
+<input type="hidden" name="formname3" value="0">
+<input type="hidden" name="tag" value="2">
+<input type="hidden" name="biao" value="2">
+<table class="meetingTable" width="100%">
+<thead>
+<tr><td>应出勤人数</td>
+<td>实际出勤人数</td>
+<td>请假</td>
+<td>调休</td>
+<td>备注</td>
+</tr></thead>
+<tbody><tr class="numberP">
+<td style="width:150;height:50px">21</td>
+<td><input class="chuqinrenshu" type="text" name="text0" style="width:100%;height:50px"></td>
+<td><input type="text" name="text1" style="width:100%;height:50px"></td>
+<td><input type="text" name="text2" style="width:100%;height:50px"></td>
+<td><input type="text" name="text3" style="width:100%;height:50px"></td>
+</tr>
+<tr class="summary">
+<td>班前传达学习以及安全预想</td>
+<td colspan="4"><textarea type="text" name="text4" style="width:100%;height:100px"></textarea></td>
+</tr>
+<tr class="summary">
+<td>本班作业中生产任务以及作业情况</td>
+<td colspan="4"><textarea type="text" name="text5" style="width:100%;height:100px"></textarea></td>
+</tr>
+<tr class="summary">
+<td>班后总结</td>
+<td colspan="4"><textarea type="text" name="text6" style="width:100%;height:100px"></textarea></td>
+</tr>
+</tbody></table>
+<br>
+<div id="" style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;" >
+        <button type="submit" class="btn btn-primary" onclick="banAdd()">提交</button>
+        <button type="reset" class="btn btn-warning" onclick="hiden1()">取消</button>
+</div>
+<br>
+</form>
+</div>
+</div>
+
+      <!--班前班后修改的隐藏表单-->
+      <div id="banqianbanhou-gai">
+            <div class="ban-gai-main">
+            <div style="margin-bottom:20px;">
+            
+            <h4>班会记录的修改</h4>
+            </div>
+            <hr>
+            <div>
+            <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                <input  type="hidden" name="formname1" value="3">
+                <input  type="hidden" name="formname2" value="9">
+                <input  type="hidden" name="formname3" value="0">
+                
+                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                <input id="bansssss" type="hidden" name="班前班后会的id" value="id">
+                <input  type="hidden" name="biao" value="2">
+                <input  type="hidden" name="tag" value="1">
+                <table class="meetingTable" width="100%">
+                <thead>
+                <tr><td>应出勤人数</td>
+                <td>实际出勤人数</td>
+                <td>请假</td>
+                <td>调休</td>
+                <td>备注</td>
+                </tr></thead>
+                <tbody><tr class="numberP">
+                <td style="width:150;height:50px">21</td>
+                <td><input class="chuqinrenshu" type="text" name="text0" style="width:100%;height:50px"></td>
+                <td><input type="text" name="text1" style="width:100%;height:50px"></td>
+                <td><input type="text" name="text2" style="width:100%;height:50px"></td>
+                <td><input type="text" name="text3" style="width:100%;height:50px"></td>
+                </tr>
+                <tr class="summary">
+                <td>班前传达学习以及安全预想</td>
+                <td colspan="4"><textarea type="text" name="text4" style="width:100%;height:100px"></textarea></td>
+                </tr>
+                <tr class="summary">
+                <td>本班作业中生产任务以及作业情况</td>
+                <td colspan="4"><textarea type="text" name="text5" style="width:100%;height:100px"></textarea></td>
+                </tr>
+                <tr class="summary">
+                <td>班后总结</td>
+                <td colspan="4"><textarea type="text" name="text6" style="width:100%;height:100px"></textarea></td>
+                </tr>
+                </tbody></table>
+            <div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-danger">修改</button>
+                    <button type="reset" class="btn btn-warning" onclick="hiden1gai()">取消</button>
+            </div>
+            </form>
+            </div>
+            
+            </div>
+            </div>
+
+            <!--班前班后会的删除-->
+            <div class="banqiandelete delete" style="display:none;">
+                <div class="delete-main">
+                        <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                            <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                            <input  type="hidden" name="formname1" value="3">
+                            <input  type="hidden" name="formname2" value="9">
+                            <input  type="hidden" name="formname3" value="0">
+                            <input id="bandel" type="hidden" name="人员信息id" value="">
+                            <input  type="hidden" name="biao" value="2">
+                            <input type="hidden" name="tag" value="0">
+                            <div>
+                             <h4 style="color:red;margin-left:33%;" >是否确认删除？</h4>
+                            </div>
+                            <div style="margin-left:30%;" >
+                                    <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                            <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default" onclick="banqianhiden()">取消</button>
+                            
+                            </div>
+                    </form>
+                    </div>
+                      
+                </div>
+
+<!-- 班组文化 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111-->
+<div class="content" style="height: 100%; display: block;">
+<div class="inform" id="shoujibanzhu">
+<form action="" class="meetingForm" method="POST" enctype="multipart/form-data">
+        <input type="hidden" value="班组文化">
+<input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+<input  type="hidden" name="biao" value="3">
+<input type="hidden" name="tag" value="2">
+<h2>班组文化</h2>
+<div id="banzuwenhua">
+<p><label>标题: </label><input type="text" name="text1" value="检修车间备品三组班组简介"></p>
+<p><label>班组 logo: </label><input type="file" name="text2" value="上传文件"><span style="color:red;font-size:10px;">上传文件大小不能超过500KB</span> </p>
+<p><label>logo 释意: </label><textarea type="text" name="text3" rows="5" cols="45" style="text-indent:2em;">大、小圆组成的圆形边框象征着铁路，代表我们神朔铁路公司，上面镶嵌着的五颗钻石代表五型班组建设，中间扬起的三面风帆代表备品三组以及班组电子、制动、仪表
+的三个工种，下面托举的手形树叶代表机务段和检修车间，整体图案的寓意是备品三组在段、车间的领导和支持下，班组全体人员团结一心、努力拼搏，在公司“一
+体两翼两保障”发展战略指引下，扬帆起航、奋勇争先！</textarea></p>
+<p><label>班组简介: </label><textarea type="text" name="text4" rows="15" cols="45" style="text-indent:2em;">班组成立于2009年，班组现有职工21人，工长1名、副工长1名，女职工15人，平均年龄30岁，高级工以上10人.主要担负着全公司约300台电力机车
+的制动系统配件、电子配件、整流柜、仪表配件等核心部件的检修、试验工作。年维修配件共计5万余件，班组日维修量280余件,个人每天大约维修20余件。
+确保每一个配件保质保量提供给机车，是我们唯一的目标。班组也多次获得公司、段先进班组、先进集体以及 
+“巾帼建功”等荣誉称号。班组员工在集团公司组织的技能大赛中分别获得第一名、第三名的优秀成绩。</textarea></p>
+<p><label>组织机构: </label><input type="file" name="text5"> <span style="color:red;font-size:10px;">上传文件大小不能超过5MB</span></p>
+<p><label>员工风采: </label><input id="fengcai" type="file" name="text6" value=""><span style="color:red;font-size:10px;">上传文件大小不能超过10MB</span></p>
+<div id="banzudi">
+        <button type="submit" class="btn btn-primary">提交</button>
+        <button type="reset" class="btn btn-warning">重置</button>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+
+
+<!-- 职工积分 -->
+<div class="content " style="height: 90%; display: block;">
+<div class="inform" id="shoujizhigong">
+                
+<form action="http://222.24.63.119/ublack" class="meetingForm" method="POST"  enctype="multipart/form-data">
+        <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+        <input type="hidden" name="tag" value="2">
+        <input  type="hidden" name="biao" value="4">
+        <input type="hidden" name="" value="职工积分">
+        <h1 >职工积分汇总</h1>
+                <h4><span id="jifenluru">请选择录入类型：<select name="leibie" >
+                                <option value="1">计件统计</option>
+                                <option value="2">积分统计</option>
+                                <option value="3">考核奖励</option>
+                        </select> </span>
+                <span id="jifenshijian" style="float:right">时间选择： <input type="date" name="alertDateQuery" id="aDate" value="1022-2-2"> </span>
+                <!-- 当日时间的js -->
+                <script type="text/javascript">
+                        var mydateInput = document.getElementById("aDate");
+                       
+                        var date = new Date();
+                        var dateString = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                        mydateInput.value = dateString;
+                    </script>
+                
+                </h4>
+<table class="table table-hover table-striped" style="text-align:center" id="jiden_juzhong">
+                <tbody>
+                                <tr id="thead">
+                                <td> 姓 名 </td>
+                                <td>个人分值汇总</td>
+                                <td>分值</td>
+                                </tr>
+                                
+                                <tr>
+                                <td>丁建峰</td>
+                                <td>55</td>
+                                <td><input name="text1" type="text" name="106" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>路俊彪</td>
+                                <td>50</td>
+                                <td><input name="text2" type="text" name="107" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>刘婷</td>
+                                <td>40</td>
+                                <td><input name="text3" type="text" name="108" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>胥婷婷</td>
+                                <td>46</td>
+                                <td><input name="text4" type="text" name="109" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>伊志文</td>
+                                <td>43</td>
+                                <td><input name="text5" type="text" name="110" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>李莎</td>
+                                <td>47</td>
+                                <td><input name="text6" type="text" name="111" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>冯雅兰</td>
+                                <td>39</td>
+                                <td><input name="text7" type="text" name="112" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>马婷</td>
+                                <td>45</td>
+                                <td><input name="text8" type="text" name="113" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>赵俊</td>
+                                <td>38</td>
+                                <td><input name="text9" type="text" name="114" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>刘海艳</td>
+                                <td>36</td>
+                                <td><input name="text10" type="text" name="115" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>李婷</td>
+                                <td>36</td>
+                                <td><input name="text11" type="text" name="116" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>武张杨</td>
+                                <td>38</td>
+                                <td><input name="text12" type="text" name="117" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>刘仙飞</td>
+                                <td>34</td>
+                                <td><input name="text13" type="text" name="118" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>郭少卿</td>
+                                <td>42</td>
+                                <td><input name="text14" type="text" name="119" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>邱会</td>
+                                <td>40</td>
+                                <td><input name="text15" type="text" name="120" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>张小霞</td>
+                                <td>48</td>
+                                <td><input name="text16" type="text" name="121" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>贺波</td>
+                                <td>40</td>
+                                <td><input name="text17" type="text" name="122" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>马银萍</td>
+                                <td>55</td>
+                                <td><input name="text19" type="text" name="123" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>刘倩</td>
+                                <td>36</td>
+                                <td><input name="text20" type="text" name="124" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>杨倩</td>
+                                <td>48</td>
+                                <td><input name="text21" type="text" name="125" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr>
+                                <td>卜帅帅</td>
+                                <td>40</td>
+                                <td><input name="text22" type="text" name="126" value="0" style="width:20%"></td>
+                                </tr>
+                                
+                                <tr><td colspan="6">
+                                <div style="text-align:center;margin-top:10px;margin-left:40%;margin-bottom: 10px;" id="jifenjiaojiao">
+                                <button type="submit" class="btn btn-primary" onclick="zhigongjifen100jian()">提交</button>
+                                <button type="reset" class="btn btn-warning">重置</button>
+                                </div>
+                                </td>
+                                </tr>
+                                </tbody>
+
+                                <script>
+                                       function zhigongjifen100jian(){
+                                               var jian=document.getElementById("jifenluru").getElementsByTagName("select")[0].value;
+                                               if(jian==2){
+                                                       var inputa=document.getElementById("jiden_juzhong").getElementsByTagName("input");
+                                                       for(var i=0;i<inputa.length;i++){
+                                                               inputa[i].value=100-inputa[i].value;
+                                                       }
+                                               }
+                                               
+                                       }
+                                </script>
+</table>
+</form>
+</div>
+</div>
+<!-- 文件管理 请销假 111111111111111111111111111111111111111111111111111 -->
+<div class="content" style="height: 100%; display: none;"> 
+
+<div class="inform" style="margin-top:-5px;">
+        <h1 style="margin-left:3%;"><button class="btn btn-default">文件所属分类</button>  <button class="btn btn-default">法律法规</button><span id="wenjiantitle">文件汇总表</span><button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show2()">添加</button></h1>
+<table id="wenjianguanlili" class=" table table-hover table-striped" id="wenjian_get">
+<tbody><tr id="thead">
+<td>序号</td>
+<td>文件名称</td>
+<td>所属分类</td>
+<td>发布时间</td>
+<td>发布人</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>
+    1
+</td>
+<td>1</td>
+<td>1</td>
+<td><div class="1">
+        <button type="button" class="btn btn-primary" >修改</button>
+        <button type="button" class="btn btn-danger">删除</button></div>
+</td>
+</tr>
+<tr>
+        <td>2</td>
+        <td>1</td>
+        <td>
+            1
+        </td>
+        <td>1</td>
+        <td>1</td>
+        <td><div class="2">
+                <button type="button" class="btn btn-primary" >修改</button>
+                <button type="button" class="btn btn-danger">删除</button></div>
+        </td>
+        </tr>
+
+</tbody></table>
+</div>
+</div>
+
+       <!--  文件管理隐藏的表单-->
+       <div id="wenjinaguanli">
+            <div class="wenjian-main">
+            <div style="margin-bottom:20px;">
+            
+            <h4>新加文件记录</h4>
+            </div>
+            <hr>
+            <div>
+            <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                <input  type="hidden" name="formname1" value="4">
+                <input  type="hidden" name="formname2" value="0">
+                <input  type="hidden" name="formname3" value="0">
+                <input  type="hidden" name="biao" value="5">
+                <input type="hidden" name="tag" value="2">
+            <div class="form-group">
+            <label for="">标题：</label>
+            <input name="text1" type="text" class="" style="width:70%;">
+            </div>
+            <div class="form-group">
+            <label for="">作者：</label>
+            <input name="text2" type="text" rows="30" cols="20" class="" style="width:30%;">
+            </div>
+            <div class="form-group">
+            <label for="">类别：</label>
+            <select name="text3" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+            </select>
+            </div>
+            <div class="form-group">
+            <label for="">时间：</label>
+            <input name="text4" type="datetime-local" name="user_date" value="2018/11/11 10:41" id="user_date">
+            </div>
+            <div class="form-group">
+            <label for="">备注：</label>
+            <textarea name="text5" id="" cols="30" rows="10"></textarea>
+            
+            </div>
+            <div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-primary">添加</button>
+                    <button type="reset" class="btn btn-warning" onclick="hiden2()">取消</button>
+            </div>
+            </form>
+            </div>
+            
+            </div>
+            </div>
+
+            <!--  文件管理修改的隐藏表单-->
+            <div id="wenjinaguanli-gai">
+                    <div class="wenjian-gai-main">
+                    <div style="margin-bottom:20px;">
+                    
+                    <h4>上传文件</h4>
+                    </div>
+                    <hr>
+                    <div>
+                    <form action="http://222.24.63.119/ublack" method="POST"  enctype="multipart/form-data">
+                       <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                        <input  type="hidden" name="formname1" value="4">
+                        <input  type="hidden" name="formname2" value="0">
+                        <input  type="hidden" name="formname3" value="0">
+                        
+                        <input id="wensssss" type="hidden" name="文件管理id" value="">
+                        <input type="hidden" value="1">
+                        <input  type="hidden" name="biao" value="5">
+                        <input type="hidden" name="tag" value="1">
+                    <div class="form-group">
+                    <label for="">选择文件：</label>
+                    <input name="text1" type="file" class="" style="width:60%;display: inline-block;">
+                    </div>
+                    <div class="form-group">
+                    <label for="">文件说明：</label>
+                    <textarea name="text2" style="width:80%" name="" id="" cols="50" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                    <label for="">所属分类：</label>
+                    <select name="text3" id="">
+                            <option value="1">上级发文</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                    </select>
+                    <div class="form-group">
+                <label for="">上传要求：</label>
+                <span style="color:red">图片类不得大于500KB <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 文档类不得大于10M <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;视频类不得大于20M <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不得上传违法乱纪内容 </span>
+                </div>
+                    </div>
+                    <div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+                            <button type="submit" class="btn btn-success">修改</button>
+                            <button type="button" class="btn btn-warning" onclick="hiden2gai()">取消</button>
+                    </div>
+                    </form>
+                    </div>
+                    
+                    </div>
+                    </div>
+
+         <!--文件管理的删除-->
+         <div class="wenjiandelete delete" style="display:none;">
+                <div class="delete-main">
+                        <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                            <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                            <input  type="hidden" name="formname1" value="4">
+                            <input  type="hidden" name="formname2" value="0">
+                            <input  type="hidden" name="formname3" value="0">
+                            <input id="wenjiandel" type="hidden" name="删除文件的id" value="">
+                            <input type="hidden" name="删除标志" value="0">
+                            <input  type="hidden" name="biao" value="5">
+                                <input type="hidden" name="tag" value="0">
+                            <div>
+                             <h4 style="color:red;margin-left:33%;" >是否确认删除？</h4>
+                            </div>
+                            <div style="margin-left:30%;" >
+                                    <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                            <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default" onclick="wenjianhiden()">取消</button>
+                            
+                            </div>
+                    </form>
+                    </div>
+                      
+                </div>
+<!-- 请销假 -->
+<div class="content" style="height:100%; display: block;">
+
+<div class="inform" style="margin-top:-2px;">
+        <h1 style="margin-left:30%;" id="qingjilu">请销假记录<button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show3()">添加</button></h1>
+<table id="qingxiaojiajia" class=" table table-hover table-striped">
+<tbody><tr id="thead">
+<td>序号</td>
+<td>姓名</td>
+<td>类别</td>
+<td>时间</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>1</td>
+<td>丽莎</td>
+<td>1</td>
+<td>2018/11/11</td>
+<td><div class="1">
+        <button type="button" class="btn btn-info">审核</button>
+        <button type="button" class="btn btn-danger">删除</button></div>
+</td>
+</tr>
+<tr>
+        <td>2</td>
+        <td>张三</td>
+        <td>1</td>
+        <td>2018/11/08</td>
+        <td><div class="2">
+                <button type="button" class="btn btn-info">审核</button>
+                <button type="button" class="btn btn-danger">删除</button></div>
+        </td>
+</tr>
+
+</tbody></table>
+</div>
+</div>
+<script>
+function b(){
+    $("#chuxian").slideToggle("slow");
+}
+window.onload=function (){
+var xiaoshi_btn1=document.getElementById("xiao");
+xiaoshi_btn1.onclick=function (){
+var mad=document.getElementById("chuxian");
+mad.style.display="none";
+}
+}
+</script>
+
+ <!--请销假的修改-->
+<div id="chuxian">
+<div class="modal-main">
+<div style="margin-bottom:20px;">
+
+<h4>请销假审核</h4>
+</div>
+<hr>
+<div>
+<form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+        <input  type="hidden" name="formname1" value="3">
+<input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+<input id="qingsssss" type="hidden" name="请销假id" value="">
+<input type="hidden" name="修改标记" value="1">
+<input  type="hidden" name="biao" value="6">
+<input type="hidden" name="tag" value="1">
+<div class="form-group">
+<label for="">请假人:</label>
+<input name="text1" type="text" class="" style="width:20%;">
+</div>
+<div class="form-group">
+<label for="">事由:</label>
+<textarea name="text2" id="" cols="30" rows="3"></textarea>
+</div>
+<div class="form-group">
+<label for="">时间:</label>
+<input name="text3" id="user_date">
+</div>
+<div class="form-group">
+<label for="">审批意见:</label>
+<textarea name="text4" id="" cols="30" rows="3"></textarea>
+</div>
+<div class="form-group">
+<label for="">类别:</label>
+<select name="text5" id="">
+        <option value="1">休假</option>
+        <option value="2">病假</option>
+        <option value="3">婚嫁</option>
+        <option value="4">丧假</option>
+</select>
+</div>
+<!-- <div class="form-group">
+<label for="">是否准假:</label>
+<input type="radio" class="">
+</div>
+<div class="form-group " >
+<label for="">是否按时销假:</label>
+<input type="radio" class="">
+</div> -->
+<div class="form-group">
+<label for="">销假时间:</label>
+起：<input  type="datetime-local" name="text6" value="2018/11/11 16:00" id="user_date"><br>
+<label for=""></label>~<br>
+<label for=""></label>止：<input  type="text" name="text7" value="2018/11/11 16:00" id="user_date">
+</div>
+<div class="form-group">
+        <label for="">备注:</label>
+        <textarea name="text8" id="" cols="30" rows="3"></textarea>
+</div>
+<div style="text-align:center;margin-top:10px;margin-left:40%;margin-bottom: 10px;">
+        <button type="submit" class="btn btn-primary">提交</button>
+        <button id="xiao" type="reset" class="btn btn-warning">取消</button>
+</div>
+</form>
+</div>
+
+</div>
+</div>
+
+
+           <!--  请销假添加新记录-->
+           <div id="qingxaiojia">
+                <div class="qinxiao-main">
+                <div style="margin-bottom:20px;">
+                
+                <h4>添加新销假记录</h4>
+                </div>
+                <hr>
+                <div>
+                <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                        <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                        <input  type="hidden" name="formname1" value="3">
+                        <input  type="hidden" name="formname2" value="0">
+                        <input  type="hidden" name="formname3" value="0">
+                        <input  type="hidden" name="biao" value="6">
+                        <input type="hidden" name="tag" value="2">
+                <div class="form-group">
+                <label for="">请假人:</label>
+                <input name="text1" type="text" class="" style="width:20%;">
+                </div>
+                <div class="form-group">
+                <label for="">类别:</label>
+                <select name="text2" id="">
+                        <option value="1">休假</option>
+                        <option value="2">病假</option>
+                        <option value="3">婚嫁</option>
+                        <option value="4">丧假</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="">时间:</label>
+                <input type="datetime-local" name="text3" value="2018/11/11 10:41" id="user_date">
+                </div>
+                <div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                        <button type="reset" class="btn btn-warning" onclick="hiden3()">取消</button>
+                </div>
+                </form>
+                </div>
+                
+                </div>
+                </div>
+
+         <!--请销假的删除-->
+         <div class="qingxiaojdelete delete" style="display:none;">
+                <div class="delete-main">
+                        <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                            <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                            <input  type="hidden" name="formname1" value="3">
+                            <input  type="hidden" name="formname2" value="0">
+                            <input  type="hidden" name="formname3" value="0">
+                            <input id="qingxiaodel" type="hidden" name="请销假id" value="">
+                          
+                            <input  type="hidden" name="biao" value="6">
+                                <input type="hidden" name="tag" value="0">
+                            <div>
+                             <h4 style="color:red;margin-left:33%;" >是否确认删除？</h4>
+                            </div>
+                            <div style="margin-left:30%;" >
+                                    <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                            <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default" onclick="qingxiaohiden()">取消</button>
+                            
+                            </div>
+                    </form>
+                    </div>
+                      
+                </div>
+<!-- 管理审批 -->
+<div class="content" style="height:100%; display: block;">
+
+<div class="inform" style="margin-top:-2px;">
+        <h1 style="margin-left:30%;"><span id="shenpijilu"> 审批管理记录</span><button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show4()">添加</button></h1>
+<table id="shengpiguanlili" class=" table table-hover table-striped shenpitd">
+<tr id="thead">
+<td>审批名称</td>
+<td>审批是由</td>
+<td>报送时间</td>
+<td>报送人</td>
+<td>审批人1</td>
+<td>审批人2</td>
+<td>审批人3</td>
+<td>审批时间</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2018/11/11 10:41</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2018/11/15 10:41</td>
+<td><div class="1">
+        <button type="button" class="btn btn-primary " >修改</button>
+        <button type="button" class="btn btn-danger">删除</button></div>
+</td>
+</tr>
+<tr>
+        <td>2</td>
+        <td>1</td>
+        <td>2018/11/05 10:41</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>2018/11/15 10:41</td>
+        <td><div class="2">
+                <button type="button" class="btn btn-primary " >修改</button>
+                <button type="button" class="btn btn-danger">删除</button></div>
+        </td>
+        </tr>
+
+</table>
+</div>
+</div>
+        <!--添加审批管理的隐藏表单-->
+        <div id="shengpiguanli">
+                <div class="shenpi-main">
+                <div style="margin-bottom:20px;">
+                
+                <h4>添加新审批记录</h4>
+                </div>
+                <hr>
+                <div>
+                <form action="http://222.24.63.119/ublack" method="POST"  enctype="multipart/form-data">
+                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                <input  type="hidden" name="formname1" value="6">
+                <input  type="hidden" name="biao" value="7">
+                <input type="hidden" name="tag" value="2">
+                <div class="form-group">
+                <label for="">审批名称:</label>
+                <input type="text1" class="" style="width:20%;">
+                </div>
+                <div class="form-group">
+                <label for="">审批类别:</label>
+                <select name="text2" id="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="">审批是由:</label>
+                <textarea name="text3" id="" cols="30" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                <label for="">报送时间:</label>
+                <input type="datetime-local" name="text4" value="2018/11/11 10:41" id="user_date">
+                </div>
+                <div class="form-group">
+                    <label for="">报送人:</label>
+                    <input name="text5" type="text" class="" style="width:20%;">
+                </div>
+                <div class="form-group">
+                        <label for="">审批人:</label>
+                        <input name="text6" type="text" class="" style="width:20%;">
+                    </div>
+                            <div class="form-group">
+                                    <label for="">审批时间:</label>
+                                    <input type="datetime-local" name="text7" value="2018/11/11 10:41" id="user_date">
+                                    </div>
+                                    <div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                        <button type="reset" class="btn btn-warning" onclick="hiden4()">取消</button>
+                </div>
+                </form>
+                </div>
+                
+                </div>
+                </div>
+        <!--修改审批管理的隐藏表单-->
+        <div id="shengpiguanli-gai">
+                <div class="shenpigai-main">
+                <div style="margin-bottom:20px;">
+               
+                <h4>修改审批记录</h4>
+                </div>
+                <hr>
+                <div>
+                <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                
+                <input  type="hidden" name="biao" value="7">
+                <input type="hidden" name="tag" value="1">
+                
+                <input id="shenpisssss" type="hidden" name="审批管理修改的id" value="">
+                
+                <div class="form-group">
+                <label for="">审批名称:</label>
+                <input type="text1" class="" style="width:20%;">
+                </div>
+                <div class="form-group">
+                <label for="">审批类别:</label>
+                <select name="text2" id="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="">审批是由:</label>
+                <textarea name="text3" id="" cols="30" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                <label for="">报送时间:</label>
+                <input name="text4" id="user_date">
+                </div>
+                <div class="form-group">
+                    <label for="">报送人:</label>
+                    <input name="text5" type="text" class="" style="width:20%;">
+                </div>
+                <div class="form-group">
+                        <label for="">审批人:</label>
+                        <input name="text6" type="text" class="" style="width:20%;">
+                    </div>
+                    
+                            <div class="form-group">
+                                    <label for="">审批时间:</label>
+                                    <input type="datetime-local" name="text7" value="2018/11/11 10:41" id="user_date">
+                                    </div>
+                                    <div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-success">修改</button>
+                        <button type="reset" class="btn btn-warning" onclick="hiden4gai()">取消</button>
+                </div>
+                </form>
+                </div>
+                
+                </div>
+                </div>
+
+         <!--审批管理的删除-->
+         <div class="shenpidelete delete" style="display:none;">
+                <div class="delete-main">
+                        <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                            <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                            
+                            <input id="shenpidel" type="hidden" name="审批id" value="">
+                            
+                            <input  type="hidden" name="biao" value="7">
+                                <input type="hidden" name="tag" value="0">
+                            <div>
+                             <h4 style="color:red;margin-left:33%;" >是否确认删除？</h4>
+                            </div>
+                            <div style="margin-left:30%;" >
+                                    <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                            <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default" onclick="shenpihiden()">取消</button>
+                            
+                            </div>
+                    </form>
+                    </div>
+                      
+                </div>
+
+<!--安全关键作业-->
+<div class="content" style="height: 100%; display: block;">
+        
+        <div class="inform" style="margin-top:-2px;">
+                <h1 style="margin-left:30%;" class="conh1">安全性作业记录<button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show5()">添加</button></h1>
+        <table id="anquanxingzuoye" class=" table table-hover table-striped">
+        <tbody><tr id="thead">
+        <td>序号</td>
+        <td>关键项目</td>
+        <td>类别</td>
+        <td>描述</td>
+        <td>操作</td>
+        </tr>
+        <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td><div class="1">
+                <button type="button" class="btn btn-primary" >修改</button>
+                <button type="button" class="btn btn-danger">删除</button></div>
+        </td>
+        </tr>
+        
+        </tbody></table>
+        </div>
+        </div>
+
+
+   <!--安全关键作业的添加-->
+<div id="anquan">
+<div class="anquan-main">
+<div style="margin-bottom:20px;">
+
+<h4>添加安全关键作业记录</h4>
+</div>
+<hr>
+<form action="http://222.24.63.119/ublack" method="POST"  enctype="multipart/form-data">
+<table class="seven-table">
+<input type="hidden" name="" value="2|9acdb3d7|94ffd5e2f7dc98d31b8a99d0b28a7681|1541770942">
+<input type="hidden" name="" value="zgjf">
+<input  type="hidden" name="biao" value="8">
+<input type="hidden" name="tag" value="2">
+<tbody>
+<tr>
+<td colspan="4">安全关键作业</td>
+</tr>
+<tr>
+<td colspan="2" class="dtt">关键项目</td>
+<td colspan="2" class="ddt">卡控措施</td>
+</tr>
+<tr>
+<td colspan="2" class="dtt">名称</td>
+<td colspan="2" class="ddt"><input type="text" name="text1" placeholder="名称"></td>
+</tr>
+<tr>
+<td colspan="2" class="dtt">简单描述</td>
+<td colspan="2" class="ddt"><textarea name="text2"  placeholder="简单描述" cols="30" rows="6"></textarea></td>
+</tr>
+<tr>
+<td colspan="2" class="dtt">文件上传</td>
+<td colspan="2" class="ddt"><input name="text3" type="file" value="选择文件"></td>
+</tr>
+<tr>
+<td colspan="2" class="dtt">文件类型</td>
+<td colspan="2" class="ddt">
+<input name="text4" type="radio" name="wupian" value="图片">图片
+
+<input name="text4" type="radio" name="shiping" value="视频">视频
+
+<input name="text4" type="radio" name="wendang" value="文档">文档
+</td>
+</tr>
+</tbody>
+</table>
+<div style="text-align:center;margin-top:10px;margin-left:30%;margin-bottom: 10px;">
+        
+        <button type="submit" class="btn btn-success">添加</button>
+        <button type="reset" class="btn btn-warning" onclick="hiden5()">取消</button>
+</div>
+</form>
+
+</div>
+</div>
+
+
+        <!--安全关键作业的修改隐藏表单-->
+        <div id="anquan-gai">
+                <div class="anquan-gai-main">
+                <div style="margin-bottom:20px;">
+                <button  class="xiaoshi" onclick="hiden5gai()"><span>×</span></button>
+                <h4>修改安全关键作业记录</h4>
+                </div>
+                <hr>
+                <div>
+                <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                <input id="anquansss" type="hidden" name="安全作业修改的id" value="">
+                <input  type="hidden" name="biao" value="8">
+                <input type="hidden" name="tag" value="1">
+                <div class="form-group">
+                <label for="">安全关键项目名称:</label>
+                <input type="text1" class="" style="width:20%;">
+                </div>
+                <div class="form-group">
+                <label for="">类别:</label>
+                <select name="text2" id="">
+                        <option value="1">图片</option>
+                        <option value="2">视频</option>
+                        <option value="3">文档</option>
+                       
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="">描述:</label>
+                <textarea name="text3" id="" cols="60" rows="5"></textarea>
+                </div>
+                <div style="text-align:center;margin-top:10px;margin-left:30%;margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-success">修改</button>
+                        <button type="reset" class="btn btn-warning" onclick="hiden5gai()">取消</button>
+                </div>
+                </form>
+                </div>
+                
+                </div>
+                </div>
+
+
+
+<!-- 6s tpm -->
+<div class="content" style="height:100%; display: block;">
+               
+                <div class="inform" style="margin-top:-2px;">
+                         <h1 style="margin-left:30%;" class="conh1">6S、TPM记录<button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show6()">添加</button></h1>
+        <table id="ssstpm" class=" table table-hover table-striped">
+        <tbody><tr id="thead">
+        <td>序号</td>
+        <td>部/车间</td>
+        <td>检查时间</td>
+        <td>检查人职务 </td>
+        <td>检查人姓名</td>
+        <td>检查地点</td>
+        <td>概况 </td>
+        <td>责任人</td>
+        <td>处理情况</td>
+        <td>类型</td>
+        <td>整改时间</td>
+        <td>种类</td>
+        <td>操作</td>
+        </tr>
+        <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1.1.1</td>
+        <td>6S</td>
+        <td><div class="1">
+                <button type="button" class="btn btn-primary" >修改</button>
+                <button type="button" class="btn btn-danger">删除</button></div>
+        </td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1.1.1</td>
+        <td>TPM</td>
+        <td><div class="2">
+                <button type="button" class="btn btn-primary">修改</button>
+                <button type="button" class="btn btn-danger">删除</button></div>
+        </td>
+        </tr>
+        <tr>
+        <td>3</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1.1.1</td>
+        <td>6S</td>
+        <td><div class="3">
+                <button type="button" class="btn btn-primary">修改</button>
+                <button type="button" class="btn btn-danger">删除</button></div>
+        </td>
+        </tr>
+        </tbody></table>
+        </div>
+        </div>
+
+   <!--6s tpm添加-->
+   <div id="t6stpm">
+        <div class="t6stpm-main">
+        <div style="margin-bottom:20px;">
+            
+            </div>
+        <form action="http://222.24.63.119/ublack" class="meetingForm" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_xsrf" value="2|8ed292fc|f2cb9d359ecd2fa71b73329064bddb8a|1541821002">
+        <input type="hidden" name="formname" value="bzwh">
+        <input  type="hidden" name="biao" value="9">
+        <input type="hidden" name="tag" value="2">
+        <h2>6S、TPM记录表</h2>
+        <hr>
+        <div id="banzuwenhua">
+        <label>部/车间：</label><input type="text" name="text1" placeholder="部/车间">
+        <label>检查时间 ：</label><input type="text" name="text2" placeholder="检查时间">
+        <label>检查人职务 ：</label><input type="text" name="text3" placeholder="检查人职务">
+        <label>检查人姓名 ：</label><input type="text" name="text4" placeholder="检查人姓名">
+        <label>检查地点 ：</label><input type="text" name="text5" placeholder="检查地点">
+        <label>概况 ：</label><textarea cols="23" name="text6" rows="5" placeholder="概况"></textarea>
+        <label>责任人：</label><input type="text" name="text7" placeholder="责任人">
+       <label>处理情况：</label><input type="text" name="text8" placeholder="处理情况">
+        <label>类型：</label>
+        <select name="text9">
+        <option value="1" selected="selected">类型1</option>
+        <option value="2">类型2</option>
+        <option value="3">类型3</option>
+        <option value="4">类型4</option>
+        </select>
+   <label>整改时间：</label><input type="text" name="text10" placeholder="整改时间">
+        <label>种类：</label><input type="radio" value="1" name="text11"><span>6S</span>
+        <input type="radio" value="2" name="text11"><span>TPM</span>
+        </div>
+        <div style="text-align:center;margin-top:10px;">
+                <button type="submit" class="btn btn-primary">添加</button>
+                <button type="reset" class="btn btn-warning" onclick="hiden6()">取消</button>
+        </div>
+        <br><br><br>
+        </form>
+        </div>
+        </div>
+
+   <!--6s tpm修改-->
+   <div id="t6stpmgai">
+        <div class="t6stpmgai-main">
+        <div style="margin-bottom:20px;">
+            
+            </div>
+            <form action="http://222.24.63.119/ublack" class="meetingForm" method="POST"  enctype="multipart/form-data">
+
+                <input type="hidden" name="_xsrf" value="2|8ed292fc|f2cb9d359ecd2fa71b73329064bddb8a|1541821002">
+                <input id="s6tpmsss" type="hidden" name="tpm6s修改的id" value="">
+                <input  type="hidden" name="biao" value="9">
+                 <input type="hidden" name="tag" value="2">
+                <h2>6S、TPM记录修改</h2>
+                <hr>
+                <div id="banzuwenhua">
+                <label>部/车间：</label><input type="text" name="text1" placeholder="部/车间">
+                <label>检查时间 ：</label><input type="text" name="text2" placeholder="检查时间">
+                <label>检查人职务 ：</label><input type="text" name="text3" placeholder="检查人职务">
+                <label>检查人姓名 ：</label><input type="text" name="text4" placeholder="检查人姓名">
+                <label>检查地点 ：</label><input type="text" name="text5" placeholder="检查地点">
+                <label>概况 ：</label><textarea cols="23" rows="5" name="text6" placeholder="概况"></textarea>
+                <label>责任人：</label><input type="text" name="text7" placeholder="责任人">
+               <label>处理情况：</label><input type="text" name="text8" placeholder="处理情况">
+                <label>类型：</label>
+                <select name="text9">
+                <option value="1" selected="selected">类型1</option>
+                <option value="2">类型2</option>
+                <option value="3">类型3</option>
+                <option value="4">类型4</option>
+                </select>
+           <label>整改时间：</label><input type="text" name="text10" placeholder="整改时间">
+                <label>种类：</label><input type="radio" value="0" name="text11"><span>6S</span>
+                <input type="radio" value="1" name="text11"><span>TPM</span>
+                </div>
+                <div style="text-align:center;margin-top:10px;">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                        <button type="reset" class="btn btn-warning" onclick="hiden6gai()">取消</button>
+                </div>
+                <br><br><br>
+                </form>
+        </div>
+        </div>
+
+
+<!-- 合理化建议 -->
+<div class="content" style="height: 100%; display: block;">
+                <div class="inform" style="margin-top:-2px;">
+<!--合理化建议-->
+<div class="table-box " style="display: block;">
+<!--对合理化建议的录入-->
+<div class="col-xs-12 col-md-12">
+                <h1 style="margin-left:30%;" class="conh1">合理化建议记录<button class="btn btn-default" title="添加人员信息" id="renyuanadd" onclick="show7()">添加</button></h1>
+                
+<table id="helihuajianyi"  class=" table table-hover table-striped" style="text-align:center;margin-top:-2px;">
+<tbody><tr id="thead">
+<td>序号</td>
+<td>类型</td>
+<td>内容</td>
+<td>改善方案</td>
+<td>备注</td>
+<td>操作</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="1">
+        <button type="button" class="btn btn-primary" >修改</button>
+        <button type="button" class="btn btn-danger">删除</button></div>
+</td>
+</tr>
+<tr class="alt">
+<td>2</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="2">
+        <button type="button" class="btn btn-primary" >修改</button>
+        <button type="button" class="btn btn-danger">删除</button></div>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="3">
+        <button type="button" class="btn btn-primary" >修改</button>
+        <button type="button" class="btn btn-danger">删除</button></div>
+</td>
+</tr>
+<tr class="alt">
+<td>4</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="4">
+        <button type="button" class="btn btn-primary" >修改</button>
+        <button type="button" class="btn btn-danger">删除</button></div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+                <!--合理化建议的添加-->
+<div id="helihua" id="center">
+<div class="helihua-main" style="text-align: center;">
+<div style="margin-bottom:20px;">
+        
+        </div>
+        <h2>合理化建议记录添加</h2>
+        <hr>
+<form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+        <input type="hidden" name="_xsrf" value="2|8ed292fc|f2cb9d359ecd2fa71b73329064bddb8a|1541821002">
+        
+        <input  type="hidden" name="biao" value="10">
+         <input type="hidden" name="tag" value="2">
+类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型: <select name="text1">
+<option value="1" selected="selected">类型1</option>
+<option value="2">类型2</option>
+<option value="3">类型3</option>
+<option value="4">类型4</option>
+</select>
+<br>
+内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容: <input id="txtCon" type="text" placeholder="建议内容" class="input" name="text2">
+<br>
+改善方案: <input id="txtCon" type="text" placeholder="改善方案" class="input" name="text3">
+<br>
+备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注: <input id="txtCon" type="text" placeholder="备注" class="input" name="text4">
+<br>
+<div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+<button type="submit" class="btn btn-primary">添加</button>
+<button type="reset" class="btn btn-warning" onclick="hiden7()">取消</button>
+</div>
+</form></div>
+</div>
+                <!--合理化建议的修改-->
+<div id="helihuagai" id="center">
+<div class="helihuagai-main" style="text-align: center;">
+<div style="margin-bottom:20px;">
+
+</div>
+<h2>合理化建议记录修改</h2>
+<hr>
+<form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+        <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+        <input id="helissss" type="hidden" name="合理化建议的id" value="">
+        <input  type="hidden" name="biao" value="10">
+         <input type="hidden" name="tag" value="1">
+类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型: <select name="text1">
+<option value="1" selected="selected">类型1</option>
+<option value="2">类型2</option>
+<option value="3">类型3</option>
+<option value="4">类型4</option>
+</select>
+<br>
+内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容: <input id="txtCon" type="text" placeholder="建议内容" class="input" name="text2">
+<br>
+改善方案: <input id="txtCon" type="text" placeholder="改善方案" class="input" name="text3">
+<br>
+备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注: <input id="txtCon" type="text" placeholder="备注" class="input" name="text4">
+<br>
+<div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
+        <button  type="submit" class="btn btn-success">修改</button>
+        <button type="reset" class="btn btn-warning" onclick="hiden7gai()">取消</button>
+</div>
+</form></div>
+</div>
+
+<!-- <div id="delete" >
+    <div class="delete-main">
+            <form action="http://222.24.63.119/ublack"  method="POST"  enctype="multipart/form-data">
+                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+                <input id="sssss" type="hidden" name="formname" value="0">
+                <div>
+                 <h4 style="color:red;margin-left:33%;" >是否确认删除？</h4>
+                </div>
+                <div style="margin-left:30%;" >
+                        <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default" onclick="deletow()">取消</button>
+                
+                </div>
+        </form>
+        </div>
+          
+    </div> -->
+<script type="text/javascript" language="javascript">
+$(document).ready(function () {
+$(".btn_center").click(function () {
+popCenterWindow();
+});
+});
+</script>
+<script type="text/javascript">
+//获取窗口的高度
+var windowHeight;
+//获取窗口的宽度
+var windowWidth;
+//获取弹窗的宽度
+var popWidth;
+//获取弹窗高度
+var popHeight;
+function init(){
+windowHeight=$(window).height();
+windowWidth=$(window).width();
+popHeight=$(".window").height();
+popWidth=$(".window").width();
+}
+//关闭窗口的方法
+function closeWindow(){
+$(".title img").click(function(){
+$(this).parent().parent().hide("slow");
+});
+}
+function closeWindow(){
+$(".btn").click(function(){
+$(".window").hide("slow");
+});
+}
+//定义弹出居中窗口的方法
+function popCenterWindow(){
+init();
+//计算弹出窗口的左上角Y的偏移量
+var popY=(windowHeight-popHeight)/2-120;
+var popX=(windowWidth-popWidth)/2;
+//alert('jihua.cnblogs.com');
+//设定窗口的位置
+$("#center").css("top",popY).css("left",popX).slideToggle("slow");
+closeWindow();
+}
+</script>
+<script type="text/javascript">
+var orderHeight = document.documentElement.clientHeight || document.body.scrollHeight ;
+var order = document.getElementById("leftNave");
+order.style.height=orderHeight+"px";
+var content = document.querySelectorAll(".content");
+for (var i = content.length - 1; i >= 0; i--) {
+content[i].style.height=(orderHeight-50)+"px";
+}
+// 其中选项卡的设置
+var leftNave = document.querySelectorAll(".Leftnav");
+for (var j = 0; j <leftNave.length; j++) {
+leftNave[j].index=j;
+leftNave[j].onclick=function(){
+for (var w = 0; w <content.length; w++) {
+content[w].style.display="none";
+}
+content[this.index].style.display="block";
+}
+}
+//对移动端的选项卡的设置
+var secondNave = document.getElementById("secondNav").getElementsByTagName('span');
+for (var k = 0; k <secondNave.length; k++) {
+secondNave[k].index=k;
+secondNave[k].onclick=function(){
+for (var m = 0; m <content.length; m++) {
+content[m].style.display="none";
+}
+content[this.index].style.display="block";
+}
+}
+</script>
+
+</body></html>
