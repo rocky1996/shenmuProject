@@ -41,7 +41,7 @@
         from jw_renyuan
         where ID = #{ID}
     </select>
-    <select id="findRenyuanVo" resultType="map">
+    <select id="getRenyuanVo" resultType="map">
         select gonghao,xingming,xingbie,beizhu
         from jw_renyuan
     </select>

@@ -23,11 +23,6 @@ public class Renyuan implements Serializable {
     private String zaizhi;
     private String beizhu;
 
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public Integer getID() {
         return ID;
     }
@@ -159,7 +154,7 @@ public class Renyuan implements Serializable {
                 ", nainling=" + nainling +
                 ", dianhua='" + dianhua + '\'' +
                 ", zhiwei=" + zhiwei +
-                ", ruzhishijian=" + ruzhishijian +
+                ", ruzhishijian='" + ruzhishijian + '\'' +
                 ", chezu='" + chezu + '\'' +
                 ", jibengongzi=" + jibengongzi +
                 ", xueli='" + xueli + '\'' +
