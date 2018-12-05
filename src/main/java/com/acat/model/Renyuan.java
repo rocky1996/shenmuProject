@@ -12,7 +12,7 @@ public class Renyuan implements Serializable {
     private String shenfenzheng;
     private String xingming;
     private String xingbie;
-    private Integer nainling;
+    private Integer nianling;
     private String dianhua;
     private Integer zhiwei;
     private String ruzhishijian;
@@ -63,12 +63,12 @@ public class Renyuan implements Serializable {
         this.xingbie = xingbie;
     }
 
-    public Integer getNainling() {
-        return nainling;
+    public Integer getNianling() {
+        return nianling;
     }
 
-    public void setNainling(Integer nainling) {
-        this.nainling = nainling;
+    public void setNianling(Integer nianling) {
+        this.nianling = nianling;
     }
 
     public String getDianhua() {
@@ -151,7 +151,7 @@ public class Renyuan implements Serializable {
                 ", shenfenzheng='" + shenfenzheng + '\'' +
                 ", xingming='" + xingming + '\'' +
                 ", xingbie='" + xingbie + '\'' +
-                ", nainling=" + nainling +
+                ", nianling=" + nianling +
                 ", dianhua='" + dianhua + '\'' +
                 ", zhiwei=" + zhiwei +
                 ", ruzhishijian='" + ruzhishijian + '\'' +

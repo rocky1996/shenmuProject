@@ -11,7 +11,7 @@ public interface IRenyuanDao {
      *zengjiarenyuan
      * @param
      */
-    void addRunyuan(Renyuan renyuan);
+    void addRenyuan(Renyuan renyuan);
 
     /**
      * shanchurenyuan

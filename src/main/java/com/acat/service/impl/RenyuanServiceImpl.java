@@ -19,8 +19,8 @@ public class RenyuanServiceImpl implements IRenyuanService {
      *zengjiarenyuan
      * @param
      */
-    public void addRunyuan(Renyuan renyuan){
-        renyuanDao.addRunyuan(renyuan);
+    public void addRenyuan(Renyuan renyuan){
+        renyuanDao.addRenyuan(renyuan);
     }
 
     /**

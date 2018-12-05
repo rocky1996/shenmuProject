@@ -22,9 +22,22 @@
     <spring.version>4.3.5.RELEASE</spring.version>
     <!-- mybatis版本号 -->
     <mybatis.version>3.4.1</mybatis.version>
+    <jackson.version>2.5.4</jackson.version>
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
     <!-- java ee -->
     <dependency>
       <groupId>javax</groupId>
