@@ -3,6 +3,7 @@ package com.acat.controller;
 import com.acat.model.Renyuan;
 import com.acat.service.IRenyuanService;
 import com.acat.vo.RenyuanVo;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,31 +18,46 @@ import java.util.List;
 @RequestMapping("/renyuan")
 public class RenyuanController {
 
-
     @Autowired
     private IRenyuanService renyuanService;
 
-
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/add",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public void addRenyuan( @RequestBody Renyuan renyuan) {
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         System.out.println(renyuan);
-        renyuanService.addRunyuan(renyuan);
+        System.out.println(renyuan.getID());
+        renyuanService.addRenyuan(renyuan);
     }
 
-    @RequestMapping(value = "/listAll", produces = "application/json;charset=utf-8")
-    public String listAll(HttpServletResponse response) throws Exception {
-        System.out.println(renyuanService.getRenyuanVo().toString());
-        return renyuanService.getRenyuanVo().toString();
+    @RequestMapping(value = "/listAll")
+    @ResponseBody
+    public List<RenyuanVo> listAll() {
+        List<RenyuanVo> list = renyuanService.getRenyuanVo();
+        return list;
     }
 
-    @RequestMapping("/get/{id}")
+    @RequestMapping(value = "/get/{id}",method = RequestMethod.POST)
     public String getById(@PathVariable("id") Integer id) {
         System.out.println(renyuanService.getRenyuanById(id));
         return renyuanService.getRenyuanById(id).toString();
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.POST)
     public void delete(@PathVariable("id") Integer id) {
         renyuanService.deleteRenyuanById(id);
     }
+
+    @RequestMapping(value="/update/{id}",method = RequestMethod.POST)
+    public Renyuan updateRenyuan(@PathVariable("id") Integer id){
+        System.out.println("id是"+id);
+        Renyuan renyuan = renyuanService.getRenyuanById(id);
+        return renyuan;
+    }
+    @Test
+    public void test(){
+        Renyuan renyuan = renyuanService.getRenyuanById(108);
+        System.out.println(renyuan);
+
+    }
+
 }

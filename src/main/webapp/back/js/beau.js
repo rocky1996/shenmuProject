@@ -7,7 +7,7 @@ function hiden0(){
 }
 $(document).on('click', '#gerenxinxi2 .btn-danger', function() {
     var id=this.parentNode.getAttribute("class");
-    document.getElementById("sssss").setAttribute("value",id);
+    document.getElementById("sssss").setAttribute("action","/shenmu_war_exploded/renyuan/delete/"+id);
     $(".renyuandelete").eq(0).slideToggle("slow");
 })
 function renyuanhiden(){
@@ -207,45 +207,46 @@ function view2(){
 $(document).on('click', '#gerenxinxi2 .btn-primary', function() {
     
     var id=this.parentNode.getAttribute("class");
-    renyuanxinxixiugaigetMsg(id);
+    console.log(id);
+    renyuanxinxigetMsg(id);
     
     show0gai();
 })
-function renyuanxinxixiugaigetMsg(last_id){
+function renyuanxinxigetMsg(last_id){
+    console.log(last_id);
     $.ajax({
-        url:"?id="+last_id+"&biao=1'",
-        type:"get",
+        url:"/shenmu_war_exploded/renyuan/get/"+last_id,
+        type:"post",
         success:function(data){
-            var put_id=document.getElementById("renyuangai").getElementsByTagName("input")[4];
-            put_id.value=data.ID;
-            var put_gonghao=document.getElementById("renyuangai").getElementsByTagName("input")[5];
-            put_gonghao.value=data.gonghao;
-            var put_shenfen=document.getElementById("renyuangai").getElementsByTagName("input")[6];
-            put_shenfen.value=data.shenfen;
-            var put_name=document.getElementById("renyuangai").getElementsByTagName("input")[7];
-            put_name.value=data.pname;
-            var put_sex=document.getElementById("renyuangai").getElementsByTagName("input")[8];
-            put_sex.value=data.sex;
-            var put_age=document.getElementById("renyuangai").getElementsByTagName("input")[9];
-            put_age.value=data.age;
-            var put_dianhua=document.getElementById("renyuangai").getElementsByTagName("input")[10];
-            put_dianhua.value=data.dianhua;
-            var put_zhiwei=document.getElementById("renyuangai").getElementsByTagName("input")[11];
-            put_zhiwei.value=data.zhiwei;
-            var put_ru_time=document.getElementById("renyuangai").getElementsByTagName("input")[12];
-            put_ru_time.value=data.ru_time;
-            var put_chezu=document.getElementById("renyuangai").getElementsByTagName("input")[13];
-            put_chezu.value=data.chezu;
-            var put_gongzi=document.getElementById("renyuangai").getElementsByTagName("input")[14];
-            put_gongzi.value=data.gongzi;
-            var put_xueli=document.getElementById("renyuangai").getElementsByTagName("input")[15];
-            put_xueli.value=data.xueli;
-            var put_minzu=document.getElementById("renyuangai").getElementsByTagName("input")[16];
-            put_minzu.value=data.minzu;
-            var put_zaizhi=document.getElementById("renyuangai").getElementsByTagName("input")[17];
-            put_zaizhi.value=data.zaizhi;
-            var put_beizhu=document.getElementById("renyuangai").getElementsByTagName("textarea")[0];
-            put_beizhu.value=data.beizhu;
+            console.log(data);
+            // var put_gonghao=document.getElementById("renyuangai").getElementsByTagName("input")[5];
+            // put_gonghao.value=data.gonghao;
+            // var put_shenfen=document.getElementById("renyuangai").getElementsByTagName("input")[6];
+            // put_shenfen.value=data.shenfen;
+            // var put_name=document.getElementById("renyuangai").getElementsByTagName("input")[7];
+            // put_name.value=data.pname;
+            // var put_sex=document.getElementById("renyuangai").getElementsByTagName("input")[8];
+            // put_sex.value=data.sex;
+            // var put_age=document.getElementById("renyuangai").getElementsByTagName("input")[9];
+            // put_age.value=data.age;
+            // var put_dianhua=document.getElementById("renyuangai").getElementsByTagName("input")[10];
+            // put_dianhua.value=data.dianhua;
+            // var put_zhiwei=document.getElementById("renyuangai").getElementsByTagName("input")[11];
+            // put_zhiwei.value=data.zhiwei;
+            // var put_ru_time=document.getElementById("renyuangai").getElementsByTagName("input")[12];
+            // put_ru_time.value=data.ru_time;
+            // var put_chezu=document.getElementById("renyuangai").getElementsByTagName("input")[13];
+            // put_chezu.value=data.chezu;
+            // var put_gongzi=document.getElementById("renyuangai").getElementsByTagName("input")[14];
+            // put_gongzi.value=data.gongzi;
+            // var put_xueli=document.getElementById("renyuangai").getElementsByTagName("input")[15];
+            // put_xueli.value=data.xueli;
+            // var put_minzu=document.getElementById("renyuangai").getElementsByTagName("input")[16];
+            // put_minzu.value=data.minzu;
+            // var put_zaizhi=document.getElementById("renyuangai").getElementsByTagName("input")[17];
+            // put_zaizhi.value=data.zaizhi;
+            // var put_beizhu=document.getElementById("renyuangai").getElementsByTagName("textarea")[0];
+            // put_beizhu.value=data.beizhu;
         },
         error:function(data){
             console.log(data);
@@ -641,28 +642,30 @@ function getMsg(){
 }
 
 //人员信息表信息加载
-  // setInterval(renyuanxinxigetMsg,500);
+//   setInterval(renyuanxinxigetMsg,10000);
   function renyuantou(){
     var htm='';
     htm+=`<tr id="thead">
     <td>序号</td>
-    <td>ID</td>
+
     <td>姓名</td>
     <td>性别</td>
+    <td>工号</td>
     <td>备注</td>
     <td>操作</td>
     </tr>`;
     $('#get_renyuan').html(htm);
   }
-  function renyuanxinaddMsg(i,ID,pname,p_sex,beizhu){
+  function renyuanxinaddMsg(i,ID,pname,p_sex,gonghao){
     
     var html='';
     html+=`<tr>
     <td>${i+1}</td>
-    <td>${ID}</td>
+    
     <td>${pname}</td>
     <td>${p_sex}</td>
-    <td>${beizhu}</td>
+    <td>${gonghao}</td>
+    <td></td>
     <td><div class="${ID}">
             <button type="button" class="btn btn-primary" >修改</button>
             <button type="button" class="btn btn-danger" >删除</button></div>
@@ -671,22 +674,45 @@ function getMsg(){
     $('#get_renyuan').append(html);
 }
 function renyuanxinxigetMsg(){
-    var last_id='人员信息';
+
     $.ajax({
-        url:"?id="+last_id,
+        url:"/shenmu_war_exploded/renyuan/listAll",
         type:"get",
         success:function(data){
-            console.log(data);
+
+            var arr = data;
+
+            // console.log(data.responseText);
+            // var data1=arr.JSON.parse(responseText);
+            // console.log(data1);
+            // //
             renyuantou();
             for(var i=0;i<data.length;i++){
-                renyuanxinaddMsg(i,data[i].ID,data[i].pname,data[i].p_sex,data[i].beizhu);
+
+                renyuanxinaddMsg(i,data[i].ID,data[i].xingming,data[i].xingbie,data[i].gonghao);
             }
         },
         error:function(data){
-            console.log(data);
+            // console.log(data.responseText);
+            // var message2=data.responseText.split(",");
+            // alert(Array.isArray(message2));
+            // console.log(message2);
+
+            // var arr = data;
+            // var data1=arr.JSON.parse(responseText);
+            // console.log(data1);
+            //
+            // renyuantou();
+            // for(var i=0;i<data.responseText.length;i++){
+            //     renyuanxinaddMsg(i,data.responseText[i].ID,data.responseText[i].xingming,data.responseText[i].xingbie);
+            // }
         }
+
     });
+
 }
+
+renyuanxinxigetMsg();
 
 //班前班后会信息加载
   // setInterval(banqiangetMsg,500);

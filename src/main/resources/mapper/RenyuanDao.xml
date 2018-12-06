@@ -38,8 +38,8 @@
     <select id="getRenyuanById" resultType="com.acat.model.Renyuan" parameterType="java.lang.Integer">
         select * from jw_renyuan where ID = #{ID}
     </select>
-    <select id="getRenyuanVo" resultType="map">
-        select gonghao,xingming,xingbie,beizhu from jw_renyuan
+    <select id="getRenyuanVo" resultType="java.util.Map">
+        select ID,gonghao,xingming,xingbie,beizhu from jw_renyuan
     </select>
 
 </mapper>

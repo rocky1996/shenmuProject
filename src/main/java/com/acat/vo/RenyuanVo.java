@@ -7,22 +7,18 @@ public class RenyuanVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer xuhao=0;
+    private Integer ID;
     private String gonghao;
     private String xingming;
     private Integer xingbie;
     private String beizhu;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public Integer getID() {
+        return ID;
     }
 
-    public Integer getXuhao() {
-        return xuhao;
-    }
-
-    public void setXuhao(Integer xuhao) {
-        this.xuhao = xuhao++;
+    public void setID(Integer ID) {
+        this.ID = ID;
     }
 
     public String getGonghao() {
@@ -60,7 +56,7 @@ public class RenyuanVo implements Serializable {
     @Override
     public String toString() {
         return "RenyuanVo{" +
-                "xuhao=" + xuhao +
+                "ID=" + ID +
                 ", gonghao='" + gonghao + '\'' +
                 ", xingming='" + xingming + '\'' +
                 ", xingbie=" + xingbie +
