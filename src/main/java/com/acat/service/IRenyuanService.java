@@ -24,7 +24,7 @@ public interface IRenyuanService {
      * @param
      * @return
      */
-    void updateRenyuan(Integer id);
+    void updateRenyuan(Renyuan renyuan);
 
     /**
      * tongguo id chaxunrenyuan

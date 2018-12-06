@@ -57,7 +57,5 @@ public class RenyuanController {
     public void test(){
         Renyuan renyuan = renyuanService.getRenyuanById(108);
         System.out.println(renyuan);
-
     }
-
 }

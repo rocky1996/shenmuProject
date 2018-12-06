@@ -36,8 +36,8 @@ public class RenyuanServiceImpl implements IRenyuanService {
      * @param
      * @return
      */
-    public void updateRenyuan(Integer id){
-        renyuanDao.updateRenyuan(id);
+    public void updateRenyuan(Renyuan renyuan){
+        renyuanDao.updateRenyuan(renyuan);
     }
 
     /**
@@ -47,6 +47,7 @@ public class RenyuanServiceImpl implements IRenyuanService {
      */
     public Renyuan getRenyuanById(Integer id){
         return renyuanDao.getRenyuanById(id);
+
     }
 
 

@@ -16,7 +16,7 @@
         where ID = #{ID}
     </delete>
 
-    <update id="updateRenyuan" parameterType="java.lang.Integer">
+    <update id="updateRenyuan" parameterType="com.acat.model.Renyuan">
         update jw_renyuan
         set gonghao      = #{gonghao},
             shenfenzheng = #{shenfenzheng},

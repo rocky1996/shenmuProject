@@ -39,7 +39,7 @@
         select * from jw_renyuan where ID = #{ID}
     </select>
     <select id="getRenyuanVo" resultType="java.util.Map">
-        select gonghao,xingming,xingbie,beizhu from jw_renyuan
+        select ID,gonghao,xingming,xingbie,beizhu from jw_renyuan
     </select>
 
 </mapper>
