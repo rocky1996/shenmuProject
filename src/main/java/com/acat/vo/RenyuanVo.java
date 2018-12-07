@@ -7,11 +7,23 @@ public class RenyuanVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer ID;
+
+    private Integer ID ;
     private String gonghao;
     private String xingming;
-    private Integer xingbie;
+    private String xingbie;
     private String beizhu;
+
+    @Override
+    public String toString() {
+        return "RenyuanVo{" +
+                "ID=" + ID +
+                ", gonghao='" + gonghao + '\'' +
+                ", xingming='" + xingming + '\'' +
+                ", xingbie='" + xingbie + '\'' +
+                ", beizhu='" + beizhu + '\'' +
+                '}';
+    }
 
     public Integer getID() {
         return ID;
@@ -37,11 +49,11 @@ public class RenyuanVo implements Serializable {
         this.xingming = xingming;
     }
 
-    public Integer getXingbie() {
+    public String getXingbie() {
         return xingbie;
     }
 
-    public void setXingbie(Integer xingbie) {
+    public void setXingbie(String xingbie) {
         this.xingbie = xingbie;
     }
 
@@ -51,16 +63,5 @@ public class RenyuanVo implements Serializable {
 
     public void setBeizhu(String beizhu) {
         this.beizhu = beizhu;
-    }
-
-    @Override
-    public String toString() {
-        return "RenyuanVo{" +
-                "ID=" + ID +
-                ", gonghao='" + gonghao + '\'' +
-                ", xingming='" + xingming + '\'' +
-                ", xingbie=" + xingbie +
-                ", beizhu='" + beizhu + '\'' +
-                '}';
     }
 }

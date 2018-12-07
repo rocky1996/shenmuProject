@@ -3,11 +3,9 @@
 <mapper namespace="com.acat.dao.IRenyuanDao">
 
     <insert id="addRenyuan" parameterType="com.acat.model.Renyuan">
-        insert into jw_renyuan (gonghao, shenfenzheng, xingming, xingbie, nianling, dianhua, zhiwei, ruzhishijian,
-                                chezu,
-                                jibengongzi, xueli, minzu, zaizhi, beizhu)
-        values (#{gonghao}, #{shenfenzheng}, #{xingming}, #{xingbie}, #{nianling}, #{dianhua},#{zhiwei}, #{ruzhishijian}, #{chezu},
-                #{jibengongzi}, #{xueli}, #{minzu}, #{zaizhi}, #{beizhu})
+        insert into jw_renyuan (gonghao, shenfenzheng, xingming, xingbie, nianling, dianhua, zhiwei, ruzhishijian,chezu,jibengongzi, xueli, minzu, zaizhi, beizhu,fenzu)
+        values (#{gonghao}, #{shenfenzheng}, #{xingming}, #{xingbie}, #{nianling}, #{dianhua}, #{zhiwei}, #{ruzhishijian}, #{chezu},
+                #{jibengongzi}, #{xueli}, #{minzu}, #{zaizhi}, #{beizhu}, #{fenzu})
     </insert>
 
     <delete id="deleteRenyuanById" parameterType="java.lang.Integer">
@@ -16,29 +14,16 @@
         where ID = #{ID}
     </delete>
 
-    <update id="updateRenyuan" parameterType="com.acat.model.Renyuan">
-        update jw_renyuan
-        set gonghao      = #{gonghao},
-            shenfenzheng = #{shenfenzheng},
-            xingming     = #{xingming},
-            xingbie      = #{xingbie},
-            nianling     = #{nianling},
-            dianhua      = #{dianhua},
-            zhiwei       = #{zhiwei},
-            ruzhishijian = #{ruzhishijian},
-            chezu        = #{chezu},
-            jibengongzi  = #{jibengongzi},
-            xueli        = #{xueli},
-            minzu        = #{minzu},
-            zaizhi       = #{zaizhi},
-            beizhu       = #{beizhu}
-        where ID = #{ID}
+    <update id="updateRenyuanById" parameterType="com.acat.model.Renyuan">
+        update jw_renyuan set gonghao = #{gonghao},shenfenzheng = #{shenfenzheng},xingming= #{xingming},xingbie= #{xingbie},nianling= #{nianling},dianhua = #{dianhua},zhiwei = #{zhiwei},ruzhishijian = #{ruzhishijian},chezu =#{chezu},jibengongzi=#{jibengongzi}, xueli = #{xueli},  minzu =#{minzu},zaizhi =#{zaizhi}, beizhu =#{beizhu} ,fenzu=#{fenzu} where ID = #{ID}
     </update>
 
-    <select id="getRenyuanById" resultType="com.acat.model.Renyuan" parameterType="java.lang.Integer">
+
+    <select id="getRenyuanById" resultType="com.acat.model.Renyuan" parameterType="Integer">
         select * from jw_renyuan where ID = #{ID}
     </select>
-    <select id="getRenyuanVo" resultType="java.util.Map">
+
+    <select id="findRenyuanVo" resultType="java.util.Map">
         select ID,gonghao,xingming,xingbie,beizhu from jw_renyuan
     </select>
 

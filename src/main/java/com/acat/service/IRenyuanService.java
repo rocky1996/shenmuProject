@@ -1,42 +1,40 @@
 package com.acat.service;
 
 import com.acat.model.Renyuan;
-import com.acat.vo.RenyuanVo;
 
 import java.util.List;
 
 public interface IRenyuanService {
-
     /**
-     *zengjiarenyuan
-     * @param
+     * 添加人员
+     * @param renyuan
      */
     void addRenyuan(Renyuan renyuan);
 
     /**
-     * shanchurenyuan
+     * 通过id删除人员
      * @param id
      */
-    void deleteRenyuanById(Integer id);
+    void deleteRenyuanById(int id);
+
 
     /**
-     * gerngxinrenyuan
-     * @param
+     * 通过更新人员
+     * @param renyuan
      * @return
      */
-    void updateRenyuan(Renyuan renyuan);
+    void updateRenyuanById(Renyuan renyuan);
 
     /**
-     * tongguo id chaxunrenyuan
+     * 通过查询人员
      * @param id
      * @return
      */
-    Renyuan getRenyuanById(Integer id);
-
+    Renyuan getRenyuanById(int id);
 
     /**
-     *
+     * 查询所有
      * @return
      */
-    List<RenyuanVo> getRenyuanVo();
+    List<RenyuanVo> findRenyuanVo();
 }

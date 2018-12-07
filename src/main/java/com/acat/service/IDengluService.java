@@ -3,18 +3,33 @@ package com.acat.service;
 import com.acat.model.Denglu;
 
 public interface IDengluService {
+    /**
+     * 登陆接口
+     *
+     *
+     */
+    Denglu login(Denglu denglu);
+
+    /**
+     * 注册接口
+     *
+     * @param denglu
+     */
+
+    void update(Denglu denglu);
 
     /**
      *
      * @param yonghuming
-     * @param mima
+     * @return
      */
-    void login(String yonghuming,String mima);
-
+    Integer getRenyuanZhiwei(String yonghuming);
 
     /**
      *
-     * @param denglu
+     * @param yonghuming
+     * @return
      */
-    void register(Denglu denglu);
+    String getMimaByYonghuming(String yonghuming);
+
 }

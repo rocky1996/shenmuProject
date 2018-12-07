@@ -3,4 +3,19 @@
 <mapper namespace="com.acat.dao.IDengluDao">
 
 
+    <select id="login" resultType="com.acat.model.Denglu" parameterType="com.acat.model.Denglu">
+        select * from jw_denglu where yonghuming=#{yonghuming} and mima=#{mima}
+    </select>
+    <update id="update" parameterType="com.acat.model.Denglu">
+        update jw_denglu set mima=#{mima} where yonghuming=#{yonghuming}
+    </update>
+
+    <select id="getRenyuanZhiwei" parameterType="java.lang.String" resultType="Integer">
+        select r.zhiwei from jw_renyuan r inner join jw_denglu d on r.xingming=d.yonghuming and d.yonghuming = #{yonghuming}
+    </select>
+
+    <select id="getMimaByYonghuming" parameterType="java.lang.String" resultType="java.lang.String">
+        select mima from jw_denglu where yonghuming=#{yonghuming}
+    </select>
+
 </mapper>

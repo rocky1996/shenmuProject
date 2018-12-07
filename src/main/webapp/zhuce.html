@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>注册页面</title>
+<link rel="stylesheet" type="text/css" href="zhuce/login.css">
+<link rel="stylesheet" type="text/css" href="zhuce/bootstrap.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container">
+        <form action="" method="post" id="form">
+            <input type="hidden" name="_xsrf" value="2|ccb3257b|4f41bd9a627971d1b4987acdc20c9d8c|1541608790">
+            <img src="zhuce/logo.png">
+        <hr size="1px" color="#CBCBCB">
+        <p>设置登录用户名</p>
+           <input type="text" class="text" name="username" placeholder="登录用户名">
+        <p>设置登录密码</p>
+        <input type="password" class="text" name="password" placeholder="登录密码">
+
+            <input type="button" onclick="zhuce()" value="创建密码" class="btn">
+            <span><a href="./login.html">返回登录界面</a></span>
+        </form>
+        
+    </div>
+    <script>
+        function zhuce(){
+        var usename=$("username").val();
+        var password=$("password").val();
+        var radio=document.getElementsByName("radio");
+
+        var selectvalue=null;   //  selectvalue为radio中选中的值
+
+        for(var i=0;i<radio.length;i++){
+
+            if(radio[i].checked==true) {
+
+                    selectvalue=radio[i].value;
+
+                    break;
+
+            }
+
+        }
+        if(usename!=''&&password!=""){
+            $.post("",{usename:usename,password:password,selectvalue:selectvalue},function(result){
+                if(result==false){
+                    alert("输入出错！重新输入");
+                    var usename=$("username").val("");
+                    var password=$("password").val("");
+                }
+                else{
+                    alert("注册成功！");
+                    window.location.href = "../login/login.html";//这里是登陆成功之后要跳转的页面url
+                }
+            });  
+        }
+        else{
+            alert("账号密码不能为空！！！");
+        }
+    }
+    </script>
+    
+
+</body></html>

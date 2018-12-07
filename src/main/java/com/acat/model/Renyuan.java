@@ -1,7 +1,9 @@
 package com.acat.model;
 
+//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.Serializable;
-import java.util.Date;
+
 
 public class Renyuan implements Serializable {
 
@@ -12,16 +14,34 @@ public class Renyuan implements Serializable {
     private String shenfenzheng;
     private String xingming;
     private String xingbie;
-    private Integer nianling;
+    private int nianling;
     private String dianhua;
-    private Integer zhiwei;
+    private int zhiwei;
     private String ruzhishijian;
     private String chezu;
-    private Integer jibengongzi;
+    private int jibengongzi;
     private String xueli;
     private String minzu;
     private String zaizhi;
     private String beizhu;
+    private int fenzu;
+
+    public String getBeizhu() {
+        return beizhu;
+    }
+
+    public void setBeizhu(String beizhu) {
+        this.beizhu = beizhu;
+    }
+
+    public int getFenzu() {
+        return fenzu;
+    }
+
+    public void setFenzu(int fenzu) {
+        this.fenzu = fenzu;
+    }
+//    @JsonSerialize(include= JsonSerialize.Inclusion.NON_EMPTY)
 
     public Integer getID() {
         return ID;
@@ -63,11 +83,11 @@ public class Renyuan implements Serializable {
         this.xingbie = xingbie;
     }
 
-    public Integer getNianling() {
+    public int getNianling() {
         return nianling;
     }
 
-    public void setNianling(Integer nianling) {
+    public void setNianling(int nianling) {
         this.nianling = nianling;
     }
 
@@ -79,11 +99,11 @@ public class Renyuan implements Serializable {
         this.dianhua = dianhua;
     }
 
-    public Integer getZhiwei() {
+    public int getZhiwei() {
         return zhiwei;
     }
 
-    public void setZhiwei(Integer zhiwei) {
+    public void setZhiwei(int zhiwei) {
         this.zhiwei = zhiwei;
     }
 
@@ -103,11 +123,11 @@ public class Renyuan implements Serializable {
         this.chezu = chezu;
     }
 
-    public Integer getJibengongzi() {
+    public int getJibengongzi() {
         return jibengongzi;
     }
 
-    public void setJibengongzi(Integer jibengongzi) {
+    public void setJibengongzi(int jibengongzi) {
         this.jibengongzi = jibengongzi;
     }
 
@@ -135,14 +155,6 @@ public class Renyuan implements Serializable {
         this.zaizhi = zaizhi;
     }
 
-    public String getBeizhu() {
-        return beizhu;
-    }
-
-    public void setBeizhu(String beizhu) {
-        this.beizhu = beizhu;
-    }
-
     @Override
     public String toString() {
         return "Renyuan{" +
@@ -161,6 +173,7 @@ public class Renyuan implements Serializable {
                 ", minzu='" + minzu + '\'' +
                 ", zaizhi='" + zaizhi + '\'' +
                 ", beizhu='" + beizhu + '\'' +
+                ", fenzu=" + fenzu +
                 '}';
     }
 }

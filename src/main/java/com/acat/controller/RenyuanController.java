@@ -1,61 +1,63 @@
 package com.acat.controller;
 
 import com.acat.model.Renyuan;
-import com.acat.service.IRenyuanService;
-import com.acat.vo.RenyuanVo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
+/**
+ * 人员管理Controller
+ */
 @RestController
 @RequestMapping("/renyuan")
 public class RenyuanController {
-
     @Autowired
-    private IRenyuanService renyuanService;
+    private IRenyuanService iRenyuanService;
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
-    public void addRenyuan( @RequestBody Renyuan renyuan) {
+    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public void addRenyuan(@RequestBody Renyuan renyuan) {
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         System.out.println(renyuan);
         System.out.println(renyuan.getID());
-        renyuanService.addRenyuan(renyuan);
+        iRenyuanService.addRenyuan(renyuan);
     }
 
     @RequestMapping(value = "/listAll")
     @ResponseBody
     public List<RenyuanVo> listAll() {
-        List<RenyuanVo> list = renyuanService.getRenyuanVo();
+        List<RenyuanVo> list = iRenyuanService.findRenyuanVo();
         return list;
     }
 
-    @RequestMapping(value = "/get/{id}",method = RequestMethod.POST)
-    public String getById(@PathVariable("id") Integer id) {
-        System.out.println(renyuanService.getRenyuanById(id));
-        return renyuanService.getRenyuanById(id).toString();
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public Renyuan getById(@PathVariable("id") Integer id) {
+        System.out.println(iRenyuanService.getRenyuanById(id));
+        return iRenyuanService.getRenyuanById(id);
     }
 
-    @RequestMapping(value = "/delete/{id}",method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     public void delete(@PathVariable("id") Integer id) {
-        renyuanService.deleteRenyuanById(id);
+        iRenyuanService.deleteRenyuanById(id);
     }
 
-    @RequestMapping(value="/update/{id}",method = RequestMethod.POST)
-    public Renyuan updateRenyuan(@PathVariable("id") Integer id){
-        System.out.println("id是"+id);
-        Renyuan renyuan = renyuanService.getRenyuanById(id);
-        return renyuan;
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public String updateRenyuan(@RequestBody Renyuan renyuan) {
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("renyuan是" + renyuan);
+        System.out.println(renyuan.getID());
+        iRenyuanService.updateRenyuanById(renyuan);
+        System.out.println("****************************************************************************8888");
+        return "修改成功";
     }
+
     @Test
-    public void test(){
-        Renyuan renyuan = renyuanService.getRenyuanById(108);
+    public void test() {
+        Renyuan renyuan = iRenyuanService.getRenyuanById(108);
         System.out.println(renyuan);
+
     }
+
 }
