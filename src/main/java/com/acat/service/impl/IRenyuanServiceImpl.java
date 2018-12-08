@@ -3,6 +3,7 @@ package com.acat.service.impl;
 import com.acat.dao.IRenyuanDao;
 import com.acat.model.Renyuan;
 import com.acat.service.IRenyuanService;
+import com.acat.vo.RenyuanVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

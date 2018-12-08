@@ -207,49 +207,51 @@ function view2(){
 $(document).on('click', '#gerenxinxi2 .btn-primary', function() {
     
     var id=this.parentNode.getAttribute("class");
-    console.log(id);
-    renyuanxinxigetMsg(id);
+    document.getElementById("dedaorenyuanxiugaiid").setAttribute("class",id);
+    renyuanxinxixiugaigetMsg(id);
     
     show0gai();
 })
-function renyuanxinxigetMsg(last_id){
-    console.log(last_id);
+function renyuanxinxixiugaigetMsg(last_id){
+
     $.ajax({
         url:"/shenmu_war_exploded/renyuan/get/"+last_id,
         type:"post",
         success:function(data){
-            console.log(data);
-            // var put_gonghao=document.getElementById("renyuangai").getElementsByTagName("input")[5];
-            // put_gonghao.value=data.gonghao;
-            // var put_shenfen=document.getElementById("renyuangai").getElementsByTagName("input")[6];
-            // put_shenfen.value=data.shenfen;
-            // var put_name=document.getElementById("renyuangai").getElementsByTagName("input")[7];
-            // put_name.value=data.pname;
-            // var put_sex=document.getElementById("renyuangai").getElementsByTagName("input")[8];
-            // put_sex.value=data.sex;
-            // var put_age=document.getElementById("renyuangai").getElementsByTagName("input")[9];
-            // put_age.value=data.age;
-            // var put_dianhua=document.getElementById("renyuangai").getElementsByTagName("input")[10];
-            // put_dianhua.value=data.dianhua;
-            // var put_zhiwei=document.getElementById("renyuangai").getElementsByTagName("input")[11];
-            // put_zhiwei.value=data.zhiwei;
-            // var put_ru_time=document.getElementById("renyuangai").getElementsByTagName("input")[12];
-            // put_ru_time.value=data.ru_time;
-            // var put_chezu=document.getElementById("renyuangai").getElementsByTagName("input")[13];
-            // put_chezu.value=data.chezu;
-            // var put_gongzi=document.getElementById("renyuangai").getElementsByTagName("input")[14];
-            // put_gongzi.value=data.gongzi;
-            // var put_xueli=document.getElementById("renyuangai").getElementsByTagName("input")[15];
-            // put_xueli.value=data.xueli;
-            // var put_minzu=document.getElementById("renyuangai").getElementsByTagName("input")[16];
-            // put_minzu.value=data.minzu;
-            // var put_zaizhi=document.getElementById("renyuangai").getElementsByTagName("input")[17];
-            // put_zaizhi.value=data.zaizhi;
-            // var put_beizhu=document.getElementById("renyuangai").getElementsByTagName("textarea")[0];
-            // put_beizhu.value=data.beizhu;
+
+            var put_gonghao=document.getElementById("renyuangai").getElementsByTagName("input")[0];
+            put_gonghao.value=data.gonghao;
+            var put_shenfen=document.getElementById("renyuangai").getElementsByTagName("input")[1];
+            put_shenfen.value=data.shenfenzheng;
+            var put_name=document.getElementById("renyuangai").getElementsByTagName("input")[2];
+            put_name.value=data.xingming;
+            var put_sex=document.getElementById("renyuangai").getElementsByTagName("input")[3];
+            put_sex.value=data.xingbie;
+            var put_age=document.getElementById("renyuangai").getElementsByTagName("input")[4];
+            put_age.value=data.nianling;
+            var put_dianhua=document.getElementById("renyuangai").getElementsByTagName("input")[5];
+            put_dianhua.value=data.dianhua;
+            var put_zhiwei=document.getElementById("renyuangai").getElementsByTagName("input")[6];
+            put_zhiwei.value=data.zhiwei;
+            var put_ru_time=document.getElementById("renyuangai").getElementsByTagName("input")[7];
+            put_ru_time.value=data.ruzhishijian;
+            var put_chezu=document.getElementById("renyuangai").getElementsByTagName("input")[8];
+            put_chezu.value=data.chezu;
+            var put_gongzi=document.getElementById("renyuangai").getElementsByTagName("input")[9];
+            put_gongzi.value=data.jibengongzi;
+            var put_xueli=document.getElementById("renyuangai").getElementsByTagName("input")[10];
+            put_xueli.value=data.xueli;
+            var put_minzu=document.getElementById("renyuangai").getElementsByTagName("input")[11];
+            put_minzu.value=data.minzu;
+            var put_zaizhi=document.getElementById("renyuangai").getElementsByTagName("input")[12];
+            put_zaizhi.value=data.zaizhi;
+            var put_fenzu=document.getElementById("renyuangai").getElementsByTagName("input")[13];
+            put_fenzu.value=data.fenzu;
+            var put_beizhu=document.getElementById("renyuangai").getElementsByTagName("textarea")[0];
+            put_beizhu.value=data.beizhu;
         },
         error:function(data){
-            console.log(data);
+            alert("信息出错！")
         }
     });
 }
@@ -630,16 +632,17 @@ function getMsg(){
         type:"get",
         success:function(data){
             console.log(data);
-            for(var i=0;i<data.length;i++){
-                addMsg(data[i].Id,data[i].gonghao,data[i].shenfengzheng,data[i].pname,data[i].p_sex,data[i].p_age,data[i].p_phone,
-                    data[i].zhiwei,data[i].int_time,data[i].chezu,data[i].gongzi,data[i].xueli,data[i].minzu,data[i].zaizhi,data[i].p_beizhu);
-            }
+            // for(var i=0;i<data.length;i++){
+            //     addMsg(data[i].Id,data[i].gonghao,data[i].shenfengzheng,data[i].pname,data[i].p_sex,data[i].p_age,data[i].p_phone,
+            //         data[i].zhiwei,data[i].int_time,data[i].chezu,data[i].gongzi,data[i].xueli,data[i].minzu,data[i].zaizhi,data[i].p_beizhu);
+            // }
         },
         error:function(data){
             console.log(data);
         }
     });
 }
+// getMsg();
 
 //人员信息表信息加载
 //   setInterval(renyuanxinxigetMsg,10000);

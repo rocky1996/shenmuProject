@@ -1,6 +1,7 @@
 package com.acat.controller;
 
 import com.acat.model.Denglu;
+import com.acat.service.IDengluService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

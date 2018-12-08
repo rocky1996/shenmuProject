@@ -1,7 +1,8 @@
 package com.acat.controller;
 
 import com.acat.model.Renyuan;
-import org.junit.Test;
+import com.acat.service.IRenyuanService;
+import com.acat.vo.RenyuanVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,12 +53,4 @@ public class RenyuanController {
         System.out.println("****************************************************************************8888");
         return "修改成功";
     }
-
-    @Test
-    public void test() {
-        Renyuan renyuan = iRenyuanService.getRenyuanById(108);
-        System.out.println(renyuan);
-
-    }
-
 }

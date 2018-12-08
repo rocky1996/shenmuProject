@@ -449,6 +449,10 @@
                         <td><input id="text12" name="text12" type="text"></td>
                     </tr>
                     <tr>
+                        <td>分组</td>
+                        <td><input id="text14" name="text14" type="text"></td>
+                    </tr>
+                    <tr>
                         <td>备注</td>
                         <td><textarea id="text13" name="text13" style="width:100%" name="" id="" cols="30" rows="2"
                                       style="background-color:rgb(245, 245, 245)"></textarea></td>
@@ -463,34 +467,46 @@
             </div>
             <!-- 的提交ajax -->
             <script>
-                function renyuanxinxitianjiaajax(){
-                    var data={gonghao:$('#text0').val(),
-                        shenfenzheng:$('#text1').val(),
-                        xingming:$('#text2').val(),
-                        xingbie:$('#text3').val(),
-                        nianling:$('#text4').val(),
-                        dianhua:$('#text5').val(),
-                        zhiwei:$('#text6').val(),
-                        ruzhishijian:$('#text7').val(),
-                        chezu:$('#text8').val(),
-                        gongzi:$('#text9').val(),
-                        xueli:$('#text10').val(),
-                        minzu:$('#text11').val(),
-                        zaizhi:$('#text12').val(),
-                        beizhu:$('#text13').val()
+                function renyuanxinxitianjiaajax() {
+                    var data = {
+                        gonghao: $('#text0').val(),
+                        shenfenzheng: $('#text1').val(),
+                        xingming: $('#text2').val(),
+                        xingbie: $('#text3').val(),
+                        nianling: $('#text4').val(),
+                        dianhua: $('#text5').val(),
+                        zhiwei: $('#text6').val(),
+                        ruzhishijian: $('#text7').val(),
+                        chezu: $('#text8').val(),
+                        gongzi: $('#text9').val(),
+                        xueli: $('#text10').val(),
+                        minzu: $('#text11').val(),
+                        zaizhi: $('#text12').val(),
+                        beizhu: $('#text13').val(),
+                        fenzu:$('#text14').val()
 
 
                     };
-                    var data=JSON.stringify(data);
+                    var data = JSON.stringify(data);
                     console.log(data);
-                    $.ajax({ url: "/shenmu_war_exploded/renyuan/add",//后台接收的url
+                    $.ajax({
+                        url: "/shenmu_war_exploded/renyuan/add",//后台接收的url
                         type: 'POST',
                         data: data,
                         dataType: 'JSON',
-                        contentType:'application/json;charset=UTF-8',
-                        async:false,
-                        success: function () { alert("人员信息添加成功！") },
-                        error:function () { alert("上传成功！")}});
+                        contentType: 'application/json;charset=UTF-8',
+                        async: false,
+                        success: function () {
+                            alert("人员信息添加成功！");
+                            renyuanxinxigetMsg();
+
+                        },
+                        error: function () {
+                            alert("上传成功！");
+                            renyuanxinxigetMsg();
+
+                        }
+                    });
 
 
                     hiden0();
@@ -500,6 +516,8 @@
 
     </div>
 </div>
+
+<!--          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
 <!--人员信息的修改-->
 <div id="renyuangai">
     <div class="renyuangai-main">
@@ -509,13 +527,9 @@
         </div>
         <hr>
         <div id="rengai">
-            <form action="http://222.24.63.119/ublack" method="POST" enctype="application/json">
-                <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
+            <form id="dedaorenyuanxiugaiid" classs="" action="/shenmu_war_exploded/renyuan/update" method="POST"
+                  enctype="application/json">
 
-                <input id="rensssss" type="hidden" name="id_renyuan" value="">
-                <input type="hidden">
-                <input type="hidden" name="biao" value="1">
-                <input type="hidden" name="tag" value="1">
                 <table cellspacing="0" class="table table-hover  table-striped" id="diyiliegai-color">
                     <tbody>
                     <tr id="thead">
@@ -525,80 +539,138 @@
 
                     <tr>
                         <td>工号</td>
-                        <td><input name="text0" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text0" type="text"></td>
                     </tr>
                     <tr>
                         <td>身份证号</td>
-                        <td><input name="text1" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text1" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>姓名</td>
-                        <td><input name="text2" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text2" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>性别</td>
-                        <td><input name="text3" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text3" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>年龄</td>
-                        <td><input name="text4" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text4" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>电话</td>
-                        <td><input name="text5" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text5" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>职位</td>
-                        <td><input name="text6" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text6" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>入职时间</td>
-                        <td><input name="text7" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text7" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>车组</td>
-                        <td><input name="text8" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text8" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>基本工资</td>
-                        <td><input name="text9" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text9" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>学历</td>
-                        <td><input name="text10" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text10" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>民族</td>
-                        <td><input name="text11" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text11" type="text"></td>
                     </tr>
 
                     <tr>
                         <td>在职</td>
-                        <td><input name="text12" type="text"></td>
+                        <td><input class="rengaibiaozhi" name="text12" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>分组</td>
+                        <td><input class="rengaibiaozhi" name="text14" type="text"></td>
                     </tr>
                     <tr>
                         <td>备注</td>
-                        <td><textarea name="text13" style="width:100%" name="" id="" cols="30" rows="2"
+                        <td><textarea name="text13" style="width:100%" name="" id="rengaibiaozhiarea" cols="30" rows="2"
                                       style="background-color:rgb(245, 245, 245)"></textarea></td>
                     </tr>
-
+                    <input class="rengaibiaozhi" type="hidden" value="">
                     </tbody>
                 </table>
                 <div style="text-align:center;margin-top:10px;margin-left:60%;margin-bottom: 10px;">
-                    <button type="submit" class="btn btn-success">提交</button>
+                    <button type="button" onclick="gerenxinxixiugaitijiao()" class="btn btn-success">提交</button>
                     <button type="button" class="btn btn-default" onclick="hiden0gai()">取消</button>
                 </div>
             </form>
+            <script>
+                function gerenxinxixiugaitijiao() {
+                    var ur = document.getElementById("dedaorenyuanxiugaiid").getAttribute("action");
+                    var ID = document.getElementById("dedaorenyuanxiugaiid").getAttribute("class");
+
+                    // ID=parseInt(ID);
+                    // console.log(typeof(ID));
+                    var inpus = document.getElementById("dedaorenyuanxiugaiid").getElementsByTagName("input");
+                    inpus[14].value=ID;
+
+                    var data = {
+                        "id":inpus[14].value,
+                        "gonghao": inpus[0].value,
+                        "shenfenzheng": inpus[1].value,
+                        "xingming": inpus[2].value,
+                        "xingbie": inpus[3].value,
+                        "nianling": inpus[4].value,
+                        "dianhua": inpus[5].value,
+                        "zhiwei": inpus[6].value,
+                        "ruzhishijian": inpus[7].value,
+                        "chezu": inpus[8].value,
+                        "gongz": inpus[9].value,
+                        "xueli": inpus[10].value,
+                        "minzu": inpus[11].value,
+                        "zaizhi": inpus[12].value,
+                        "fenzu":inpus[13].value,
+                        "beizhu":document.getElementById("dedaorenyuanxiugaiid").getElementsByTagName("textarea")[0].value
+
+                    };
+
+                    data = JSON.stringify(data);
+
+                    $.ajax({
+                        url: ur,
+                        type: "post",
+                        data: data,
+                        dataType: 'JSON',
+                        contentType: 'application/json;charset=UTF-8',
+                        async: false,
+                        success: function () {
+
+                            alert("修改成功！");
+                            renyuanxinxigetMsg();
+                            hiden0gai();
+                        },
+                        error: function () {
+                            alert("修改成功！");
+                            renyuanxinxigetMsg();
+                            hiden0gai();
+                        }
+
+                    });
+                }
+            </script>
         </div>
 
     </div>
@@ -606,7 +678,7 @@
 
 <div class="renyuandelete delete" style="display:none;">
     <div class="delete-main">
-        <form  id="sssss" action="/shenmu_war_exploded/renyuan/delete/" method="post" enctype="multipart/form-data">
+        <form id="sssss" action="/shenmu_war_exploded/renyuan/delete/" method="post" enctype="multipart/form-data">
 
             <!--<input id="sssss" type="hidden" name="人员信息id" value="">-->
 
@@ -615,13 +687,36 @@
                 <h4 style="color:red;margin-left:33%;">是否确认删除？</h4>
             </div>
             <div style="margin-left:30%;">
-                <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                <button id="queren" type="button" onclick="renyaunxinxideshanchuajax()" class="btn btn-warning">确认
+                </button>
                 <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default"
                         onclick="renyuanhiden()">取消
                 </button>
 
             </div>
         </form>
+        <!--人员信息删除ajax-->
+        <script>
+            function renyaunxinxideshanchuajax() {
+                var ur = document.getElementById("sssss").getAttribute("action");
+                $.ajax({
+                    url: ur,
+                    type: "post",
+                    success: function (data) {
+
+                        alert("删除成功！");
+                        renyuanxinxigetMsg();
+                        renyuanhiden();
+                    },
+                    error: function (data) {
+                        alert("删除失败！");
+                        renyuanxinxigetMsg();
+                        renyuanhiden();
+                    }
+
+                });
+            }
+        </script>
     </div>
 
 </div>

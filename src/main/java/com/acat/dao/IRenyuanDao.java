@@ -1,6 +1,7 @@
 package com.acat.dao;
 
 import com.acat.model.Renyuan;
+import com.acat.vo.RenyuanVo;
 
 import java.util.List;
 
