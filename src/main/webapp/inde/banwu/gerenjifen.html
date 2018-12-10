@@ -29,7 +29,7 @@ vertical-align: middle!important;
 <body>
         <!-- 其中的头部 -->
         <div id="head">
-        <a href="http://222.24.63.119/"><img src="./anquanlihui_files/logo.png"></a>
+        <a href="http://222.24.63.119/"><img src="./gerenjifen_files/logo.png"></a>
         <div class="to">
         <!-- <div class="searchInput">车间名称</div> -->
         <a href="http://222.24.63.119/ublack"><div class="searchInput">用户：丁建峰</div></a>
@@ -201,6 +201,23 @@ vertical-align: middle!important;
         </ul>
         </div>
         </nav></div>
+        <!-- //分组加到链接后面 -->
+        <script>
+            //获取get传值的方法
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return decodeURI(r[2]);
+                return null;
+            }
+
+            var lias = document.getElementById("nav").getElementsByTagName("a");
+            var fenzu=getQueryString("fenzu");
+            for(var i=0;i<lias.length;i++){
+                var jiulianjie=lias[i].getAttribute("href");
+                lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu);
+            }
+        </script>
 
 
 <!-- 移动端的导航栏-->
@@ -233,7 +250,7 @@ vertical-align: middle!important;
 </div>
 <div class="row" id="logo">
 <div class="col-xs-12 col-md-12">
-<table id="tongji" class="table table-striped table-bordered table-hover" style="margin-top:40px;text-align:center;">
+<table id="tongji" class="table table-striped table-bordered table-hover" style="margin-top:40px;text-align:center;overflow: scroll">
 <tbody><tr>
 <th>日期</th>
 
@@ -473,21 +490,131 @@ vertical-align: middle!important;
 <th colspan="100" style="background:yellow">387</th>
 </tr>
 </tbody></table>
-<!-- 个人积分总计的js -->
-<script>
-var tablee=document.getElementById("tongji");
-var trr=tablee.getElementsByTagName("tr");
-var tdd=trr[1].getElementsByTagName("td");
-var tddjia=trr[trr.length-2].getElementsByTagName("td");
-for(var i=1;i<trr.length-2;i++){
-for(var j=1;j<tdd.length;j++){
-tddjia[j].innerHTML= Number( Number(tddjia[j].innerHTML)+Number(trr[i].getElementsByTagName("td")[j].innerHTML));
-}
-}
-</script>
+
 </div>
 </div>
 </div>
+        <script>
+
+
+            function add(){
+                var tablee=document.getElementById("tongji");
+                var trr=tablee.getElementsByTagName("tr");
+                var tdd=trr[1].getElementsByTagName("td");
+                var tddjia=trr[trr.length-2].getElementsByTagName("td");
+                tddjia[1].innerHTML=0;
+                var tongji=trr[trr.length-1].getElementsByTagName("th")[1];
+                for(var i=1;i<trr.length-2;i++){
+                    for(var j=1;j<tdd.length;j++){
+
+                        tddjia[j].innerHTML= Number( Number(tddjia[j].innerHTML)+Number(trr[i].getElementsByTagName("td")[j].innerHTML));
+
+                    }
+                }
+                for(var j=1;j<tdd.length;j++){
+                    tongji.innerHTML=Number( Number(tongji.innerHTML)+Number(tddjia[j].innerHTML));
+                }
+
+            }
+
+
+            function zhigongjifentou(data,aa){
+                var htm='';
+                htm+=`<tr>
+                                <th>日期</th>`;
+                for(var i=0;i<data[aa[0]].length;i++){
+                    htm+=`<th>${data[aa[0]][i].xingming}</th>`;
+                }
+                htm+= `</tr>`;
+                $('#tongji').html(htm);
+            }
+            function zhigongjifenwei(data,aa){
+                var htm='';
+                htm+= `<tr>
+                                <td>个人总计</td>`;
+
+                for(var i=0;i<data[aa[0]].length;i++){
+                    htm+=`<td>0</td>`;
+                }
+
+                htm+=`        </tr>
+                                <tr>
+                <th style="background:yellow">合计</th>
+                <th colspan="300" style="background:yellow">0</th>
+                </tr>`;
+                $('#tongji').append(htm);
+
+                var neirong=$('#tongji').html();
+                neirong=`<tbody>`+neirong+`</tbody>`;
+                $('#tongji').html(neirong);
+            }
+
+            function zhigongjifenaddMsg(data,aa){
+
+
+                for(var i=aa.length-1;i>=0;i--){
+                    var html='';
+                    html+=`<tr>
+                                <td>${aa[i]}</td>    `;
+                    for(var j=0;j<data[aa[0]].length;j++)
+                    {
+                        html+=`<td>${data[aa[i]][j].jifen}</td>`;
+                    }
+                    html+=`</tr>`;
+                    $('#tongji').append(html);
+                }
+
+
+
+            }
+
+            function zhigongjifengetMsg(){
+                var last_id='';
+                var fenzu=getQueryString("fenzu");
+                console.log(fenzu);
+                data={
+                    "fenzu":fenzu,
+                    "jifenleixing":2
+                };
+                data=JSON.stringify(data);
+                $.ajax({
+                    url:"/shenmu_war_exploded/jifen/get",
+                    type:"POST",
+                    data:data,
+                    dataType: 'JSON',
+                    contentType: 'application/json;charset=UTF-8',
+                    async: false,
+                    success:function(data){
+                        console.log(data);
+                        var aa=[];
+                        for (var item in data) {
+                            console.log(item);//得到键
+                            console.log(typeof(item));//得到键
+                            aa.push(item);
+                        }
+                        console.log(aa);
+                        console.log(data[aa[0]]);
+
+                        zhigongjifentou(data,aa);
+
+                        zhigongjifenaddMsg(data,aa);
+
+                        zhigongjifenwei(data,aa);
+                        add();
+                    },
+                    error:function(data){
+                        console.log("加载出错！！！");
+                    }
+                });
+
+            }
+            zhigongjifengetMsg();
+        </script>
+        <script>
+            $(document).on('click', '#tongji', function() {
+                this.setAttribute("class","table table-striped table-bordered table-hover");
+            })
+        </script>
 
 <footer>
 <p>@国家能源集团有限公司</p>

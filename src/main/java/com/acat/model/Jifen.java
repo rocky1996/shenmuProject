@@ -4,18 +4,20 @@ import java.io.Serializable;
 
 public class Jifen implements Serializable {
 
-    private static final long serialVersionUID = 2L;
+    private static final long serialVersionUID = 1L;
 
-    private int id;
+    private Integer id;
     private String riqi;
-    private String jifen;
-    private String jfftype;
 
-    public int getId() {
+    private Integer jifen;
+    private Integer jifenleixing;
+    private String xingming;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,20 +29,30 @@ public class Jifen implements Serializable {
         this.riqi = riqi;
     }
 
-    public String getJifen() {
+
+
+    public Integer getJifen() {
         return jifen;
     }
 
-    public void setJifen(String jifen) {
+    public void setJifen(Integer jifen) {
         this.jifen = jifen;
     }
 
-    public String getJfftype() {
-        return jfftype;
+    public Integer getJifenleixing() {
+        return jifenleixing;
     }
 
-    public void setJfftype(String jfftype) {
-        this.jfftype = jfftype;
+    public void setJifenleixing(Integer jifenleixing) {
+        this.jifenleixing = jifenleixing;
+    }
+
+    public String getXingming() {
+        return xingming;
+    }
+
+    public void setXingming(String xingming) {
+        this.xingming = xingming;
     }
 
     @Override
@@ -48,8 +60,11 @@ public class Jifen implements Serializable {
         return "Jifen{" +
                 "id=" + id +
                 ", riqi='" + riqi + '\'' +
-                ", jifen='" + jifen + '\'' +
-                ", jfftype='" + jfftype + '\'' +
+
+                ", jifen=" + jifen +
+                ", jifenleixing=" + jifenleixing +
+                ", xingming='" + xingming + '\'' +
                 '}';
     }
 }
+

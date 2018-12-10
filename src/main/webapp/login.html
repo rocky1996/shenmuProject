@@ -4,7 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>登陆页面</title>
-    <link rel="stylesheet" type="text/css" href="login/login.css">
+    <link rel="stylesheet" type="text/css" href="./zhuce/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="jquery.js"></script>
 </head>
@@ -19,38 +19,125 @@
         <input type="text" class="text" name="username" id="username" placeholder="用户名">
         <p>密码</p>
         <input type="password" class="text" name="password" id="password" placeholder="密码">
-        <input type="button" onclick="login()" value="登陆" class="btn">
-        <span>二维码登陆</span><span style="color:black">|</span><span>账号密码登陆</span><span>|</span><span><a
-            href="./zhuce.html">修改密码</a></span>
+        <input type="button" onclick="login(event)" value="登陆" class="btn">
+        <!--<span>二维码登陆</span><span style="color:black">|</span><span>账号密码登陆</span><span>-->
     </form>
 </div>
 <script>
-    function login() {
-        var usename = $("#username").val();
-        var password = $("#password").val();
+    // function login(event) {
+    //     event.preventDefault();
+    //     var yonghuming = $("#username").val();
+    //     var mima = $("#password").val();
+    //     var data={
+    //         "yonghuming":yonghuming,
+    //         "mima":mima
+    //     }
+    //     data=JSON.stringify(data);
+    //     if (yonghuming != '' && mima != "") {
+    //         $.ajax({
+    //             url: "/shenmu_war_exploded/login/login",//后台接收的url
+    //             type: 'POST',
+    //             data: data,
+    //             dataType: 'JSON',
+    //             contentType: 'application/json;charset=UTF-8',
+    //             async: true,
+    //             success: function (data) {
+    //                 console.log(data);
+    //                 // if (result == false) {
+    //                 //     alert("初始密码没有修改，请修改！");
+    //                 //     window.location.href = "./zhuce.html?yonghuming1="+yonghuming;
+    //                 // } else {
+    //                 //
+    //                 //
+    //                 //
+    //                 //
+    //                 //
+    //                 // }
+    //             }
+    //             ,
+    //             error: function (data) {
+    //                 // console.log(data);
+    //                 // var str=data.responseText;
+    //                 // console.log(str);
+    //
+    //                 // var arr=str.split(",");
+    //                 // console.log(arr);
+    //                 // console.log(Number(arr[0]));
+    //                 // if(typeof (Number(arr[0]) != Number)){
+    //                 //     alert("登陆账号密码错误！");
+    //                 // }else{
+    //                 //     alert("登陆成功！");
+    //                 //     window.location.href="./back.html";
+    //                 // }
+    //
+    //             }
+    //         });
+    //     } else {
+    //         alert("账号密码不能为空！！！");
+    //     }
+    // }
 
-        if (usename != '' && password != "") {
-            $.post("", {usename: usename, password: password}, function (result) {
-                if (result == false) {
-                    alert("初始密码没有修改，请修改！");
-                    window.location.href = "./zhuce.html";
-                } else if (result == 0) {
-                    alert("登录成功！");
-                    window.location.href = "";//这里是登陆成功之后要跳转的页面url
-                } else if (result == 1) {
-                    alert("登录成功！");
-                    window.location.href = "";//这里是登陆成功之后要跳转的页面url
-                } else if (result == 2) {
-                    alert("登录成功！");
-                    window.location.href = "";//这里是登陆成功之后要跳转的页面url
-                } else if (result == 3) {
-                    alert("登录成功！");
-                    window.location.href = "";//这里是登陆成功之后要跳转的页面url
+    function login(event)
+    {
+        event.preventDefault();
+        var yonghuming = $("#username").val();
+        var mima = $("#password").val();
+        var data={
+                    "yonghuming":yonghuming,
+                    "mima":mima
                 }
-            });
-        } else {
-            alert("账号密码不能为空！！！");
+        data=JSON.stringify(data);
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
         }
+        else
+        {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                console.log(xmlhttp.responseText);
+
+
+
+
+                if (xmlhttp.responseText == "false") {
+                    alert("初始密码没有修改，请修改！");
+                    window.location.href = "./zhuce.html?yonghuming1="+yonghuming;
+                }
+                if(xmlhttp.responseText == "true"){
+                    alert("账号密码错误！")
+                }
+                var result=xmlhttp.responseText;
+                result=result.split(",");
+                console.log(result);
+                if(Number(result[0])==1){
+
+                        alert("登陆成功!");
+                        window.location.href = "./back.html?id="+Number(result[1]);
+
+                }
+
+                else if(Number(result[0])==0){
+
+                    alert("登陆成功!");
+                    window.location.href = "./inde/banzuwenhua/banzujianjie.html?fenzu="+Number(result[2]);
+
+                }
+
+
+            }
+
+        }
+        xmlhttp.open("POST","/shenmu_war_exploded/login/login",true);
+        xmlhttp.setRequestHeader("Content-type","application/json; charset=utf-8");
+        xmlhttp.send(data);
     }
 </script>
 

@@ -5,6 +5,25 @@ import java.io.Serializable;
 public class Denglu implements Serializable {
     private static final long serialVersionUID = 2L;
 
+    private Integer id;
+
+    @Override
+    public String toString() {
+        return "Denglu{" +
+                "id=" + id +
+                ", mima='" + mima + '\'' +
+                ", yonghuming='" + yonghuming + '\'' +
+                '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     private String mima;
     private String yonghuming;
 
@@ -19,14 +38,6 @@ public class Denglu implements Serializable {
 
     public String getMima() {
         return mima;
-    }
-
-    @Override
-    public String toString() {
-        return "Denglu{" +
-                "mima='" + mima + '\'' +
-                ", yonghuming='" + yonghuming + '\'' +
-                '}';
     }
 
     public void setMima(String mima) {

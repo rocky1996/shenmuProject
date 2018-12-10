@@ -2,6 +2,7 @@ package com.acat.dao;
 
 import com.acat.model.Renyuan;
 import com.acat.vo.RenyuanVo;
+import com.acat.vo.RenyuanVo1;
 
 import java.util.List;
 
@@ -38,4 +39,6 @@ public interface IRenyuanDao {
      * @return
      */
     List<RenyuanVo> findRenyuanVo();
+
+    List<RenyuanVo1> findRenyuanInfo();
 }

@@ -26,5 +26,10 @@
     <select id="findRenyuanVo" resultType="java.util.Map">
         select ID,gonghao,xingming,xingbie,beizhu from jw_renyuan
     </select>
+    <select id="findRenyuanInfo" resultType="java.util.Map">
+        select ID,gonghao,xingming,xingbie,dianhua,ruzhishijian,beizhu from jw_renyuan
+    </select>
 
 </mapper>
+
+

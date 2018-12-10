@@ -1,6 +1,9 @@
 package com.acat.dao;
 
 import com.acat.model.Denglu;
+import com.acat.model.Renyuan;
+
+import java.util.List;
 
 public interface IDengluDao {
     /**
@@ -31,4 +34,25 @@ public interface IDengluDao {
      * @return
      */
     String getMimaByYonghuming(String yonghuming);
+
+    /**
+     *
+     * @param yonghuming
+     * @return
+     */
+    Integer getRenyuanFenzu(String yonghuming);
+
+    /**
+     *
+     * @param fenzu
+     * @return
+     */
+    List<Renyuan> getFenzuRenyuan(int fenzu);
+
+    /**
+     *
+     * @param yonghuming
+     * @return
+     */
+    Renyuan getZuzhangInfo(String yonghuming);
 }

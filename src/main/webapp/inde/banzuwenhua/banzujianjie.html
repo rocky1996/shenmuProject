@@ -189,6 +189,24 @@
         </div>
         </nav></div>
 
+        <!-- //分组加到链接后面 -->
+        <script>
+            //获取get传值的方法
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return decodeURI(r[2]);
+                return null;
+            }
+
+            var lias = document.getElementById("nav").getElementsByTagName("a");
+            var fenzu=getQueryString("fenzu");
+            for(var i=0;i<lias.length;i++){
+                var jiulianjie=lias[i].getAttribute("href");
+                lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu);
+            }
+        </script>
+
 
 <!-- 移动端的导航栏-->
 <ul id="secondNav">

@@ -18,4 +18,16 @@
         select mima from jw_denglu where yonghuming=#{yonghuming}
     </select>
 
+
+    <select id="getRenyuanFenzu" parameterType="java.lang.String" resultType="Integer">
+        select r.fenzu from jw_renyuan r inner join jw_denglu d on r.xingming=d.yonghuming and d.yonghuming = #{yonghuming}
+    </select>
+
+    <select id="getFenzuRenyuan" parameterType="Integer" resultType="java.util.Map">
+        select * from jw_renyuan where fenzu = #{fenzu}
+    </select>
+
+    <select id="getZuzhangInfo" parameterType="java.lang.String" resultType="com.acat.model.Renyuan" >
+        select * from jw_renyuan where xingming =#{xingming}
+    </select>
 </mapper>

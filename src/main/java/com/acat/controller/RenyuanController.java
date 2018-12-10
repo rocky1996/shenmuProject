@@ -3,6 +3,8 @@ package com.acat.controller;
 import com.acat.model.Renyuan;
 import com.acat.service.IRenyuanService;
 import com.acat.vo.RenyuanVo;
+import com.acat.vo.RenyuanVo1;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +33,12 @@ public class RenyuanController {
         List<RenyuanVo> list = iRenyuanService.findRenyuanVo();
         return list;
     }
+    @RequestMapping(value = "/listInfo")
+    @ResponseBody
+    public List<RenyuanVo1> listInfo() {
+        List<RenyuanVo1> list = iRenyuanService.findRenyuanInfo();
+        return list;
+    }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.POST)
     @ResponseBody
@@ -50,7 +58,15 @@ public class RenyuanController {
         System.out.println("renyuan是" + renyuan);
         System.out.println(renyuan.getID());
         iRenyuanService.updateRenyuanById(renyuan);
-        System.out.println("****************************************************************************8888");
+
         return "修改成功";
     }
+
+    @Test
+    public void test() {
+        Renyuan renyuan = iRenyuanService.getRenyuanById(108);
+        System.out.println(renyuan);
+
+    }
+
 }

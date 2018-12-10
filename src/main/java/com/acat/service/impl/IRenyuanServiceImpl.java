@@ -4,6 +4,7 @@ import com.acat.dao.IRenyuanDao;
 import com.acat.model.Renyuan;
 import com.acat.service.IRenyuanService;
 import com.acat.vo.RenyuanVo;
+import com.acat.vo.RenyuanVo1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,11 @@ public class IRenyuanServiceImpl implements IRenyuanService {
     @Override
     public Renyuan getRenyuanById(int id) {
         return iRenyuanDao.getRenyuanById(id);
+    }
+
+    @Override
+    public List<RenyuanVo1> findRenyuanInfo() {
+        return iRenyuanDao.findRenyuanInfo();
     }
 
     @Override

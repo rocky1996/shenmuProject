@@ -2,6 +2,7 @@ package com.acat.service;
 
 import com.acat.model.Renyuan;
 import com.acat.vo.RenyuanVo;
+import com.acat.vo.RenyuanVo1;
 
 import java.util.List;
 
@@ -38,4 +39,7 @@ public interface IRenyuanService {
      * @return
      */
     List<RenyuanVo> findRenyuanVo();
+
+
+    List<RenyuanVo1> findRenyuanInfo();
 }
