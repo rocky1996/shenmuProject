@@ -90,9 +90,9 @@
 </span>
         </li>
 
-        <li style="margin-top:20px;" class="Leftnav">
+        <li style="margin-top:20px;" class="Leftnav" onclick="zhigongjifengetMsg()" >
             <img src="back/imgs/hot.png">
-            <p>
+            <p onclick="zhigongjifengetMsg()" >
                 职工积分
             </p>
             <span>
@@ -191,7 +191,7 @@
 班组文化
 </span>
 
-        <span>
+        <span onclick="zhigongjifengetMsg()">
 职工积分
 </span>
 
@@ -499,17 +499,37 @@
                         success: function () {
                             alert("人员信息添加成功！");
                             renyuanxinxigetMsg();
+                            qingkongtianjiarenyuan();
 
                         },
                         error: function () {
                             alert("上传成功！");
                             renyuanxinxigetMsg();
+                            qingkongtianjiarenyuan();
 
                         }
                     });
 
 
                     hiden0();
+                }
+
+                function qingkongtianjiarenyuan() {
+                    $('#text0').val("");
+                     $('#text1').val("");
+                     $('#text2').val("");
+                    $('#text3').val("");
+                    $('#text4').val("");
+                    $('#text5').val("");
+                    $('#text6').val("");
+                     $('#text7').val("");
+                     $('#text8').val("");
+                      $('#text9').val("");
+                      $('#text10').val("");
+                      $('#text11').val("");
+                      $('#text12').val("");
+                      $('#text13').val("");
+                      $('#text14').val("");
                 }
             </script>
         </div>
@@ -973,173 +993,237 @@
                 <span id="jifenshijian" style="float:right">时间选择： <input type="date" name="alertDateQuery" id="aDate"
                                                                          value="1022-2-2"> </span>
                 <!-- 当日时间的js -->
-                <script type="text/javascript">
-                    var mydateInput = document.getElementById("aDate");
+                <!--<script type="text/javascript">-->
+                    <!--var mydateInput = document.getElementById("aDate");-->
 
-                    var date = new Date();
-                    var dateString = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-                    mydateInput.value = dateString;
-                </script>
+                    <!--var date = new Date();-->
+                    <!--var dateString = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();-->
+                    <!--mydateInput.value = dateString;-->
+                <!--</script>-->
 
             </h4>
             <table class="table table-hover table-striped" style="text-align:center" id="jiden_juzhong">
                 <tbody>
-                <tr id="thead">
-                    <td> 姓 名</td>
-                    <td>个人分值汇总</td>
-                    <td>分值</td>
-                </tr>
+                <!--<tr id="thead">-->
+                    <!--<td> 姓 名</td>-->
+                    <!--<td>个人分值汇总</td>-->
+                    <!--<td>分值</td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>丁建峰</td>
-                    <td>55</td>
-                    <td><input name="text1" type="text" name="106" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>丁建峰</td>-->
+                    <!--<td>55</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="106" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>路俊彪</td>
-                    <td>50</td>
-                    <td><input name="text2" type="text" name="107" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>路俊彪</td>-->
+                    <!--<td>50</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="107" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>刘婷</td>
-                    <td>40</td>
-                    <td><input name="text3" type="text" name="108" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>刘婷</td>-->
+                    <!--<td>40</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="108" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>胥婷婷</td>
-                    <td>46</td>
-                    <td><input name="text4" type="text" name="109" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>胥婷婷</td>-->
+                    <!--<td>46</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="109" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>伊志文</td>
-                    <td>43</td>
-                    <td><input name="text5" type="text" name="110" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>伊志文</td>-->
+                    <!--<td>43</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="110" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>李莎</td>
-                    <td>47</td>
-                    <td><input name="text6" type="text" name="111" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>李莎</td>-->
+                    <!--<td>47</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="111" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>冯雅兰</td>
-                    <td>39</td>
-                    <td><input name="text7" type="text" name="112" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>冯雅兰</td>-->
+                    <!--<td>39</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="112" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>马婷</td>
-                    <td>45</td>
-                    <td><input name="text8" type="text" name="113" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>马婷</td>-->
+                    <!--<td>45</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="113" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>赵俊</td>
-                    <td>38</td>
-                    <td><input name="text9" type="text" name="114" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>赵俊</td>-->
+                    <!--<td>38</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="114" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>刘海艳</td>
-                    <td>36</td>
-                    <td><input name="text10" type="text" name="115" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>刘海艳</td>-->
+                    <!--<td>36</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="115" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>李婷</td>
-                    <td>36</td>
-                    <td><input name="text11" type="text" name="116" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>李婷</td>-->
+                    <!--<td>36</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="116" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>武张杨</td>
-                    <td>38</td>
-                    <td><input name="text12" type="text" name="117" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>武张杨</td>-->
+                    <!--<td>38</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="117" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>刘仙飞</td>
-                    <td>34</td>
-                    <td><input name="text13" type="text" name="118" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>刘仙飞</td>-->
+                    <!--<td>34</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="118" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>郭少卿</td>
-                    <td>42</td>
-                    <td><input name="text14" type="text" name="119" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>郭少卿</td>-->
+                    <!--<td>42</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="119" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>邱会</td>
-                    <td>40</td>
-                    <td><input name="text15" type="text" name="120" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>邱会</td>-->
+                    <!--<td>40</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="120" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>张小霞</td>
-                    <td>48</td>
-                    <td><input name="text16" type="text" name="121" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>张小霞</td>-->
+                    <!--<td>48</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="121" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>贺波</td>
-                    <td>40</td>
-                    <td><input name="text17" type="text" name="122" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>贺波</td>-->
+                    <!--<td>40</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="122" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>马银萍</td>
-                    <td>55</td>
-                    <td><input name="text19" type="text" name="123" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>马银萍</td>-->
+                    <!--<td>55</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="123" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>刘倩</td>
-                    <td>36</td>
-                    <td><input name="text20" type="text" name="124" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>刘倩</td>-->
+                    <!--<td>36</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="124" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>杨倩</td>
-                    <td>48</td>
-                    <td><input name="text21" type="text" name="125" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>杨倩</td>-->
+                    <!--<td>48</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="125" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td>卜帅帅</td>
-                    <td>40</td>
-                    <td><input name="text22" type="text" name="126" value="0" style="width:20%"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>卜帅帅</td>-->
+                    <!--<td>40</td>-->
+                    <!--<td><input class="jidendeluru" type="text" name="126" value="0" style="width:20%"></td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <td colspan="6">
-                        <div style="text-align:center;margin-top:10px;margin-left:40%;margin-bottom: 10px;"
-                             id="jifenjiaojiao">
-                            <button type="submit" class="btn btn-primary" onclick="zhigongjifen100jian()">提交</button>
-                            <button type="reset" class="btn btn-warning">重置</button>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
+                <!--<tr>-->
+                    <!--<td colspan="6">-->
+                        <!--<div style="text-align:center;margin-top:10px;margin-left:40%;margin-bottom: 10px;"-->
+                             <!--id="jifenjiaojiao">-->
+                            <!--<button type="button" class="btn btn-primary" onclick="jifenlurudeyuanshiajax(event)" >提交</button>-->
+                            <!--<button type="reset" class="btn btn-warning">重置</button>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
 
-                <script>
-                    function zhigongjifen100jian() {
-                        var jian = document.getElementById("jifenluru").getElementsByTagName("select")[0].value;
-                        if (jian == 2) {
-                            var inputa = document.getElementById("jiden_juzhong").getElementsByTagName("input");
-                            for (var i = 0; i < inputa.length; i++) {
-                                inputa[i].value = 100 - inputa[i].value;
-                            }
+
+            </table>
+            <div style="text-align:center;margin-top:10px;margin-left:40%;margin-bottom: 10px;"
+                 id="jifenjiaojiao">
+                <button type="button" class="btn btn-primary" onclick="jifengluruyuansheng()" >提交</button>
+                <button type="reset" class="btn btn-warning">重置</button>
+            </div>
+
+            <script>
+            // function zhigongjifen100jian() {
+            //     var jian = document.getElementById("jifenluru").getElementsByTagName("select")[0].value;
+            //     if (jian == 2) {
+            //         var inputa = document.getElementById("jiden_juzhong").getElementsByTagName("input");
+            //         for (var i = 0; i < inputa.length; i++) {
+            //             inputa[i].value = 100 - inputa[i].value;
+            //         }
+            //     }
+            //
+            // }
+
+        </script>
+            <script>
+                function jifengluruyuansheng(){
+                    var inpunames=document.getElementById("jiden_juzhong").getElementsByClassName("jifenluruyuannames");
+                    var inpus=document.getElementById("jiden_juzhong").getElementsByClassName("jifenluruyuan");
+                    // var inpus=$("#jiden_juzhong .jifenluruyuan");
+                    var typeshuru=$("#jifenluru select")[0].value;
+
+                    var shijian=$("#aDate")[0].value;
+                    shijian=shijian.split("/");
+                    shijian=shijian.join("-");
+
+                    var strchuan=[];
+
+                    for(var i=0;i<inpus.length;i++){
+                        strchuan.push(inpunames[i].value);
+                        strchuan.push(inpus[i].value);
+                    }
+
+                    var data={
+                        "jifenleixing":typeshuru,
+                        "riqi":shijian,
+                        "list":strchuan
+                    };
+
+                    console.log(data);
+                    data=JSON.stringify(data);
+
+                    console.log(data);
+                    var xmlhttp;
+                    if (window.XMLHttpRequest)
+                    {
+                        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                        xmlhttp=new XMLHttpRequest();
+                    }
+                    else
+                    {
+                        // IE6, IE5 浏览器执行代码
+                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange=function()
+                    {
+                        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                        {
+                            // console.log(xmlhttp.responseText);
+                            alert("成功！");
+                            zhigongjifengetMsg();
+
                         }
 
                     }
-                </script>
-            </table>
+                    xmlhttp.open("POST","/shenmu_war_exploded/jifen/add",true);
+                    xmlhttp.setRequestHeader("Content-type","application/json; charset=utf-8");
+                    xmlhttp.send(data);
+                }
+
+            </script>
         </form>
     </div>
 </div>

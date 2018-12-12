@@ -1,8 +1,5 @@
 package com.acat.dao;
 
-import com.acat.model.Denglu;
-import com.acat.model.Renyuan;
-
 import java.util.List;
 
 public interface IDengluDao {

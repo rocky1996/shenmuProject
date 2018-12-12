@@ -271,28 +271,34 @@ $(document).on('click', '#banqianAdd .btn-primary', function() {
 })
 function banqianxiugaiMsg(last_id){
     $.ajax({
-        url:"?id="+last_id+"&biao=2",
+        url:"/shenmu_war_exploded/banhui/get/"+last_id,
         type:"get",
         success:function(data){
-            document.getElementById("banqianbanhou-gai").getElementsByTagName("td")[6].innerHTML=data[0];
-            var put_id=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[6];
-            put_id.value=data[1];
-            var put_qingjia=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[7];
-            put_qingjia.value=data[2];
-            var put_tiaoxiu=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[8];
-            put_tiaoxiu.value=data[3];
+            console.log(data);
+
+            var ying=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[7];
+            ying.value=data.yingchuqinrenshu;
+            var put_id=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[8];
+            put_id.value=data.shijichuqinrenshu;
+            var put_qingjia=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[9];
+            put_qingjia.value=data.qingjia;
+            var put_tiaoxiu=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[10];
+            put_tiaoxiu.value=data.tiaoxiu;
+            document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[11].value=data.beizhu;
+            document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[12].value=data.zhuti;
             // var put_beizhu=document.getElementById("banqianbanhou-gai").getElementsByTagName("input")[9];
             // put_beizhu.value=data.beizhu;
             var put_banqian=document.getElementById("banqianbanhou-gai").getElementsByTagName("textarea")[0];
-            put_banqian.value=data[4];
+            put_banqian.value=data.banqian;
             var put_benban=document.getElementById("banqianbanhou-gai").getElementsByTagName("textarea")[1];
-            put_benban.value=data[5];
+            put_benban.value=data.banzhong;
             var put_banhou=document.getElementById("banqianbanhou-gai").getElementsByTagName("textarea")[2];
-            put_banhou.value=data[6];
+            put_banhou.value=data.banhou;
             
         },
         error:function(data){
             console.log(data);
+            console.log("ssss");
         }
     });
 }
@@ -576,7 +582,7 @@ function addMsg(Id,gonghao,shenfengzheng,pname,p_sex,p_age,p_phone,
     </tr>
     <tr>
     <td>姓名</td>
-    <td>${pname}</td>
+    <td id="zuzhangxingming">${pname}</td>
     </tr>
     <tr>
     <td>性别</td>
@@ -840,6 +846,7 @@ function zhigongjifengetMsg(){
 //班前班后会信息加载
   // setInterval(banqiangetMsg,500);
   function banqiantou(){
+
     var htm='';
     htm+=`<tr id="thead">
     <td>序号</td>
@@ -848,19 +855,19 @@ function zhigongjifengetMsg(){
     <td>出勤人数</td>
     <td>发布人</td>
     <td>操作</td>
-    </tr>
-    <tr>`;
+    </tr>`;
     $('#banqianAdd').html(htm);
   }
-  function banqianaddMsg(i,huiyiminchen,renshu,faburen,ID){
-    
+  function banqianaddMsg(i,zhuti,shijian,ID){
+      var name=document.getElementById("zuzhangxingming").innerHTML;
+      console.log(name);
     var html='';
     html+=`<tr>
     <td>${i+1}</td>
-    <td>${huiyiminchen}</td>
+    <td>${zhuti}</td>
     
-    <td>${renshu}</td>
-    <td>${faburen}</td>
+    <td>${shijian}</td>
+    <td>${name}</td>
     <td><div class="${ID}">
     <button type="submit" class="btn btn-primary" >修改</button>
     <button type="button" class="btn btn-danger">删除</button></div>
@@ -869,19 +876,22 @@ function zhigongjifengetMsg(){
     $('#banqianAdd').append(html);
 }
 function banqiangetMsg(){
-    var last_id='班前班后';
+    var fenzu=document.getElementById("wangyefenzu").innerHTML;
+    console.log(fenzu);
+    fenzu=Number(fenzu);
+
     $.ajax({
-        url:"?id="+last_id,
+        url:"/shenmu_war_exploded/banhui/listAll/"+fenzu,
         type:"get",
         success:function(data){
             console.log(data);
             banqiantou();
             for(var i=0;i<data.length;i++){
-                banqianaddMsg(i,data[i].huiyiminchen,data[i].renshu,data[i].faburen,data[i].ID);
+                banqianaddMsg(i,data[i].zhuti,data[i].shijichuqinrenshu,data[i].id);
             }
         },
         error:function(data){
-            console.log(data);
+            console.log("出错！");
         }
     });
 }

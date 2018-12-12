@@ -70,9 +70,9 @@
 </span>
         </li>
 
-        <li style="margin-top:20px;" class="Leftnav">
-            <img src="back/imgs/hot.png">
-            <p>
+        <li style="margin-top:20px;" class="Leftnav" onclick="banqiangetMsg()">
+            <img onclick="banqiangetMsg()" src="back/imgs/hot.png">
+            <p onclick="banqiangetMsg()">
                 班前班后会
             </p>
             <span>
@@ -91,7 +91,7 @@
         </li>
 
         <li style="margin-top:20px;" class="Leftnav" onclick="zhigongjifengetMsg()" >
-            <img src="back/imgs/hot.png">
+            <img onclick="zhigongjifengetMsg()"  src="back/imgs/hot.png">
             <p onclick="zhigongjifengetMsg()" >
                 职工积分
             </p>
@@ -175,6 +175,7 @@
 <div id="head">
     <a href="http://222.24.63.119/"><img src="back/imgs/blackperson.png" id="person"></a>
 </div>
+
 <!-- 移动端设置的导航栏 -->
 <ul id="secondNav">
     <li>
@@ -187,7 +188,7 @@
 班前班后会
 </span>
 
-        <span>
+        <span onclick="banqiangetMsg()">
 班组文化
 </span>
 
@@ -802,12 +803,7 @@
         <hr>
         <form action="http://222.24.63.119/ublack" class="meetingForm" method="POST" enctype="multipart/form-data"
               class="meetingForm" style="width:100%;">
-            <input type="hidden" name="_xsrf" value="2|4407c9e9|ae825f12097c0e3a40277405acd7c4fe|1543592847">
-            <input type="hidden" name="formname1" value="3">
-            <input type="hidden" name="formname2" value="9">
-            <input type="hidden" name="formname3" value="0">
-            <input type="hidden" name="tag" value="2">
-            <input type="hidden" name="biao" value="2">
+
             <table class="meetingTable" width="100%">
                 <thead>
                 <tr>
@@ -816,37 +812,94 @@
                     <td>请假</td>
                     <td>调休</td>
                     <td>备注</td>
+                    <td>班会主题</td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="numberP">
-                    <td style="width:150;height:50px">21</td>
+                    <td><input type="text" name="text8" style="width:100%;height:50px"></td>
                     <td><input class="chuqinrenshu" type="text" name="text0" style="width:100%;height:50px"></td>
                     <td><input type="text" name="text1" style="width:100%;height:50px"></td>
                     <td><input type="text" name="text2" style="width:100%;height:50px"></td>
                     <td><input type="text" name="text3" style="width:100%;height:50px"></td>
+                    <td><input type="text" name="text4" style="width:100%;height:50px"></td>
                 </tr>
                 <tr class="summary">
                     <td>班前传达学习以及安全预想</td>
-                    <td colspan="4"><textarea type="text" name="text4" style="width:100%;height:100px"></textarea></td>
+                    <td colspan="5"><textarea type="text" name="text5" style="width:100%;height:100px"></textarea></td>
                 </tr>
                 <tr class="summary">
                     <td>本班作业中生产任务以及作业情况</td>
-                    <td colspan="4"><textarea type="text" name="text5" style="width:100%;height:100px"></textarea></td>
+                    <td colspan="5"><textarea type="text" name="text6" style="width:100%;height:100px"></textarea></td>
                 </tr>
                 <tr class="summary">
                     <td>班后总结</td>
-                    <td colspan="4"><textarea type="text" name="text6" style="width:100%;height:100px"></textarea></td>
+                    <td colspan="5"><textarea type="text" name="text7" style="width:100%;height:100px"></textarea></td>
                 </tr>
                 </tbody>
             </table>
             <br>
             <div id="" style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
-                <button type="submit" class="btn btn-primary" onclick="banAdd()">提交</button>
+                <button type="button" class="btn btn-primary" onclick="banqiantianjiaajax()">提交</button>
                 <button type="reset" class="btn btn-warning" onclick="hiden1()">取消</button>
             </div>
             <br>
         </form>
+        <!-- 的提交ajax -->
+        <script>
+            function banqiantianjiaajax() {
+                var inputs = document.getElementById("banqianbanhou").getElementsByTagName("input");
+                var textareas=document.getElementById("banqianbanhou").getElementsByTagName("textarea");
+                var fenzu=document.getElementById("wangyefenzu").innerHTML;
+                var data = {
+                    "yingchuqinrenshu": inputs[0].value,
+                    "shijichuqinrenshu": inputs[1].value,
+                    "qingjia": inputs[2].value,
+                    "tiaoxiu": inputs[3].value,
+                    "beizhu":inputs[4].value,
+                    "zhuti": inputs[5].value,
+                    "banqian":textareas[0].value,
+                    "banzhong":textareas[1].value,
+                    "banhou": textareas[2].value,
+                    "fenzu":fenzu
+
+
+
+                };
+                var data = JSON.stringify(data);
+
+                console.log(data);
+
+                $.ajax({
+                    url: "/shenmu_war_exploded/banhui/add",//后台接收的url
+                    type: 'POST',
+                    data: data,
+                    dataType: 'JSON',
+                    contentType: 'application/json;charset=UTF-8',
+                    async: false,
+                    success: function () {
+                        alert("人员信息添加成功！");
+
+
+
+                    },
+                    error: function () {
+                        alert("上传成功！");
+
+                        // banqiantianjiabanhui();
+
+                    }
+                });
+
+
+                hiden1();
+                banqiangetMsg();
+            }
+
+            function banqiantianjiabanhui() {
+
+            }
+        </script>
     </div>
 </div>
 
@@ -876,38 +929,98 @@
                         <td>请假</td>
                         <td>调休</td>
                         <td>备注</td>
+                        <td>班会主题</td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr class="numberP">
-                        <td style="width:150;height:50px">21</td>
-                        <td><input class="chuqinrenshu" type="text" name="text0" style="width:100%;height:50px"></td>
+                        <td ><input type="text" name="text8" style="width:100%;height:50px"></td>
+                        <td><input type="text" name="text0" style="width:100%;height:50px"></td>
                         <td><input type="text" name="text1" style="width:100%;height:50px"></td>
                         <td><input type="text" name="text2" style="width:100%;height:50px"></td>
                         <td><input type="text" name="text3" style="width:100%;height:50px"></td>
+                        <td><input type="text" name="text7" style="width:100%;height:50px"></td>
+
                     </tr>
                     <tr class="summary">
                         <td>班前传达学习以及安全预想</td>
-                        <td colspan="4"><textarea type="text" name="text4" style="width:100%;height:100px"></textarea>
+                        <td colspan="5"><textarea type="text" name="text4" style="width:100%;height:100px"></textarea>
                         </td>
                     </tr>
                     <tr class="summary">
                         <td>本班作业中生产任务以及作业情况</td>
-                        <td colspan="4"><textarea type="text" name="text5" style="width:100%;height:100px"></textarea>
+                        <td colspan="5"><textarea type="text" name="text5" style="width:100%;height:100px"></textarea>
                         </td>
                     </tr>
                     <tr class="summary">
                         <td>班后总结</td>
-                        <td colspan="4"><textarea type="text" name="text6" style="width:100%;height:100px"></textarea>
+                        <td colspan="5"><textarea type="text" name="text6" style="width:100%;height:100px"></textarea>
                         </td>
                     </tr>
                     </tbody>
                 </table>
                 <div style="text-align:center;margin-top:10px;margin-left:50%;margin-bottom: 10px;">
-                    <button type="submit" class="btn btn-danger">修改</button>
+                    <button type="button" class="btn btn-danger" onclick="banqiantianjia_gaiajax()">修改</button>
                     <button type="reset" class="btn btn-warning" onclick="hiden1gai()">取消</button>
                 </div>
             </form>
+            <script>
+                function banqiantianjia_gaiajax() {
+                    var inputs = document.getElementById("banqianbanhou-gai").getElementsByTagName("input");
+                    var textareas=document.getElementById("banqianbanhou-gai").getElementsByTagName("textarea");
+                    var id=document.getElementById("bansssss").value;
+                    var data = {
+                        "yingchuqinrenshu": inputs[7].value,
+                        "shijichuqinrenshu": inputs[8].value,
+                        "qingjia": inputs[9].value,
+                        "tiaoxiu": inputs[10].value,
+                        "beizhu":inputs[11].value,
+                        "zhuti": inputs[12].value,
+                        "banqian":textareas[0].value,
+                        "banzhong":textareas[1].value,
+                        "banhou": textareas[2].value,
+                        "id":id
+
+
+
+                    };
+                    var data = JSON.stringify(data);
+
+                    console.log(data);
+
+                    $.ajax({
+                        url: "/shenmu_war_exploded/banhui/update",
+                        type: 'POST',
+                        data: data,
+                        dataType: 'JSON',
+                        contentType: 'application/json;charset=UTF-8',
+                        async: false,
+                        success: function () {
+                            alert("修改成功！");
+
+                            qingkongtianjiarenyuan();
+                            hiden1gai();
+                            banqiangetMsg();
+
+                        },
+                        error: function () {
+                            console.log("Sssss");
+
+                            banqiantianjiabanhui();
+                            hiden1gai();
+                            banqiangetMsg();
+
+                        }
+                    });
+
+
+                    banqiangetMsg();
+                }
+
+                function banqiantianjiabanhui() {
+
+                }
+            </script>
         </div>
 
     </div>
@@ -928,7 +1041,7 @@
                 <h4 style="color:red;margin-left:33%;">是否确认删除？</h4>
             </div>
             <div style="margin-left:30%;">
-                <button id="queren" type="submit" class="btn btn-warning">确认</button>
+                <button id="queren" type="button" class="btn btn-warning" onclick="banhuideshanchuajax()">确认</button>
                 <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default"
                         onclick="banqianhiden()">取消
                 </button>
@@ -936,13 +1049,37 @@
             </div>
         </form>
     </div>
+    <script>
+        function banhuideshanchuajax() {
+            var id=document.getElementById("bandel").value;
+            var ur ="/shenmu_war_exploded/banhui/delete/"+id ;
+            console.log(ur);
+
+            $.ajax({
+                url: ur,
+                type: "get",
+                success: function (data) {
+
+                    alert("删除成功！");
+
+                },
+                error: function (data) {
+                    alert("删除失败！");
+
+                }
+
+            });
+            banqianhiden();
+            banqiangetMsg();
+        }
+    </script>
 
 </div>
 
 <!-- 班组文化 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111-->
 <div class="content" style="height: 100%; display: block;">
     <div class="inform" id="shoujibanzhu">
-        <form action="" class="meetingForm" method="POST" enctype="multipart/form-data">
+        <form id="banzuwenhuachuan" action="" class="meetingForm" method="POST" enctype="multipart/form-data">
             <input type="hidden" value="班组文化">
             <input type="hidden" name="_xsrf" value="2|d3e2f611|affbf9d8c3fd4b4a4643567d398dbf67|1541821002">
             <input type="hidden" name="biao" value="3">
@@ -964,8 +1101,9 @@
                 </p>
                 <p><label>员工风采: </label><input id="fengcai" type="file" name="text6" value=""><span
                         style="color:red;font-size:10px;">上传文件大小不能超过10MB</span></p>
+                <input id="banzuwenhuafenzu" type="hidden" name="fenzu" value="">
                 <div id="banzudi">
-                    <button type="submit" class="btn btn-primary">提交</button>
+                    <button type="button" class="btn btn-primary" onclick="banzuwemhuashangchuan()">提交</button>
                     <button type="reset" class="btn btn-warning">重置</button>
                 </div>
             </div>
@@ -973,6 +1111,45 @@
         </form>
     </div>
 </div>
+<!-- 上传文件 -->
+<script>
+    function banzuwemhuashangchuan(){
+        var fenzu=document.getElementById("wangyefenzu").innerHTML;
+        document.getElementById("banzuwenhuafenzu").value=fenzu;
+        console.log(new FormData($('#banzuwenhuachuan')[0]));
+
+        $.ajax({
+
+            url: "/shenmu_war_exploded/banzu/add",
+
+            type: "POST",
+            cache: false,
+
+            data: new FormData($('#banzuwenhuachuan')[0]),
+
+            async: false,
+
+            contentType: false,
+
+            processData: false,
+
+            success: function (result) {
+
+                console.log(result);
+
+            },
+
+            error: function (data) {
+
+                alert("上传成功！");
+            }
+
+        });
+
+
+    }
+
+</script>
 
 
 <!-- 职工积分 -->
@@ -2365,6 +2542,13 @@
             content[this.index].style.display = "block";
         }
     }
+</script>
+
+<script>
+    var a=document.getElementById("head").getElementsByTagName("a")[0];
+    var fenzu=document.getElementById("wangyefenzu").innerHTML;
+    console.log(fenzu);
+    a.setAttribute("href","./inde/banzuwenhua/banzujianjie.html?fenzu="+fenzu);
 </script>
 
 </body>

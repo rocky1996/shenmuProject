@@ -556,7 +556,7 @@ function helihuagaiMsg(last_id){
 //个人信息的个人信息加载
   // setInterval(getMsg,500);
 function addMsg(Id,gonghao,shenfengzheng,pname,p_sex,p_age,p_phone,
-    zhiwei,int_time,chezu,gongzi,xueli,minzu,zaizhi,p_beizhu){
+    zhiwei,int_time,chezu,gongzi,xueli,minzu,zaizhi,p_beizhu,fenzu){
     var htm='';
     htm+=`<tbody><tr id="thead">
     <td>名称</td>
@@ -619,30 +619,84 @@ function addMsg(Id,gonghao,shenfengzheng,pname,p_sex,p_age,p_phone,
     <td>${zaizhi}</td>
     </tr>
     <tr>
+    <td >分组</td>
+    <td id="wangyefenzu">${fenzu}</td>
+    </tr>
+    <tr>
     <td>备注</td>
     <td>${p_beizhu}</td>
     </tr>
     </tbody>`;
     $('#diyilie-color').html(htm);
 }
-function getMsg(){
-    var last_id='组长信息';
-    $.ajax({
-        url:"?id="+last_id,
-        type:"get",
-        success:function(data){
-            console.log(data);
-            // for(var i=0;i<data.length;i++){
-            //     addMsg(data[i].Id,data[i].gonghao,data[i].shenfengzheng,data[i].pname,data[i].p_sex,data[i].p_age,data[i].p_phone,
-            //         data[i].zhiwei,data[i].int_time,data[i].chezu,data[i].gongzi,data[i].xueli,data[i].minzu,data[i].zaizhi,data[i].p_beizhu);
-            // }
-        },
-        error:function(data){
-            console.log(data);
+function getMsg(id){
+    var last_id=id;
+    last_id=Number(last_id);
+    // $.ajax({
+    //     url:"/shenmu_war_exploded/login/getRenyuanById",
+    //     type:"post",
+    //     success:function(data){
+    //         console.log(data);
+    //         // for(var i=0;i<data.length;i++){
+    //         //     addMsg(data[i].Id,data[i].gonghao,data[i].shenfengzheng,data[i].pname,data[i].p_sex,data[i].p_age,data[i].p_phone,
+    //         //         data[i].zhiwei,data[i].int_time,data[i].chezu,data[i].gongzi,data[i].xueli,data[i].minzu,data[i].zaizhi,data[i].p_beizhu);
+    //         // }
+    //     },
+    //     error:function(data){
+    //         console.log(data);
+    //     }
+    // });
+    var data={
+        "id":last_id
+    }
+
+    data=JSON.stringify(data);
+
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+
+            var data=xmlhttp.responseText;
+            data=JSON.parse(data);
+
+            addMsg(data.id,data.gonghao,data.shenfenzheng,data.xingming,data.xingbie,data.nianling,data.dianhua,
+                data.zhiwei,data.ruzhishijian,data.chezu,data.jibengongzi,data.xueli,data.minzu,data.zaizhi,data.beizhu,data.fenzu);
+            renyuanxinxigetMsg(data.fenzu);
+
         }
-    });
+
+    }
+    xmlhttp.open("get","/shenmu_war_exploded/login/getRenyuanById/"+last_id,true);
+    xmlhttp.setRequestHeader("Content-type","application/json; charset=utf-8");
+    xmlhttp.send();
 }
-// getMsg();
+function getQueryString(name) {
+
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+
+    var r = window.location.search.substr(1).match(reg);
+
+    if (r != null) return decodeURI(r[2]);
+
+    return null;
+
+}
+var idd=getQueryString("id");
+
+
+getMsg(idd);
 
 //人员信息表信息加载
 //   setInterval(renyuanxinxigetMsg,10000);
@@ -659,7 +713,7 @@ function getMsg(){
     </tr>`;
     $('#get_renyuan').html(htm);
   }
-  function renyuanxinaddMsg(i,ID,pname,p_sex,gonghao){
+  function renyuanxinaddMsg(i,ID,pname,p_sex,gonghao,beuzu){
     
     var html='';
     html+=`<tr>
@@ -668,7 +722,7 @@ function getMsg(){
     <td>${pname}</td>
     <td>${p_sex}</td>
     <td>${gonghao}</td>
-    <td></td>
+    <td>${beuzu}</td>
     <td><div class="${ID}">
             <button type="button" class="btn btn-primary" >修改</button>
             <button type="button" class="btn btn-danger" >删除</button></div>
@@ -676,23 +730,23 @@ function getMsg(){
     </tr>`;
     $('#get_renyuan').append(html);
 }
-function renyuanxinxigetMsg(){
+function renyuanxinxigetMsg(fenzu){
 
     $.ajax({
-        url:"/shenmu_war_exploded/renyuan/listAll",
+        url:"/shenmu_war_exploded/login//getRenyuanVoByfenzu/"+fenzu,
         type:"get",
         success:function(data){
-
-            var arr = data;
-
+            // console.log(data);
+            // var arr = data;
+            //
             // console.log(data.responseText);
-            // var data1=arr.JSON.parse(responseText);
-            // console.log(data1);
+            // var data=arr.JSON.parse(responseText);
+            // console.log(data);
             // //
             renyuantou();
             for(var i=0;i<data.length;i++){
 
-                renyuanxinaddMsg(i,data[i].ID,data[i].xingming,data[i].xingbie,data[i].gonghao);
+                renyuanxinaddMsg(i,data[i].ID,data[i].xingming,data[i].xingbie,data[i].gonghao,data[i].beizhu);
             }
         },
         error:function(data){
@@ -715,7 +769,73 @@ function renyuanxinxigetMsg(){
 
 }
 
-renyuanxinxigetMsg();
+//职工积分信息加载
+// setInterval(renyuanxinxigetMsg,500);
+function zhigongjifentou(){
+    var htm='';
+    htm+=`<tr id="thead">
+<td> 姓 名 </td>
+<td>个人分值汇总</td>
+<td>分值</td>
+</tr>`;
+    $('#jiden_juzhong').html(htm);
+}
+function zhigongjifenaddMsg(pname,fenzhi){
+    var html='';
+    html+=`<tr>
+<td>${pname}<input type="hidden" class="jifenluruyuannames" value="${pname}"></td>
+<td>${fenzhi}</td>
+<td><input class="jifenluruyuan" type="text" name="106" value="0" style="width:20%"></td>
+</tr>`;
+    $('#jiden_juzhong').append(html);
+}
+function zhigongjifengetMsg(){
+      var fenzu=document.getElementById("wangyefenzu").innerHTML;
+    console.log(fenzu);
+    fenzu=Number(fenzu);
+    $.ajax({
+        url:"/shenmu_war_exploded/jifen/huizong/"+fenzu,
+        type:"get",
+        success:function(data){
+            console.log(data);
+            console.log(data[0].xingming);
+            zhigongjifentou();
+            for(var i=0;i<data.length;i++){
+                zhigongjifenaddMsg(data[i].xingming,data[i].gerenfenzhihuizong);
+            }
+        },
+        error:function(data){
+            console.log("zpou555");
+        }
+    });
+    // var xmlhttp;
+    // if (window.XMLHttpRequest)
+    // {
+    //     //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+    //     xmlhttp=new XMLHttpRequest();
+    // }
+    // else
+    // {
+    //     // IE6, IE5 浏览器执行代码
+    //     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    // }
+    // xmlhttp.onreadystatechange=function()
+    // {
+    //     if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    //     {
+    //         console.log(xmlhttp);
+    //         console.log(xmlhttp.response);
+    //         console.log(typeof (xmlhttp.response));
+    //         console.log(xmlhttp.responseText);
+    //         console.log(typeof (xmlhttp.responseText));
+    //     }
+    //
+    // }
+    // xmlhttp.open("get","/shenmu_war_exploded/jifen/huizong",true);
+    // xmlhttp.setRequestHeader("Content-type","application/json; charset=utf-8");
+    // xmlhttp.send();
+}
+
 
 //班前班后会信息加载
   // setInterval(banqiangetMsg,500);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.acat.dao.IBanzuDao">
+    <insert id="addBanzu" parameterType="com.acat.model.Banzu">
+        insert into jw_wenhua (banzujianjie,yuangognfengcai,biaoti,banzulogo,logoshiyi,zuzhijigou,fenzu)
+        values (#{banzujianjie},#{yuangognfengcai},#{biaoti},#{banzulogo},#{logoshiyi},#{zuzhijigou},#{fenzu})
+    </insert>
+
+    <select id="getFenzuById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select fenzu from jw_renyuan where ID=#{ID}
+    </select>
+
+    <select id="getBanzuByFenzu" parameterType="java.lang.Integer" resultType="com.acat.model.Banzu">
+        select * from jw_wenhua where fenzu =#{fenzu}
+    </select>
+</mapper>

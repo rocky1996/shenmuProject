@@ -112,7 +112,7 @@ height: 20px;
         <body>
         <!-- 其中的头部 -->
         <div id="head">
-        <a href="http://222.24.63.119/"><img src="./anquanlihui_files/logo.png"></a>
+        <a href="http://222.24.63.119/"><img src="./kaoqing_files/logo.png"></a>
         <div class="to">
         <!-- <div class="searchInput">车间名称</div> -->
         <a href="http://222.24.63.119/ublack"><div class="searchInput">用户：丁建峰</div></a>
@@ -284,6 +284,23 @@ height: 20px;
         </ul>
         </div>
         </nav></div>
+        <!-- //分组加到链接后面 -->
+        <script>
+            //获取get传值的方法
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return decodeURI(r[2]);
+                return null;
+            }
+
+            var lias = document.getElementById("nav").getElementsByTagName("a");
+            var fenzu=getQueryString("fenzu");
+            for(var i=0;i<lias.length;i++){
+                var jiulianjie=lias[i].getAttribute("href");
+                lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu);
+            }
+        </script>
 
 <!-- 移动端的导航栏-->
 <ul id="secondNav">

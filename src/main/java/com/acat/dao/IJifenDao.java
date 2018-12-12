@@ -1,6 +1,5 @@
 package com.acat.dao;
 
-import com.acat.model.Jifen;
 import com.acat.vo.*;
 
 import java.util.List;

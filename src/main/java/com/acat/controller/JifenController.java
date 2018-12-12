@@ -1,11 +1,6 @@
 package com.acat.controller;
 
 
-import com.acat.model.Jifen;
-import com.acat.service.IJifenService;
-import com.acat.util.DateUtils;
-import com.acat.util.OperatorTian;
-import com.acat.util.RiqiUtil;
 import com.acat.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -56,8 +51,7 @@ public class JifenController {
     @PostMapping("/get")
     public Map<String,List<Jifen>> jifenVoList(@RequestBody JifenleixingAndFenzuVo type) {
 
-        System.out.println(type.getJifenleixing());
-        System.out.println(type.getFenzu());
+
 
         Map<String,List<Jifen>> map = new HashMap<>();
         List<Jifen> list = null;
@@ -65,31 +59,29 @@ public class JifenController {
 
         String xingming = jifenService.getXingming(type.getFenzu());
 
-        System.out.println("++++++++++++");
-        System.out.println(xingming);
-        System.out.println("++++++++++++");
+
 
         XingmingAndLeixingVo vo = new XingmingAndLeixingVo();
         vo.setJifenleixing(type.getJifenleixing());
         vo.setXingming(xingming);
         String riqi = jifenService.getRiqi(vo);
 
-        System.out.println("--------");
-        System.out.println(riqi);
-        System.out.println("--------");
+//        System.out.println("--------");
+//        System.out.println(riqi);
+//        System.out.println("--------");
 
         String[] str = RiqiUtil.fenge(riqi);
         int tianshu = DateUtils.getMonthLastDay(Integer.parseInt(str[0]), Integer.parseInt(str[1]));
 
-        System.out.println("************");
-        System.out.println(tianshu);
-        System.out.println("************");
+//        System.out.println("************");
+//        System.out.println(tianshu);
+//        System.out.println("************");
 
         int dangqiantianshu = OperatorTian.getTianshu(str[2]);
-
-        System.out.println("%%%%%%%%%%");
-        System.out.println(dangqiantianshu);
-        System.out.println("%%%%%%%%%%");
+//
+//        System.out.println("%%%%%%%%%%");
+//        System.out.println(dangqiantianshu);
+//        System.out.println("%%%%%%%%%%");
 
         String tempStr = str[0] + "-" + str[1];
         JifenleixingAndStrVo vo2 = new JifenleixingAndStrVo();
@@ -97,9 +89,9 @@ public class JifenController {
         vo2.setStr(tempStr);
         List<String> stringList = jifenService.getRiqiMohuchaxun(vo2);
 
-        System.out.println("#######");
-        System.out.println(stringList);
-        System.out.println("#######");
+//        System.out.println("#######");
+//        System.out.println(stringList);
+//        System.out.println("#######");
 
         JIfenleixingAndRiqiVo vo1 = new JIfenleixingAndRiqiVo();
 
