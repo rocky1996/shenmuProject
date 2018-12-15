@@ -29,11 +29,13 @@ vertical-align: middle!important;
 <body>
         <!-- 其中的头部 -->
         <div id="head">
-        <a href="http://222.24.63.119/"><img src="./kaohe_files/logo.png"></a>
+        <a href="#"><img src="./kaohe_files/logo.png"></a>
         <div class="to">
         <!-- <div class="searchInput">车间名称</div> -->
         <a href="http://222.24.63.119/ublack"><div class="searchInput">用户：丁建峰</div></a>
         <a href="http://222.24.63.119/ublack"><div class="searchInput">班组：检修车间备品三组</div></a>
+                <a href="../../login.html"><button class="btn btn-danger" style="margin-top: 20px;float: right">退出登陆</button></a>
+
         </div>
         <form action="http://222.24.63.119/c=15" method="post" class="search">
         <input type="text" name="shuju" class="shuju">
@@ -201,6 +203,7 @@ vertical-align: middle!important;
         </ul>
         </div>
         </nav></div>
+        <script src="../../session.js"></script>
         <!-- //分组加到链接后面 -->
         <script>
             //获取get传值的方法
@@ -213,9 +216,35 @@ vertical-align: middle!important;
 
             var lias = document.getElementById("nav").getElementsByTagName("a");
             var fenzu=getQueryString("fenzu");
-            for(var i=0;i<lias.length;i++){
-                var jiulianjie=lias[i].getAttribute("href");
-                lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu);
+
+            console.log(fenzu);
+            var shenfen=getQueryString("shenfen");
+            console.log(shenfen);
+            var name=getQueryString("name");
+            console.log(name);
+            var id=getQueryString("id");
+            if(shenfen == 0){
+                console.log("0");
+
+                for(var i=0;i<lias.length;i++){
+                    var jiulianjie=lias[i].getAttribute("href");
+                    lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu+"&shenfen=0"+"&name="+name);
+                }
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[0].setAttribute("href","#");
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[1].setAttribute("href","#");
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[0].innerHTML ="用户："+name;
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[1].innerHTML ="班组：检修车间备品"+fenzu+"组";
+            }else if(shenfen=='guan'){
+                console.log("1111");
+
+                for(var i=0;i<lias.length;i++){
+                    var jiulianjie=lias[i].getAttribute("href");
+                    lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu+"&shenfen=guan"+"&name="+name+"&id="+id);
+                }
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[0].setAttribute("href","../../back.html?id="+id);
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[1].setAttribute("href","../../back.html?id="+id);
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[0].innerHTML ="用户："+name;
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[1].innerHTML ="班组：检修车间备品"+fenzu+"组";
             }
         </script>
 
@@ -251,204 +280,66 @@ vertical-align: middle!important;
 <div class="row" id="logo">
 <div class="col-xs-12 col-md-12">
 <table id="tongji" class="table table-striped table-bordered table-hover" style="margin-top:40px;text-align:center;overflow: scroll">
-<tbody><tr>
-<th>日期</th>
-
-<th>丁建峰</th>
-
-<th>路俊彪</th>
-
-<th>刘婷</th>
-
-<th>胥婷婷</th>
-
-<th>伊志文</th>
-
-<th>李莎</th>
-
-<th>冯雅兰</th>
-
-<th>马婷</th>
-
-<th>赵俊</th>
-
-<th>刘海艳</th>
-
-<th>李婷</th>
-
-<th>武张杨</th>
-
-<th>刘仙飞</th>
-
-<th>郭少卿</th>
-
-<th>邱会</th>
-
-<th>张小霞</th>
-
-<th>贺波</th>
-
-<th>马银萍</th>
-
-<th>刘倩</th>
-
-<th>杨倩</th>
-
-<th>卜帅帅</th>
-
-</tr>
-
-<tr>
-<td>2018-12-03</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-</tr>
-
-<tr>
-<td>2018-12-04</td>
-
-<td>22</td>
-
-<td>22</td>
-
-<td>10</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>11</td>
-
-<td>10</td>
-
-<td>11</td>
-
-<td>11</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>22</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>22</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>11</td>
-
-<td>22</td>
-
-</tr>
-
-<tr>
-<td>个人总计</td>
-
-<td>22</td>
-
-<td>22</td>
-
-<td>10</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>11</td>
-
-<td>10</td>
-
-<td>11</td>
-
-<td>11</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>22</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>22</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>0</td>
-
-<td>11</td>
-
-<td>22</td>
-
-</tr>
-<tr>
-<th style="background:yellow">合计</th>
-<th colspan="100" style="background:yellow">174</th>
-</tr>
-</tbody></table>
+</table>
 
 </div>
 </div>
 </div>
         <script>
+            //数据库没有数据的时候
+            function chushizhigongjifentou(data){
+                var htm='';
+                htm+=`<tr>
+                                <th>日期</th>`;
+                for(var i=0;i<data.length;i++){
+                    htm+=`<th>${data[i].xingming}</th>`;
+                }
+                htm+= `</tr>`;
+                $('#tongji').html(htm);
+            }
+            function churuzhigongjifenwei(data){
+                var htm='';
+                htm+= `<tr>
+                                <td>个人总计</td>`;
 
+                for(var i=0;i<data.length;i++){
+                    htm+=`<td>0</td>`;
+                }
+
+                htm+=`        </tr>
+                                <tr>
+                <th style="background:yellow">合计</th>
+                <th colspan="300" style="background:yellow">0</th>
+                </tr>`;
+                $('#tongji').append(htm);
+
+                var neirong=$('#tongji').html();
+                neirong=`<tbody>`+neirong+`</tbody>`;
+                $('#tongji').html(neirong);
+            }
+
+            function chushizhigongjifengetMsg(){
+
+                var fenzu=getQueryString("fenzu");
+                console.log(fenzu);
+
+                $.ajax({
+                    url:"/shenmu_war_exploded/renyuan/name/"+fenzu,
+                    type:"get",
+                    success:function(data){
+                        console.log(data);
+
+                        chushizhigongjifentou(data);
+
+                        churuzhigongjifenwei(data);
+
+                    },
+                    error:function(data){
+                        console.log("加载出错！！！");
+                    }
+                });
+
+            }
 
             function add(){
                 var tablee=document.getElementById("tongji");
@@ -522,6 +413,7 @@ vertical-align: middle!important;
             }
 
             function zhigongjifengetMsg(){
+
                 var last_id='';
                 var fenzu=getQueryString("fenzu");
                 console.log(fenzu);
@@ -557,6 +449,7 @@ vertical-align: middle!important;
                     },
                     error:function(data){
                         console.log("加载出错！！！");
+                        chushizhigongjifengetMsg();
                     }
                 });
 

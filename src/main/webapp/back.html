@@ -80,9 +80,9 @@
 </span>
         </li>
 
-        <li style="margin-top:20px;" class="Leftnav">
-            <img src="back/imgs/hot.png">
-            <p>
+        <li style="margin-top:20px;" class="Leftnav" onclick="banzuwenhuahuixian()">
+            <img src="back/imgs/hot.png" onclick="banzuwenhuahuixian()">
+            <p onclick="banzuwenhuahuixian()">
                 班组文化
             </p>
             <span>
@@ -172,9 +172,11 @@
 
     </ul>
 </div>
-<div id="head">
-    <a href="http://222.24.63.119/"><img src="back/imgs/blackperson.png" id="person"></a>
+<div id="head" onclick="jialianjie()">
+    <a href="#"><img src="back/imgs/blackperson.png" id="person"></a>
 </div>
+
+
 
 <!-- 移动端设置的导航栏 -->
 <ul id="secondNav">
@@ -878,15 +880,22 @@
                     contentType: 'application/json;charset=UTF-8',
                     async: false,
                     success: function () {
-                        alert("人员信息添加成功！");
+
 
 
 
                     },
                     error: function () {
-                        alert("上传成功！");
-
-                        // banqiantianjiabanhui();
+                        alert("班会添加成功！");
+                        inputs[0].value="";
+                        inputs[1].value="";
+                        inputs[2].value="";
+                        inputs[3].value="";
+                        inputs[4].value="";
+                        inputs[5].value="";
+                        textareas[0].value="";
+                        textareas[1].value="";
+                            textareas[2].value="";
 
                     }
                 });
@@ -1061,16 +1070,19 @@
                 success: function (data) {
 
                     alert("删除成功！");
+                    banqianhiden();
+                    banqiangetMsg();
 
                 },
                 error: function (data) {
                     alert("删除失败！");
+                    banqianhiden();
+                    banqiangetMsg();
 
                 }
 
             });
-            banqianhiden();
-            banqiangetMsg();
+
         }
     </script>
 
@@ -1086,70 +1098,94 @@
             <input type="hidden" name="tag" value="2">
             <h2>班组文化</h2>
             <div id="banzuwenhua">
-                <p><label>标题: </label><input type="text" name="text1" value="检修车间备品三组班组简介"></p>
-                <p><label>班组 logo: </label><input type="file" name="text2" value="上传文件"><span
+                <p><label>标题: </label><input type="text" name="text1" value="检修车间备品组班组简介"></p>
+                <p><label>班组 logo: </label><input id="logobanzu" type="file" name="text2" value="上传文件"><span
                         style="color:red;font-size:10px;">上传文件大小不能超过500KB</span></p>
-                <p><label>logo 释意: </label><textarea type="text" name="text3" rows="5" cols="45"
-                                                     style="text-indent:2em;">大、小圆组成的圆形边框象征着铁路，代表我们神朔铁路公司，上面镶嵌着的五颗钻石代表五型班组建设，中间扬起的三面风帆代表备品三组以及班组电子、制动、仪表
-的三个工种，下面托举的手形树叶代表机务段和检修车间，整体图案的寓意是备品三组在段、车间的领导和支持下，班组全体人员团结一心、努力拼搏，在公司“一
-体两翼两保障”发展战略指引下，扬帆起航、奋勇争先！</textarea></p>
-                <p><label>班组简介: </label><textarea type="text" name="text4" rows="15" cols="45" style="text-indent:2em;">班组成立于2009年，班组现有职工21人，工长1名、副工长1名，女职工15人，平均年龄30岁，高级工以上10人.主要担负着全公司约300台电力机车
-的制动系统配件、电子配件、整流柜、仪表配件等核心部件的检修、试验工作。年维修配件共计5万余件，班组日维修量280余件,个人每天大约维修20余件。
-确保每一个配件保质保量提供给机车，是我们唯一的目标。班组也多次获得公司、段先进班组、先进集体以及 
-“巾帼建功”等荣誉称号。班组员工在集团公司组织的技能大赛中分别获得第一名、第三名的优秀成绩。</textarea></p>
-                <p><label>组织机构: </label><input type="file" name="text5"> <span style="color:red;font-size:10px;">上传文件大小不能超过5MB</span>
+                <p><label>logo 释意: </label><textarea id="logoshiyi" type="text" name="text3" rows="5" cols="45"
+                                                     style="text-indent:2em;"></textarea></p>
+                <p><label>班组简介: </label><textarea id="banzujianjie" type="text" name="text4" rows="15" cols="45" style="text-indent:2em;">
+</textarea></p>
+                <p><label>组织机构: </label><input id="banzujigou" type="file" name="text5"><span style="color:red;font-size:10px;">上传文件大小不能超过5MB</span>
                 </p>
                 <p><label>员工风采: </label><input id="fengcai" type="file" name="text6" value=""><span
                         style="color:red;font-size:10px;">上传文件大小不能超过10MB</span></p>
                 <input id="banzuwenhuafenzu" type="hidden" name="fenzu" value="">
                 <div id="banzudi">
-                    <button type="button" class="btn btn-primary" onclick="banzuwemhuashangchuan()">提交</button>
+                    <button type="button" class="btn btn-primary" onclick="banzuwenhuashangchuan()">提交</button>
                     <button type="reset" class="btn btn-warning">重置</button>
                 </div>
             </div>
 
         </form>
+        <!-- 上传班组文化内容 -->
+        <script>
+            function banzuwenhuashangchuan(){
+                var fenzu=document.getElementById("wangyefenzu").innerHTML;
+                var inputs=document.getElementById("banzuwenhua").getElementsByTagName("input");
+                var texts=document.getElementById("banzuwenhua").getElementsByTagName("textarea");
+                var data1={
+                    "fenzu":fenzu,
+                    "biaoti":inputs[0].value,
+                    "logoshiyi":texts[0].value,
+                    "banzujianjie":texts[1].value
+                }
+                console.log(data1);
+                data1=JSON.stringify(data1);
+                console.log(data1);
+                $.ajax({
+                    url:'/shenmu_war_exploded/banzu/addBanzu',
+                    type:'post',
+                    data:data1,
+                    dataType:'json',
+                    contentType: 'application/json',
+                    success:function(data){
+                        alert("上传成功！");
+                        shuangchuanbanzuimg();
+                    },
+                    error:function(data){
+                        alert("上传成功！");
+                        shuangchuanbanzuimg();
+                    }
+                });
+            }
+            function shuangchuanbanzuimg(){
+
+                var formData = new FormData();
+                formData.append('file', $('#logobanzu')[0].files[0]);
+                formData.append('file', $('#banzujigou')[0].files[0]);
+                formData.append('file', $('#fengcai')[0].files[0]);
+                console.log(formData);
+                $.ajax({
+                    url:'/shenmu_war_exploded/banzu/add',
+                    type:'post',
+                    cache: false,
+                    data:formData,
+                    processData: false,
+                    contentType: false,
+                    enctype:"multipart/form-data",
+                    success:function(data){
+
+                        var obj1 = document.getElementById('logobanzu') ;
+                        obj.outerHTML=obj.outerHTML;
+                        var obj2 = document.getElementById('banzujigou') ;
+                        obj.outerHTML=obj.outerHTML;
+                        var obj3 = document.getElementById('fengcai') ;
+                        obj.outerHTML=obj.outerHTML;
+                    },
+                    error:function(data){
+                        var obj1 = document.getElementById('logobanzu') ;
+                        obj.outerHTML=obj.outerHTML;
+                        var obj2 = document.getElementById('banzujigou') ;
+                        obj.outerHTML=obj.outerHTML;
+                        var obj3 = document.getElementById('fengcai') ;
+                        obj.outerHTML=obj.outerHTML;
+                    }
+                });
+            }
+        </script>
     </div>
 </div>
 <!-- 上传文件 -->
-<script>
-    function banzuwemhuashangchuan(){
-        var fenzu=document.getElementById("wangyefenzu").innerHTML;
-        document.getElementById("banzuwenhuafenzu").value=fenzu;
-        console.log(new FormData($('#banzuwenhuachuan')[0]));
-
-        $.ajax({
-
-            url: "/shenmu_war_exploded/banzu/add",
-
-            type: "POST",
-            cache: false,
-
-            data: new FormData($('#banzuwenhuachuan')[0]),
-
-            async: false,
-
-            contentType: false,
-
-            processData: false,
-
-            success: function (result) {
-
-                console.log(result);
-
-            },
-
-            error: function (data) {
-
-                alert("上传成功！");
-            }
-
-        });
-
-
-    }
-
-</script>
 
 
 <!-- 职工积分 -->
@@ -1180,149 +1216,7 @@
 
             </h4>
             <table class="table table-hover table-striped" style="text-align:center" id="jiden_juzhong">
-                <tbody>
-                <!--<tr id="thead">-->
-                    <!--<td> 姓 名</td>-->
-                    <!--<td>个人分值汇总</td>-->
-                    <!--<td>分值</td>-->
-                <!--</tr>-->
 
-                <!--<tr>-->
-                    <!--<td>丁建峰</td>-->
-                    <!--<td>55</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="106" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>路俊彪</td>-->
-                    <!--<td>50</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="107" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>刘婷</td>-->
-                    <!--<td>40</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="108" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>胥婷婷</td>-->
-                    <!--<td>46</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="109" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>伊志文</td>-->
-                    <!--<td>43</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="110" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>李莎</td>-->
-                    <!--<td>47</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="111" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>冯雅兰</td>-->
-                    <!--<td>39</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="112" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>马婷</td>-->
-                    <!--<td>45</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="113" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>赵俊</td>-->
-                    <!--<td>38</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="114" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>刘海艳</td>-->
-                    <!--<td>36</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="115" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>李婷</td>-->
-                    <!--<td>36</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="116" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>武张杨</td>-->
-                    <!--<td>38</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="117" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>刘仙飞</td>-->
-                    <!--<td>34</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="118" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>郭少卿</td>-->
-                    <!--<td>42</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="119" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>邱会</td>-->
-                    <!--<td>40</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="120" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>张小霞</td>-->
-                    <!--<td>48</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="121" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>贺波</td>-->
-                    <!--<td>40</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="122" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>马银萍</td>-->
-                    <!--<td>55</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="123" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>刘倩</td>-->
-                    <!--<td>36</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="124" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>杨倩</td>-->
-                    <!--<td>48</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="125" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td>卜帅帅</td>-->
-                    <!--<td>40</td>-->
-                    <!--<td><input class="jidendeluru" type="text" name="126" value="0" style="width:20%"></td>-->
-                <!--</tr>-->
-
-                <!--<tr>-->
-                    <!--<td colspan="6">-->
-                        <!--<div style="text-align:center;margin-top:10px;margin-left:40%;margin-bottom: 10px;"-->
-                             <!--id="jifenjiaojiao">-->
-                            <!--<button type="button" class="btn btn-primary" onclick="jifenlurudeyuanshiajax(event)" >提交</button>-->
-                            <!--<button type="reset" class="btn btn-warning">重置</button>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
 
 
             </table>
@@ -2544,12 +2438,7 @@
     }
 </script>
 
-<script>
-    var a=document.getElementById("head").getElementsByTagName("a")[0];
-    var fenzu=document.getElementById("wangyefenzu").innerHTML;
-    console.log(fenzu);
-    a.setAttribute("href","./inde/banzuwenhua/banzujianjie.html?fenzu="+fenzu);
-</script>
+
 
 </body>
 </html>

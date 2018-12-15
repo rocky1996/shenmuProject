@@ -30,7 +30,7 @@
     </select>
 
     <select id="getXinxiByLeixingAndRiqi" parameterType="com.acat.vo.JIfenleixingAndRiqiVo" resultType="com.acat.model.Jifen">
-        select * from jw_jifen where jifenleixing = #{jifenleixing} and riqi = #{riqi};
+        select jw_jifen.id,jw_jifen.riqi,jw_jifen.jifen,jw_jifen.jifenleixing,jw_jifen.xingming from jw_jifen inner join jw_renyuan on jw_renyuan.xingming=jw_jifen.xingming where jw_jifen.jifenleixing = #{jifenleixing} and jw_jifen.riqi = #{riqi} and jw_renyuan.fenzu=#{fenzu};
     </select>
 
     <select id="getRiqiMohuchaxun" parameterType="com.acat.vo.JifenleixingAndStrVo" resultType="String">

@@ -1,5 +1,7 @@
 package com.acat.dao;
 
+import com.acat.vo.XingmingVo;
+
 import java.util.List;
 
 public interface IRenyuanDao {
@@ -37,4 +39,6 @@ public interface IRenyuanDao {
     List<RenyuanVo> findRenyuanVo();
 
     List<RenyuanVo1> findRenyuanInfo(Integer fenzu);
+
+    List<XingmingVo> getXingmingByFezu(Integer fenzu);
 }

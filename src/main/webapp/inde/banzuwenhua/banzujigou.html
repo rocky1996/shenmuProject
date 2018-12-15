@@ -16,11 +16,12 @@
 <body>
         <!-- 其中的头部 -->
         <div id="head">
-        <a href="http://222.24.63.119/"><img src="./renyuanxinxi_files/logo.png"></a>
+        <a href="#"><img src="./renyuanxinxi_files/logo.png"></a>
         <div class="to">
         <!-- <div class="searchInput">车间名称</div> -->
         <a href="http://222.24.63.119/ublack"><div class="searchInput">用户：丁建峰</div></a>
         <a href="http://222.24.63.119/ublack"><div class="searchInput">班组：检修车间备品三组</div></a>
+                <a href="../../login.html"><button class="btn btn-danger" style="margin-top: 20px;float: right">退出登陆</button></a>
         </div>
         <form action="http://222.24.63.119/c=15" method="post" class="search">
         <input type="text" name="shuju" class="shuju">
@@ -188,6 +189,7 @@
         </ul>
         </div>
         </nav></div>
+        <script src="../../session.js"></script>
         <!-- //分组加到链接后面 -->
         <script>
             //获取get传值的方法
@@ -200,9 +202,35 @@
 
             var lias = document.getElementById("nav").getElementsByTagName("a");
             var fenzu=getQueryString("fenzu");
-            for(var i=0;i<lias.length;i++){
-                var jiulianjie=lias[i].getAttribute("href");
-                lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu);
+
+            console.log(fenzu);
+            var shenfen=getQueryString("shenfen");
+            console.log(shenfen);
+            var name=getQueryString("name");
+            console.log(name);
+            var id=getQueryString("id");
+            if(shenfen == 0){
+                console.log("0");
+
+                for(var i=0;i<lias.length;i++){
+                    var jiulianjie=lias[i].getAttribute("href");
+                    lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu+"&shenfen=0"+"&name="+name);
+                }
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[0].setAttribute("href","#");
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[1].setAttribute("href","#");
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[0].innerHTML ="用户："+name;
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[1].innerHTML ="班组：检修车间备品"+fenzu+"组";
+            }else if(shenfen=='guan'){
+                console.log("1111");
+
+                for(var i=0;i<lias.length;i++){
+                    var jiulianjie=lias[i].getAttribute("href");
+                    lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu+"&shenfen=guan"+"&name="+name+"&id="+id);
+                }
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[0].setAttribute("href","../../back.html?id="+id);
+                document.getElementsByClassName("to")[0].getElementsByTagName("a")[1].setAttribute("href","../../back.html?id="+id);
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[0].innerHTML ="用户："+name;
+                document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[1].innerHTML ="班组：检修车间备品"+fenzu+"组";
             }
         </script>
 

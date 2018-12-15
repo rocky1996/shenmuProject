@@ -29,7 +29,9 @@
     <select id="findRenyuanInfo"  parameterType="Integer" resultType="java.util.Map">
         select ID,gonghao,xingming,xingbie,dianhua,ruzhishijian,beizhu from jw_renyuan where fenzu=#{fenzu}
     </select>
-
+     <select id="getXingmingByFezu" parameterType="com.acat.vo.XingmingVo" resultType="java.util.Map">
+         select xingming from jw_renyuan where fenzu=#{fenzu};
+     </select>
 </mapper>
 
 

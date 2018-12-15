@@ -17,7 +17,6 @@ public class Banhui implements Serializable {
     private String zhuti;
     private String yingchuqinrenshu;
     private Integer fenzu;
-
     public Integer getId() {
         return id;
     }

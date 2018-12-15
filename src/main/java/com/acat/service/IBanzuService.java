@@ -1,6 +1,7 @@
 package com.acat.service;
 
 import com.acat.model.Banzu;
+import com.acat.vo.BanZuVo;
 
 public interface IBanzuService {
     /**
@@ -22,4 +23,11 @@ public interface IBanzuService {
      * @return
      */
     Banzu getBanzuByFenzu(Integer fenzu);
+
+
+    int delete(Integer banzu);
+
+    BanZuVo getByFenzu(Integer fenzu);
+
+    Banzu getAllByFezu(Integer fenzu);
 }

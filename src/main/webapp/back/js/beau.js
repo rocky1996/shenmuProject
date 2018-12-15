@@ -776,7 +776,50 @@ function renyuanxinxigetMsg(fenzu){
 }
 
 //职工积分信息加载
-// setInterval(renyuanxinxigetMsg,500);
+
+//当一个积分都没有的时候先显示本族的人积分都为0
+function zhigongjifenchushitou(){
+    var htm='';
+    htm+=`<tr id="thead">
+<td> 姓 名 </td>
+<td>个人分值汇总</td>
+<td>分值</td>
+</tr>`;
+    $('#jiden_juzhong').html(htm);
+}
+function zhigongjifenchushiaddMsg(pname){
+    var html='';
+    html+=`<tr>
+<td>${pname}<input type="hidden" class="jifenluruyuannames" value="${pname}"></td>
+<td>0</td>
+<td><input class="jifenluruyuan" type="text" name="106" value="0" style="width:20%"></td>
+</tr>`;
+    $('#jiden_juzhong').append(html);
+}
+function zhigongjifenchushigetMsg(){
+    var fenzu=document.getElementById("wangyefenzu").innerHTML;
+    console.log(fenzu);
+    fenzu=Number(fenzu);
+    $.ajax({
+        url:"/shenmu_war_exploded/renyuan/name/"+fenzu,
+        type:"get",
+        success:function(data){
+            console.log(data);
+            console.log(data[0].xingming);
+            zhigongjifenchushitou()
+            for(var i=0;i<data.length;i++){
+                zhigongjifenchushiaddMsg(data[i].xingming);
+            }
+        },
+        error:function(data){
+            console.log("zpou555");
+        }
+    });
+
+}
+
+
+//当数据库有记录的时候
 function zhigongjifentou(){
     var htm='';
     htm+=`<tr id="thead">
@@ -796,6 +839,7 @@ function zhigongjifenaddMsg(pname,fenzhi){
     $('#jiden_juzhong').append(html);
 }
 function zhigongjifengetMsg(){
+
       var fenzu=document.getElementById("wangyefenzu").innerHTML;
     console.log(fenzu);
     fenzu=Number(fenzu);
@@ -804,11 +848,16 @@ function zhigongjifengetMsg(){
         type:"get",
         success:function(data){
             console.log(data);
-            console.log(data[0].xingming);
-            zhigongjifentou();
-            for(var i=0;i<data.length;i++){
-                zhigongjifenaddMsg(data[i].xingming,data[i].gerenfenzhihuizong);
+            // console.log(data[0].xingming);
+            if(data.length==0){
+                zhigongjifenchushigetMsg();
+            }else{
+                zhigongjifentou();
+                for(var i=0;i<data.length;i++){
+                    zhigongjifenaddMsg(data[i].xingming,data[i].gerenfenzhihuizong);
+                }
             }
+
         },
         error:function(data){
             console.log("zpou555");
@@ -895,6 +944,44 @@ function banqiangetMsg(){
         }
     });
 }
+//班组文化内容回显
+function banzuwenhuahuixian(){
+    var fenzu=document.getElementById("wangyefenzu").innerHTML;
+    var inputs=document.getElementById("banzuwenhua").getElementsByTagName("input");
+    var texts=document.getElementById("banzuwenhua").getElementsByTagName("textarea");
+    $.ajax({
+        url:'/shenmu_war_exploded/banzu/get/'+fenzu,
+        type:'get',
+        success:function(data){
+            console.log(data);
+            if(data.biaoti==undefined){
+                inputs[0].value='';
+                texts[0].value='';
+                texts[1].value='';
+            }else{
+                inputs[0].value=data.biaoti;
+                texts[0].value=data.logoshiyi;
+                texts[1].value=data.banzujianjie;
+            }
+
+
+        },
+        error:function(data){
+
+            if(data.biaoti==undefined){
+                inputs[0].value='';
+                texts[0].value='';
+                texts[1].value='';
+            }else{
+                inputs[0].value=data.biaoti;
+                texts[0].value=data.logoshiyi;
+                texts[1].value=data.banzujianjie;
+            }
+        }
+    });
+
+}
+
 
 //文件管理信息加载
   // setInterval(wenjiangetMsg,500);
@@ -1049,5 +1136,38 @@ function shenpigetMsg(){
         }
     });
 }
+
+
+
+
+//获取get传值的方法
+
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURI(r[2]);
+    return null;
+}
+function  jialianjie() {
+
+    var id=getQueryString("id");
+    var a=document.getElementById("head").getElementsByTagName("a")[0];
+    var fenzu=document.getElementById("wangyefenzu").innerHTML;
+
+    var name=document.getElementById("zuzhangxingming").innerHTML;
+
+    console.log(fenzu);
+    window.location.href="./inde/banzuwenhua/banzujianjie.html?fenzu="+fenzu+"&shenfen=guan"+"&name="+name+"&id="+id;
+    a.setAttribute("href","./inde/banzuwenhua/banzujianjie.html?fenzu="+fenzu+"&shenfen=guan"+"&name="+name+"&id="+id);
+}
+// history.go(1);
+
+
+
+
+
+
+
+
 
 

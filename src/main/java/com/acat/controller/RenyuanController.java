@@ -1,8 +1,11 @@
 package com.acat.controller;
 
+import com.acat.service.IRenyuanService;
+import com.acat.vo.XingmingVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,6 +22,9 @@ public class RenyuanController {
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         System.out.println(renyuan);
         System.out.println(renyuan.getID());
+
+        HttpServletRequest request = null;
+        request.getSession().setAttribute("renyuan",renyuan);
         iRenyuanService.addRenyuan(renyuan);
     }
 
@@ -58,7 +64,16 @@ public class RenyuanController {
 
         return "修改成功";
     }
+    @GetMapping("/name/{fenzu}")
+       public List<XingmingVo> getxingming(@PathVariable("fenzu") Integer fenzu){
+        System.out.println(fenzu);
+        System.out.println(iRenyuanService.getXingmingByFezu(fenzu));
+        return iRenyuanService.getXingmingByFezu(fenzu);
+       }
 
-
-
+    @GetMapping("/logout")
+    public void logout(HttpServletRequest request){
+        request.getSession().removeAttribute("renyuan");
+        request.getSession().invalidate();
+    }
 }

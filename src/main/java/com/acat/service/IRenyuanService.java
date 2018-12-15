@@ -1,6 +1,7 @@
 package com.acat.service;
 
 import com.acat.model.Renyuan;
+import com.acat.vo.XingmingVo;
 
 import java.util.List;
 
@@ -39,5 +40,6 @@ public interface IRenyuanService {
     List<RenyuanVo> findRenyuanVo();
 
 
+    List<XingmingVo> getXingmingByFezu(Integer fenzu);
     List<RenyuanVo1> findRenyuanInfo(Integer fenzu);
 }

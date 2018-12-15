@@ -1,5 +1,8 @@
 package com.acat.dao;
 
+import com.acat.vo.BanZuVo;
+
+ 
 public interface IBanzuDao {
 
     /**
@@ -21,5 +24,14 @@ public interface IBanzuDao {
      * @return
      */
     Banzu getBanzuByFenzu(Integer fenzu);
+
+    int delete(Integer banzu);
+
+    BanZuVo getByFenzu(Integer fenzu);
+
+
+
+   Banzu getAllByFezu(Integer fenzu);
+
 
 }

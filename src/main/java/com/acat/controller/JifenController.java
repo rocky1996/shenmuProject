@@ -1,6 +1,7 @@
 package com.acat.controller;
 
 
+import com.acat.service.IJifenService;
 import com.acat.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -51,8 +52,11 @@ public class JifenController {
     @PostMapping("/get")
     public Map<String,List<Jifen>> jifenVoList(@RequestBody JifenleixingAndFenzuVo type) {
 
-
-
+        System.out.println("------------------------------------");
+        System.out.println(type);
+        System.out.println(type.getFenzu());
+        Integer fenzu=type.getFenzu();
+        System.out.println("-----------------------------------------");
         Map<String,List<Jifen>> map = new HashMap<>();
         List<Jifen> list = null;
         String riqi02 = null;
@@ -94,20 +98,28 @@ public class JifenController {
 //        System.out.println("#######");
 
         JIfenleixingAndRiqiVo vo1 = new JIfenleixingAndRiqiVo();
-
-
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        System.out.println(fenzu);
+        vo1.setFenzu(fenzu);
         if(dangqiantianshu <= tianshu){
             for(int i=1;i<=dangqiantianshu;i++){
                 if(i<=9) {
                     String tian = "0" + String.valueOf(i);
-                    System.out.println(tian);
+//                    System.out.println(tian);
                     riqi02 = str[0] + "-" + str[1] + "-" + tian;
-                    System.out.println(riqi02);
+//                    System.out.println(riqi02);
                     if (stringList.contains(riqi02)) {
                         System.out.println("包含该日期");
                         System.out.println(riqi02);
                         vo1.setJifenleixing(type.getJifenleixing());
                         vo1.setRiqi(riqi02);
+//                        vo1.setFenzu(type.getFenzu());
+                        System.out.println(type.getFenzu());
+                        System.out.println("------------------------------------");
+                        System.out.println(type);
+                        System.out.println(type.getJifenleixing());
+                        System.out.println(fenzu);
+                        System.out.println("-----------------------------------------");
                         list = jifenService.getXinxiByLeixingAndRiqi(vo1);
                         System.out.println("list-----------------------------------"+list);
                         System.out.println(list);
@@ -122,7 +134,7 @@ public class JifenController {
                 }else {
                     riqi02 = str[0] + "-" + str[1] + "-" + String.valueOf(i);
                     if(stringList.contains(riqi02)){
-                        System.out.println(riqi02);
+//                        System.out.println(riqi02);
                         vo1.setJifenleixing(type.getJifenleixing());
                         vo1.setRiqi(riqi02);
                         list = jifenService.getXinxiByLeixingAndRiqi(vo1);

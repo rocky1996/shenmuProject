@@ -6,6 +6,15 @@ public class JIfenleixingAndRiqiVo {
 
     private Integer jifenleixing;
     private String riqi;
+    private Integer fenzu;
+
+    public Integer getFenzu() {
+        return fenzu;
+    }
+
+    public void setFenzu(Integer fenzu) {
+        this.fenzu = fenzu;
+    }
 
     public Integer getJifenleixing() {
         return jifenleixing;
@@ -28,6 +37,7 @@ public class JIfenleixingAndRiqiVo {
         return "JIfenleixingAndRiqiVo{" +
                 "jifenleixing=" + jifenleixing +
                 ", riqi='" + riqi + '\'' +
+                ", fenzu=" + fenzu +
                 '}';
     }
 }
