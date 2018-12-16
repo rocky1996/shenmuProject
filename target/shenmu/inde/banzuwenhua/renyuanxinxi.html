@@ -16,11 +16,13 @@
 <body>
                 <!-- 其中的头部 -->
                 <div id="head">
-                <a href="http://222.24.63.119/"><img src="./anquanlihui_files/logo.png"></a>
+                <a href="#"><img src="./renyuanxinxi_files/logo.png"></a>
                 <div class="to">
                 <!-- <div class="searchInput">车间名称</div> -->
                 <a href="http://222.24.63.119/ublack"><div class="searchInput">用户：丁建峰</div></a>
                 <a href="http://222.24.63.119/ublack"><div class="searchInput">班组：检修车间备品三组</div></a>
+                    <a href="../../login.html"><button class="btn btn-danger" style="margin-top: 20px;float: right">退出登陆</button></a>
+
                 </div>
                 <form action="http://222.24.63.119/c=15" method="post" class="search">
                 <input type="text" name="shuju" class="shuju">
@@ -188,6 +190,50 @@
                 </ul>
                 </div>
                 </nav></div>
+                <script src="../../session.js"></script>
+                <!-- //分组加到链接后面 -->
+                <script>
+                    //获取get传值的方法
+                    function getQueryString(name) {
+                        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                        var r = window.location.search.substr(1).match(reg);
+                        if (r != null) return decodeURI(r[2]);
+                        return null;
+                    }
+
+                    var lias = document.getElementById("nav").getElementsByTagName("a");
+                    var fenzu=getQueryString("fenzu");
+
+                    console.log(fenzu);
+                    var shenfen=getQueryString("shenfen");
+                    console.log(shenfen);
+                    var name=getQueryString("name");
+                    console.log(name);
+                    var id=getQueryString("id");
+                    if(shenfen == 0){
+                        console.log("0");
+
+                        for(var i=0;i<lias.length;i++){
+                            var jiulianjie=lias[i].getAttribute("href");
+                            lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu+"&shenfen=0"+"&name="+name);
+                        }
+                        document.getElementsByClassName("to")[0].getElementsByTagName("a")[0].setAttribute("href","#");
+                        document.getElementsByClassName("to")[0].getElementsByTagName("a")[1].setAttribute("href","#");
+                        document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[0].innerHTML ="用户："+name;
+                        document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[1].innerHTML ="班组：检修车间备品"+fenzu+"组";
+                    }else if(shenfen=='guan'){
+                        console.log("1111");
+
+                        for(var i=0;i<lias.length;i++){
+                            var jiulianjie=lias[i].getAttribute("href");
+                            lias[i].setAttribute("href",jiulianjie+"?fenzu="+fenzu+"&shenfen=guan"+"&name="+name+"&id="+id);
+                        }
+                        document.getElementsByClassName("to")[0].getElementsByTagName("a")[0].setAttribute("href","../../back.html?id="+id);
+                        document.getElementsByClassName("to")[0].getElementsByTagName("a")[1].setAttribute("href","../../back.html?id="+id);
+                        document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[0].innerHTML ="用户："+name;
+                        document.getElementsByClassName("to")[0].getElementsByClassName("searchInput")[1].innerHTML ="班组：检修车间备品"+fenzu+"组";
+                    }
+                </script>
 
 
 <!-- 移动端的导航栏-->
@@ -220,7 +266,7 @@
 <div class="culterContent">
 <h3>人员信息</h3>
 <form action="http://222.24.63.119/p=1691" class="mesTab">
-<table border="1px" cellspecing="0" class="mes" width="900px" id="peopleMes">
+<table border="1px" cellspecing="0" class="mes" width="900px" id="peopleMes" class="table table-bordered table-hover">
 <thead>
 <tr><td>序号</td>
 <td>部门</td>
@@ -426,36 +472,92 @@
 </div>
 </div>
 </div>
+                <script>
+                    //人员信息表信息加载
+                    function renyuantou(){
+                        var htm='';
+                        htm+=`<tr><td>序号</td>
+                            <td>工号</td>
+                            <td>姓名</td>
+                            <td>性别</td>
+                            <td>电话</td>
+                            <td>入职时间</td>
+                            <td>备注</td>
+                            </tr>`;
+                        $('#peopleMes').html(htm);
+                    }
+                    function renyuanxinaddMsg(i,data){
+                        var html='';
+                        html+=`<tr>
+                            <td>${i+1}</td>
+                            <td>${data.gonghao}</td>
+                            <td>${data.xingming}</td>
+                            <td>${data.xingbie}</td>
+                            <td>${data.dianhua}</td>
+                            <td>${data.ruzhishijian}</td>
+                            <td>${data.beizhu}</td>
+                            </tr>`;
+                        $('#peopleMes').append(html);
+                    }
+                    function renyuanwei(){
+                        var aa=$('#peopleMes').html();
+                        aa=`<tbody>`+aa+`</tbody>`;
+                        $('#peopleMes').html(aa);
+                    }
+                    function renyuanxinxigetMsg(){
+                        var fenzu=getQueryString("fenzu");
+                        $.ajax({
+                            url:"/shenmu_war_exploded/renyuan/listInfo/"+fenzu,
+                            type:"get",
+                            dataType: 'JSON',
+                            contentType: 'application/json;charset=UTF-8',
+                            success:function(data){
+                                console.log(data);
+
+                                renyuantou();
+                                for(var i=0;i<data.length;i++){
+                                    renyuanxinaddMsg(i,data[i]);
+                                }
+                                renyuanwei();
+                            },
+                            error:function(data){
+                                console.log("加载出错！");
+                            }
+                        });
+                    }
+                    renyuanxinxigetMsg();
+
+                </script>
 
 <footer>
 <p>@国家能源集团有限公司</p>
 </footer>
-<script type="text/javaScript">
-window.onload = function () {
-var odiv2 = document.getElementById('div2');
-var ali = odiv2.getElementsByTagName('li');
-var aspeed = -5;
-var timer = null;
-odiv2.innerHTML += odiv2.innerHTML;
-odiv2.style.width = ali[0].offsetWidth * ali.length + 'px';
-odiv2.onmouseover = function () { clearInterval(timer); };
-function a() {
-timer = setInterval(function () {
-odiv2.style.left = odiv2.offsetLeft + aspeed + 'px';
-if (odiv2.offsetLeft < -odiv2.offsetWidth / 2) {
-odiv2.style.left = '0px';
-}
-}, 100);
-};
-odiv2.onmouseout = a;
-a();
-var oSear = document.getElementById('sear');
-function b() {
-oSear.innerHTML = '查询';
-}
-b();
-}
-</script>
+<!--<script type="text/javaScript">-->
+<!--window.onload = function () {-->
+<!--var odiv2 = document.getElementById('div2');-->
+<!--var ali = odiv2.getElementsByTagName('li');-->
+<!--var aspeed = -5;-->
+<!--var timer = null;-->
+<!--odiv2.innerHTML += odiv2.innerHTML;-->
+<!--odiv2.style.width = ali[0].offsetWidth * ali.length + 'px';-->
+<!--odiv2.onmouseover = function () { clearInterval(timer); };-->
+<!--function a() {-->
+<!--timer = setInterval(function () {-->
+<!--odiv2.style.left = odiv2.offsetLeft + aspeed + 'px';-->
+<!--if (odiv2.offsetLeft < -odiv2.offsetWidth / 2) {-->
+<!--odiv2.style.left = '0px';-->
+<!--}-->
+<!--}, 100);-->
+<!--};-->
+<!--odiv2.onmouseout = a;-->
+<!--a();-->
+<!--var oSear = document.getElementById('sear');-->
+<!--function b() {-->
+<!--oSear.innerHTML = '查询';-->
+<!--}-->
+<!--b();-->
+<!--}-->
+<!--</script>-->
 
 
 </body></html>

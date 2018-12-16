@@ -16,8 +16,6 @@ public class BanhuiServiceImpl  implements BanhuiService {
 
     @Override
     public Banhui getBanhuiById(Integer id) {
-
-        //return banhuiDao.getBanhuiById(id);
         return banhuiDao.getBanhuiById(id);
     }
 

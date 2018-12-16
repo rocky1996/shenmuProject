@@ -15,14 +15,59 @@
 <script src="./s6_files/bootstrap.min.js.下载"></script>
 <!-- <script src="/static/style/js/jquery.js?v=a09e13ee94d51c524b7e2a728c7d4039"></script>
 <script src="/static/style/js/bootstrap.js?v=5869c96cc8f19086aee625d670d741f9"></script> -->
-<style>
-        .table tbody tr td{
-        vertical-align: middle;
-        }
-        .table th, .table td {
-        text-align: center;
-        vertical-align: middle!important;
-        }
+        <style>
+                .table tbody tr td{
+                        vertical-align: middle;
+                }
+                .table th, .table td {
+                        text-align: center;
+                        vertical-align: middle!important;
+                }
+        </style>
+        <style type="text/css">
+                .contentBox{
+                        display: none;
+                }
+                .headtitle{
+                        text-align: center;
+                }
+                .box{
+                        padding-top:30px;
+                }
+                #err{
+                        position: absolute; top:0;bottom:0;left:0;right:0;
+                        margin:auto;
+                        width:50%;
+                }
+        </style>
+        <style>
+                .meetingForm{
+                        width: 80%;
+                        margin: auto;
+                        text-align: center;
+                }
+                .meetingTable td{
+                        border:1px solid;
+                        table-layout:fixed;
+                        word-break: break-all;
+                        text-align: center;
+                        vertical-align: middle!important;
+                }
+                .meetingTable{
+                        margin: auto;
+                        border:1px solid;border-collapse:collapse;
+                }
+                .meetingTable thead td .meetingTable thead td input .numberP td{
+                        width: 100px;
+                        height: 50px;
+                }
+                .summary{
+                        height: 200px;
+                }
+                .meetingTable thead td {
+                        width: 20%;
+                        height: 40px;
+                }
         </style>
         <link href="./anquanlihui_files/content.css" type="text/css" rel="stylesheet">
         </head>
@@ -271,21 +316,7 @@
 </li>
 </ul>
 
-<style type="text/css">
-.contentBox{
-display: none;
-}
-.headtitle{
-text-align: center;
-}
-.box{
-padding-top:30px;
-}
-#err{
-position: absolute; top:0;bottom:0;left:0;right:0;
-margin:auto;
-width:50%;
-</style>
+
 <div class="container-fluid content detail">
 <div class="col-xs-12 col-md-12" id="position" style="margin-bottom:10px;">
 <img src="./s6_files/jianTou2.png" id="house">
@@ -293,7 +324,7 @@ width:50%;
 </div>
 <div class="row">
 
-<div class="col-xs-12 col-md-12">
+<div class="col-xs-12 col-md-12"  id="ssss6">
 <ul class="xueXiList">
 
 
@@ -326,19 +357,140 @@ width:50%;
 </div>
 </div>
 </div>
-<script type="text/javascript">
-var nav = document.querySelectorAll(".navBtn");
-var contentBox = document.querySelectorAll(".contentBox");
-for (var i = 0; i <nav.length ; i++) {
-nav[i].index=i;
-nav[i].onclick=function(){
-for (var j = 0; j <contentBox.length ; j++) {
-contentBox[j].style.display="none";
-}
-contentBox[this.index].style.display="block";
-}
-}
-</script>
+        <script>
+            //6s信息加载
+            function add0(m){return m<10?'0'+m:m }
+            function format(shijianchuo)
+            {
+
+                var time = new Date(shijianchuo);
+                var y = time.getFullYear();
+                var m = time.getMonth()+1;
+                var d = time.getDate();
+                var h = time.getHours();
+                var mm = time.getMinutes();
+                var s = time.getSeconds();
+                return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+            }
+
+            function banqianaddMsg(data){
+
+                var html=`<ul class="xueXiList">`;
+                for(var i=0;i<data.length;i++){
+                    var shijian=format(data[i].updatetime);
+                    html+=`<li class="lilisi">
+                <span class="titleList">
+                <a "> ${data[i].jianchashijian}&nbsp;&nbsp;&nbsp;6S</a>
+                </span>
+                <span class="authorList">
+
+                </span>
+                <span class="timeList">
+                ${shijian}
+                </span>
+                </li>`;
+                }
+                html+=`</ul>`;
+                $('#ssss6').html(html);
+
+                var htm=``;
+                for(var i=0;i<data.length;i++){
+                    var shijian=format(data[i].updatetime);
+                    htm+=`<div class="inform" style="display:none">
+                <p id="headtitle">${shijian} ${data[i].zhuti}</p>
+                <center><h2>班前、班后会</h2></center>
+                <center><p>${data[i].jianchashijian}</p></center>
+                <table class="meetingTable" width="80%">
+                <thead style="height:50px">
+                <tr><td>部/车间</td>
+                <td>检查时间</td>
+                <td>检查人职务</td>
+                <td>检查地点</td>
+                <td>责任人</td>
+                </tr></thead>
+                <tr class="numberP">
+                <td style="width:250px;height:80px">${data[i].bumen}</td>
+                <td>${data[i].jianchashijian}</td>
+                <td>${data[i].jiancharenzhiwu}</td>
+                <td>${data[i].jianchadidian}</td>
+                <td>${data[i].zerenren}</td>
+                </tr>
+                <thead style="height:50px">
+                <tr><td>检查人姓名</td>
+                <td>类型</td>
+                <td>整改时间</td>
+                <td>种类</td>
+                <td></td>
+                </tr></thead>
+                <tbody><tr class="numberP">
+                <td style="width:250px;height:80px">${data[i].jiancharenxingming}</td>
+                <td>${data[i].leixing}</td>
+                <td>${data[i].zhenggaishijian}</td>
+                <td>${data[i].zhonglei}</td>
+                <td></td>
+                </tr>
+                <tr class="summary">
+                <td>概况</td>
+                <td colspan="4">${data[i].gaikuang}</td>
+                </tr>
+                <tr class="summary">
+                <td>处理情况</td>
+                <td colspan="4">${data[i].chuliqingkuang}</td>
+                </tr>
+                </tbody></table>
+                </div>`;
+                }
+                $('#ssss6').append(htm);
+            }
+            function banqiangetMsg(){
+
+                var fenzu=getQueryString("fenzu");
+                data={
+                    "fenzu":fenzu,
+                    "zhonglei":'6S'
+                }
+                data=JSON.stringify(data);
+                $.ajax({
+                    url:"/shenmu_war_exploded/tpm/get",
+                    type:"post",
+                    data:data,
+                    dataType: 'JSON',
+                    contentType: 'application/json;charset=UTF-8',
+                    async: false,
+                    success:function(data){
+                        console.log(data);
+                        banqianaddMsg(data)
+                    },
+                    error:function(data){
+                        console.log(data);
+                        banqianaddMsg(data);
+                    }
+                });
+            }
+            banqiangetMsg();
+
+        </script>
+
+        <script>
+            var banzu = document.querySelectorAll(".lilisi");
+            var banzubox = document.querySelectorAll(".inform");
+            xuanXIangKa(banzu,banzubox);
+            // // 对于其中的选项卡的设置
+            function xuanXIangKa(obj1,obj2){
+                for (var i = 0; i <obj1.length ; i++) {
+                    obj1[i].index=i;
+
+                    obj1[i].onclick=function(){
+                        for (var j = 0; j<obj2.length; j++) {
+                            obj2[j].style.display="none";
+                        }
+                        obj2[this.index].style.display="block";
+                        document.getElementsByClassName("xueXiList")[0].style.display="none";
+                    }
+
+                }
+            }
+        </script>
 
 <footer>
 <p>@国家能源集团有限公司</p>

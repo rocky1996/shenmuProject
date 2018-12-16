@@ -90,9 +90,9 @@
 </span>
         </li>
 
-        <li style="margin-top:20px;" class="Leftnav" onclick="zhigongjifengetMsg()" >
-            <img onclick="zhigongjifengetMsg()"  src="back/imgs/hot.png">
-            <p onclick="zhigongjifengetMsg()" >
+        <li style="margin-top:20px;" class="Leftnav" onclick="zhigongjifengetMsg(1)" >
+            <img onclick="zhigongjifengetMsg(1)"  src="back/imgs/hot.png">
+            <p onclick="zhigongjifengetMsg(1)" >
                 职工积分
             </p>
             <span>
@@ -140,9 +140,9 @@
 </span>
         </li>
 
-        <li style="margin-top:20px;" class="Leftnav">
-            <img src="back/imgs/hot.png">
-            <p>
+        <li style="margin-top:20px;" class="Leftnav" onclick="tpm6sgetMsg()">
+            <img src="back/imgs/hot.png" onclick="tpm6sgetMsg()">
+            <p onclick="tpm6sgetMsg()">
                 6S &amp; TPM
             </p>
             <span>
@@ -214,7 +214,7 @@
 安全作业
 </span>
 
-        <span>
+        <span onclick="tpm6sgetMsg()">
 6S &amp; TPM
 </span>
 
@@ -754,42 +754,7 @@
         </h1>
 
         <table id="banqianAdd" class=" table table-hover table-striped" style="text-align:center">
-            <tbody>
-            <tr id="thead">
-                <td>序号</td>
-                <td>会议名称</td>
 
-                <td>出勤人数</td>
-                <td>发布人</td>
-                <td>操作</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>员工大会</td>
-
-                <td>106</td>
-                <td>1</td>
-                <td>
-                    <div class="1">
-                        <button type="submit" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>员工大会</td>
-
-                <td>106</td>
-                <td>1</td>
-                <td>
-                    <div class="2">
-                        <button type="submit" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
         </table>
 
     </div>
@@ -1198,11 +1163,13 @@
             <input type="hidden" name="biao" value="4">
             <input type="hidden" name="" value="职工积分">
             <h1>职工积分汇总</h1>
-            <h4><span id="jifenluru">请选择录入类型：<select name="leibie">
-                                <option value="1">计件统计</option>
-                                <option value="2">积分统计</option>
-                                <option value="3">考核奖励</option>
+            <h4><span id="jifenluru">请选择录入类型：<select name="leibie" id="zhigongjifendelect">
+                                <option value="1" onclick="zhigongjifengetMsg(1)">计件统计</option>
+                                <option value="2" onclick="zhigongjifengetMsg(2)">积分统计</option>
+                                <option value="3" onclick="zhigongjifengetMsg(3)">考核奖励</option>
                         </select> </span>
+
+
                 <span id="jifenshijian" style="float:right">时间选择： <input type="date" name="alertDateQuery" id="aDate"
                                                                          value="1022-2-2"> </span>
                 <!-- 当日时间的js -->
@@ -1241,6 +1208,9 @@
         </script>
             <script>
                 function jifengluruyuansheng(){
+
+                    var p1=$("#zhigongjifendelect").children('option:selected').val();
+                    console.log(p1);
                     var inpunames=document.getElementById("jiden_juzhong").getElementsByClassName("jifenluruyuannames");
                     var inpus=document.getElementById("jiden_juzhong").getElementsByClassName("jifenluruyuan");
                     // var inpus=$("#jiden_juzhong .jifenluruyuan");
@@ -1284,7 +1254,7 @@
                         {
                             // console.log(xmlhttp.responseText);
                             alert("成功！");
-                            zhigongjifengetMsg();
+                            zhigongjifengetMsg(p1);
 
                         }
 
@@ -1293,6 +1263,12 @@
                     xmlhttp.setRequestHeader("Content-type","application/json; charset=utf-8");
                     xmlhttp.send(data);
                 }
+                $("#zhigongjifendelect").change(function(){
+                    console.log("aaaaaaaaaa");
+                    var p1=$(this).children('option:selected').val();
+                    zhigongjifengetMsg(p1);
+
+                })
 
             </script>
         </form>
@@ -2023,81 +1999,9 @@
         </h1>
         <table id="ssstpm" class=" table table-hover table-striped">
             <tbody>
-            <tr id="thead">
-                <td>序号</td>
-                <td>部/车间</td>
-                <td>检查时间</td>
-                <td>检查人职务</td>
-                <td>检查人姓名</td>
-                <td>检查地点</td>
-                <td>概况</td>
-                <td>责任人</td>
-                <td>处理情况</td>
-                <td>类型</td>
-                <td>整改时间</td>
-                <td>种类</td>
-                <td>操作</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1.1.1</td>
-                <td>6S</td>
-                <td>
-                    <div class="1">
-                        <button type="button" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1.1.1</td>
-                <td>TPM</td>
-                <td>
-                    <div class="2">
-                        <button type="button" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1.1.1</td>
-                <td>6S</td>
-                <td>
-                    <div class="3">
-                        <button type="button" class="btn btn-primary">修改</button>
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </div>
-                </td>
-            </tr>
+
+
+
             </tbody>
         </table>
     </div>
@@ -2110,15 +2014,12 @@
 
         </div>
         <form action="http://222.24.63.119/ublack" class="meetingForm" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_xsrf" value="2|8ed292fc|f2cb9d359ecd2fa71b73329064bddb8a|1541821002">
-            <input type="hidden" name="formname" value="bzwh">
-            <input type="hidden" name="biao" value="9">
-            <input type="hidden" name="tag" value="2">
+
             <h2>6S、TPM记录表</h2>
             <hr>
             <div id="banzuwenhua">
                 <label>部/车间：</label><input type="text" name="text1" placeholder="部/车间">
-                <label>检查时间 ：</label><input type="text" name="text2" placeholder="检查时间">
+                <label>检查时间 ：</label><input type="date" name="alertDateQuery" placeholder="检查时间" id="tpmpostjiancha">
                 <label>检查人职务 ：</label><input type="text" name="text3" placeholder="检查人职务">
                 <label>检查人姓名 ：</label><input type="text" name="text4" placeholder="检查人姓名">
                 <label>检查地点 ：</label><input type="text" name="text5" placeholder="检查地点">
@@ -2126,24 +2027,80 @@
                 <label>责任人：</label><input type="text" name="text7" placeholder="责任人">
                 <label>处理情况：</label><input type="text" name="text8" placeholder="处理情况">
                 <label>类型：</label>
-                <select name="text9">
+                <select name="text9" id="tpmselectpost">
                     <option value="1" selected="selected">类型1</option>
                     <option value="2">类型2</option>
                     <option value="3">类型3</option>
                     <option value="4">类型4</option>
                 </select>
-                <label>整改时间：</label><input type="text" name="text10" placeholder="整改时间">
-                <label>种类：</label><input type="radio" value="1" name="text11"><span>6S</span>
-                <input type="radio" value="2" name="text11"><span>TPM</span>
+                <label>整改时间：</label><input type="date" name="alertDateQuery" placeholder="整改时间" id="zhengaitian">
+                <label>种类：</label><input type="radio" value="6S" name="tpm6s"><span>6S</span>
+                <input type="radio" value="TPM" name="tpm6s"><span>TPM</span>
             </div>
             <div style="text-align:center;margin-top:10px;">
-                <button type="submit" class="btn btn-primary">添加</button>
+                <button type="button" class="btn btn-primary" onclick="sss6_tpmpost()">添加</button>
                 <button type="reset" class="btn btn-warning" onclick="hiden6()">取消</button>
             </div>
             <br><br><br>
         </form>
     </div>
 </div>
+
+
+<script>
+    function sss6_tpmpost(){
+        var fenzu=document.getElementById("wangyefenzu").innerHTML;
+        var inputs=document.getElementById("t6stpm").getElementsByTagName("input");
+        var texts=document.getElementById("t6stpm").getElementsByTagName("textarea");
+        var typeshuru=$("#t6stpm select")[0].value;
+
+
+        var jianchashijian=$("#tpmpostjiancha")[0].value;
+        shijian=jianchashijian.split("/");
+        shijian=shijian.join("-");
+
+        var zhenggaishijian=$("#zhengaitian")[0].value;
+        shijian2=zhenggaishijian.split("/");
+        shijian2=shijian2.join("-");
+        var data1={
+            "fenzu":fenzu,
+            "bumen":inputs[0].value,
+            "jianchashijian":shijian,
+            "jiancharenzhiwu":inputs[2].value,
+            "jiancharenxingming":inputs[3].value,
+            "jianchadidian":inputs[4].value,
+            "gaikuang":texts[0].value,
+            "zerenren":inputs[5].value,
+            "chuliqingkuang":inputs[6].value,
+            "leixing":typeshuru,
+            "zhenggaishijian":shijian2,
+            "zhonglei":$("#t6stpm input[name='tpm6s']:checked").val()
+
+
+        }
+        console.log(data1);
+        data1=JSON.stringify(data1);
+        console.log(data1);
+        $.ajax({
+            url:'/shenmu_war_exploded/tpm/add',
+            type:'post',
+            data:data1,
+            dataType:'json',
+            contentType: 'application/json',
+            success:function(data){
+                alert("上传成功！");
+                tpm6sgetMsg();
+                hiden6();
+
+            },
+            error:function(data){
+                alert("上传成功！");
+                tpm6sgetMsg();
+                hiden6();
+            }
+        });
+    }
+</script>
 
 <!--6s tpm修改-->
 <div id="t6stpmgai">
@@ -2161,7 +2118,7 @@
             <hr>
             <div id="banzuwenhua">
                 <label>部/车间：</label><input type="text" name="text1" placeholder="部/车间">
-                <label>检查时间 ：</label><input type="text" name="text2" placeholder="检查时间">
+                <label>检查时间 ：</label><input type="date" name="alertDateQuery" placeholder="检查时间" id="jianchagaitime">
                 <label>检查人职务 ：</label><input type="text" name="text3" placeholder="检查人职务">
                 <label>检查人姓名 ：</label><input type="text" name="text4" placeholder="检查人姓名">
                 <label>检查地点 ：</label><input type="text" name="text5" placeholder="检查地点">
@@ -2169,25 +2126,129 @@
                 <label>责任人：</label><input type="text" name="text7" placeholder="责任人">
                 <label>处理情况：</label><input type="text" name="text8" placeholder="处理情况">
                 <label>类型：</label>
-                <select name="text9">
+                <select name="text9" id="tpm6sgaideleibie">
                     <option value="1" selected="selected">类型1</option>
                     <option value="2">类型2</option>
                     <option value="3">类型3</option>
                     <option value="4">类型4</option>
                 </select>
-                <label>整改时间：</label><input type="text" name="text10" placeholder="整改时间">
-                <label>种类：</label><input type="radio" value="0" name="text11"><span>6S</span>
-                <input type="radio" value="1" name="text11"><span>TPM</span>
+                <label>整改时间：</label><input type="date" name="alertDateQuery" placeholder="整改时间" id="zhengaitiangai">
+                <label>种类：</label><input type="radio" value="6S" name="tpm6s"><span>6S</span>
+                <input type="radio" value="TPM" name="tpm6s"><span>TPM</span>
             </div>
             <div style="text-align:center;margin-top:10px;">
-                <button type="submit" class="btn btn-primary">添加</button>
+                <button type="button" class="btn btn-primary" onclick="sss6_tpmgaipost()">添加</button>
                 <button type="reset" class="btn btn-warning" onclick="hiden6gai()">取消</button>
             </div>
             <br><br><br>
         </form>
+
+        <script>
+            function sss6_tpmgaipost(){
+                var fenzu=document.getElementById("wangyefenzu").innerHTML;
+                var inputs=document.getElementById("t6stpmgai").getElementsByTagName("input");
+                var texts=document.getElementById("t6stpmgai").getElementsByTagName("textarea");
+                var typeshuru=$("#t6stpmgai select")[0].value;
+                var id=document.getElementById("s6tpmsss").value;
+
+                var jianchashijian=$("#jianchagaitime")[0].value;
+                shijian=jianchashijian.split("/");
+                shijian=shijian.join("-");
+
+                var zhenggaishijian=$("#zhengaitiangai")[0].value;
+                shijian2=zhenggaishijian.split("/");
+                shijian2=shijian2.join("-");
+                var data1={
+                    "id":id,
+                    "fenzu":fenzu,
+                    "bumen":inputs[4].value,
+                    "jianchashijian":shijian,
+                    "jiancharenzhiwu":inputs[6].value,
+                    "jiancharenxingming":inputs[7].value,
+                    "jianchadidian":inputs[8].value,
+                    "gaikuang":texts[0].value,
+                    "zerenren":inputs[9].value,
+                    "chuliqingkuang":inputs[10].value,
+                    "leixing":typeshuru,
+                    "zhenggaishijian":shijian2,
+                    "zhonglei":$("#t6stpmgai input[name='tpm6s']:checked").val()
+
+
+                }
+                console.log(data1);
+                data1=JSON.stringify(data1);
+                console.log(data1);
+                $.ajax({
+                    url:'/shenmu_war_exploded/tpm/update',
+                    type:'post',
+                    data:data1,
+                    dataType:'json',
+                    contentType: 'application/json',
+                    success:function(data){
+                        alert("修改成功！！");
+                        tpm6sgetMsg();
+                        hiden6gai()
+
+                    },
+                    error:function(data){
+                        alert("修改成功！！");
+                        tpm6sgetMsg();
+                        hiden6gai();
+                    }
+                });
+            }
+        </script>
+
     </div>
 </div>
+<!--tpm6s的删除-->
+<div class="tpm6sdelete delete" style="display:none;">
+    <div class="delete-main">
+        <form action="http://222.24.63.119/ublack" method="POST" enctype="multipart/form-data">
 
+            <input id="tpm6sdel" type="hidden" name="删除tpm6s的id" value="">
+
+            <div>
+                <h4 style="color:red;margin-left:33%;">是否确认删除？</h4>
+            </div>
+            <div style="margin-left:30%;">
+                <button id="queren" type="button" class="btn btn-warning" onclick="tpm6sdeshanchuajax()">确认</button>
+                <button style="display:inline-block;margin-left:20%;" type="button" class="btn btn-default"
+                        onclick="tpm6shiden()">取消
+                </button>
+
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function tpm6sdeshanchuajax() {
+            var id=document.getElementById("tpm6sdel").value;
+            var ur ="/shenmu_war_exploded/tpm/delete/"+id ;
+            console.log(ur);
+
+            $.ajax({
+                url: ur,
+                type: "get",
+                success: function (data) {
+
+                    alert("删除成功！");
+                    tpm6shiden();
+                    tpm6sgetMsg();
+
+                },
+                error: function (data) {
+                    alert("删除失败！");
+                    tpm6shiden();
+                    tpm6sgetMsg();
+                }
+
+            });
+
+        }
+    </script>
+
+</div>
 
 <!-- 合理化建议 -->
 <div class="content" style="height: 100%; display: block;">

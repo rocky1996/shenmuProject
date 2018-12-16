@@ -1,7 +1,12 @@
 package com.acat.controller;
 
+import com.acat.model.Denglu;
+import com.acat.model.Renyuan;
 import com.acat.service.IDengluService;
 import com.acat.service.IRenyuanService;
+import com.acat.vo.DengluVo;
+import com.acat.vo.UpdateMimaVo;
+import com.acat.vo.ZhiAndIdVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

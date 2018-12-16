@@ -19,8 +19,8 @@ public class IJifenServiceImpl implements IJifenService {
     }
 
     @Override
-    public List<HuizongJifen> huizongJifen(Integer fenzu) {
-        return iJifenDao.huizongJifen( fenzu);
+    public List<HuizongJifen> huizongJifen(JifenleixingAndFenzuVo jifenleixingAndFenzuVo) {
+        return iJifenDao.huizongJifen( jifenleixingAndFenzuVo);
     }
 
     /**

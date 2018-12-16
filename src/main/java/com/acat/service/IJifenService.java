@@ -28,7 +28,8 @@ public interface IJifenService {
      *
      * @return
      */
-    List<HuizongJifen> huizongJifen(Integer id);
+    List<HuizongJifen> huizongJifen(JifenleixingAndFenzuVo jifenleixingAndFenzuVo);
+
 
     /**
      *

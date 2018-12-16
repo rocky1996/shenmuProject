@@ -13,4 +13,14 @@
     <select id="getBanzuByFenzu" parameterType="java.lang.Integer" resultType="com.acat.model.Banzu">
         select * from jw_wenhua where fenzu =#{fenzu}
     </select>
+    <delete id="delete" parameterType="Integer">
+
+         delete from jw_wenhua where fenzu=#{fenzu}
+    </delete>
+    <select id="getByFenzu" parameterType="Integer" resultType="com.acat.vo.BanZuVo">
+        select biaoti,logoshiyi,banzujianjie,fenzu from jw_wenhua where fenzu=#{fenzu}
+    </select>
+    <select id="getAllByFezu" parameterType="Integer" resultType="com.acat.model.Banzu">
+        select * from jw_wenhua where fenzu=#{fenzu}
+    </select>
 </mapper>

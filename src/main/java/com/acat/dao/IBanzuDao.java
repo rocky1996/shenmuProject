@@ -1,8 +1,9 @@
 package com.acat.dao;
 
+
+import com.acat.model.Banzu;
 import com.acat.vo.BanZuVo;
 
- 
 public interface IBanzuDao {
 
     /**

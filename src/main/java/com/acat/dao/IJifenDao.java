@@ -1,5 +1,6 @@
 package com.acat.dao;
 
+import com.acat.model.Jifen;
 import com.acat.vo.*;
 
 
@@ -29,7 +30,7 @@ public interface IJifenDao {
      *
      * @return
      */
-    List<HuizongJifen> huizongJifen(Integer fenzu);
+    List<HuizongJifen> huizongJifen(JifenleixingAndFenzuVo jifenleixingAndFenzuVo);
 
 
     List<Riqi> getriqi(JifenleixingAndFenzuVo jifenleixingAndFenzuVo);

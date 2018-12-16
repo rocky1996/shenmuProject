@@ -1,7 +1,11 @@
 package com.acat.controller;
 
 
+import com.acat.model.Jifen;
 import com.acat.service.IJifenService;
+import com.acat.util.DateUtils;
+import com.acat.util.OperatorTian;
+import com.acat.util.RiqiUtil;
 import com.acat.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +48,8 @@ public class JifenController {
         }
     }
 
-    @GetMapping("/huizong/{fenzu}")
-    public List<HuizongJifen> huizongjifen(@PathVariable("fenzu") Integer fenzu) {
+    @PostMapping("/huizong")
+    public List<HuizongJifen> huizongjifen(@RequestBody JifenleixingAndFenzuVo fenzu) {
         return jifenService.huizongJifen(fenzu);
     }
 

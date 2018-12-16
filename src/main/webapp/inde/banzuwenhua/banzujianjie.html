@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="./banzujianjie_files/bg.css">
 <script src="./banzujianjie_files/jquery.min.js.下载"></script>
 <script src="./banzujianjie_files/bootstrap.min.js.下载"></script>
+<script src="../../session.js"></script>
 <link href="./banzujianjie_files/bg.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -333,51 +334,6 @@
 
 </ul>
 
-<ul>
-
-
-<li><a href="./banzujianjie_files/安全检查.JPG"><img src="./banzujianjie_files/安全检查.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/安全签名.JPG"><img src="./banzujianjie_files/安全签名.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/班组点名.JPG"><img src="./banzujianjie_files/班组点名.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/班组合影1.JPG"><img src="./banzujianjie_files/班组合影1.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/班组合影2.JPG"><img src="./banzujianjie_files/班组合影2.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/备品三.JPG"><img src="./banzujianjie_files/备品三.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/党员示范岗.JPG"><img src="./banzujianjie_files/党员示范岗.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/冯雅兰.JPG"><img src="./banzujianjie_files/冯雅兰.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/活动1.JPG"><img src="./banzujianjie_files/活动1.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/活动2.JPG"><img src="./banzujianjie_files/活动2.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/活动照片.JPG"><img src="./banzujianjie_files/活动照片.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/技术比武.JPG"><img src="./banzujianjie_files/技术比武.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/接力比赛活动.JPG"><img src="./banzujianjie_files/接力比赛活动.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/李莎.JPG"><img src="./banzujianjie_files/李莎.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/领导参观1.JPG"><img src="./banzujianjie_files/领导参观1.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/领导参观2.JPG"><img src="./banzujianjie_files/领导参观2.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/女工.JPG"><img src="./banzujianjie_files/女工.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/女工2.JPG"><img src="./banzujianjie_files/女工2.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/女工3.JPG"><img src="./banzujianjie_files/女工3.JPG" style="height:200px"></a></li>
-
-<li><a href="./banzujianjie_files/胥婷婷.JPG"><img src="./banzujianjie_files/胥婷婷.JPG" style="height:200px"></a></li>
-
-
-</ul>
 </div>
 </div>
 
@@ -417,32 +373,32 @@
 <footer>
 <p>@国家能源集团有限公司</p>
 </footer>
-<script type="text/javaScript">
-window.onload = function () {
-var odiv2 = document.getElementById('div2');
-var ali = odiv2.getElementsByTagName('li');
-var aspeed = -5;
-var timer = null;
-odiv2.innerHTML += odiv2.innerHTML;
-odiv2.style.width = ali[0].offsetWidth * ali.length + 'px';
-odiv2.onmouseover = function () { clearInterval(timer); };
-function a() {
-timer = setInterval(function () {
-odiv2.style.left = odiv2.offsetLeft + aspeed + 'px';
-if (odiv2.offsetLeft < -odiv2.offsetWidth / 2) {
-odiv2.style.left = '0px';
-}
-}, 100);
-};
-odiv2.onmouseout = a;
-a();
-var oSear = document.getElementById('sear');
-function b() {
-oSear.innerHTML = '查询';
-}
-b();
-}
-</script>
-        <script src="../../session.js"></script>
+        <script type="text/javaScript">
+            window.onload = function () {
+                var odiv2 = document.getElementById('div2');
+                var ali = odiv2.getElementsByTagName('li');
+                var aspeed = -5;
+                var timer = null;
+                odiv2.innerHTML += odiv2.innerHTML;
+                odiv2.style.width = ali[0].offsetWidth * ali.length + 'px';
+                odiv2.onmouseover = function () { clearInterval(timer); };
+                function a() {
+                    timer = setInterval(function () {
+                        odiv2.style.left = odiv2.offsetLeft + aspeed + 'px';
+                        if (odiv2.offsetLeft < -odiv2.offsetWidth / 2) {
+                            odiv2.style.left = '0px';
+                        }
+                    }, 100);
+                };
+                odiv2.onmouseout = a;
+                a();
+                var oSear = document.getElementById('sear');
+                function b() {
+                    oSear.innerHTML = '查询';
+                }
+                b();
+            }
+        </script>
+
 
 </body></html>

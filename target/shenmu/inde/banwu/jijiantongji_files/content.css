@@ -235,6 +235,8 @@ li{
 /*对于其中的计件统计的页面的样式*/
 #logo{
   position:relative;
+    overflow: scroll;
+    width: 100%;
 }
 #jiJianTongJiImg{
    float:left;

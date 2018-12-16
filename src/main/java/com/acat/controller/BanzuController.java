@@ -1,6 +1,8 @@
 package com.acat.controller;
 
+import com.acat.model.Banzu;
 import com.acat.service.IBanzuService;
+
 import com.acat.vo.BanZuVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+
 import java.util.UUID;
 
 @RestController
@@ -28,18 +31,19 @@ public class BanzuController {
         banzu.setLogoshiyi(banZuVo.getLogoshiyi());
 //        return banZuVo;
     }
+
     @GetMapping("/get/{fenzu}")
-       public BanZuVo get(@PathVariable("fenzu") Integer fenzu){
-     return iBanzuService.getByFenzu(fenzu);
-       }
+    public BanZuVo get(@PathVariable("fenzu") Integer fenzu) {
+        return iBanzuService.getByFenzu(fenzu);
+    }
 
     @PostMapping("/add")
     public void add(MultipartFile[] file, HttpSession session) {
 //        int count = 1;
 //        System.out.println("file length===="+file.length);
 
-          int delete=iBanzuService.delete(banzu.getFenzu());
-         System.out.println(delete);
+        int delete = iBanzuService.delete(banzu.getFenzu());
+        System.out.println(delete);
         String path = session.getServletContext().getRealPath("/picture");
         System.out.println("path======" + path);
         String[] filename = new String[3];
@@ -70,10 +74,10 @@ public class BanzuController {
             e.printStackTrace();
         }
         System.out.println("-------------------------------------------");
-        System.out.println(""+"/"+filename[0]);
-        banzu.setBanzulogo("picture"+"/"+filename[0]);
-        banzu.setZuzhijigou("picture"+"/"+filename[1]);
-        banzu.setYuangognfengcai("picture"+"/"+filename[2]);
+        System.out.println("" + "/" + filename[0]);
+        banzu.setBanzulogo("picture" + "/" + filename[0]);
+        banzu.setZuzhijigou("picture" + "/" + filename[1]);
+        banzu.setYuangognfengcai("picture" + "/" + filename[2]);
 
         System.out.println(banzu);
 
@@ -121,9 +125,8 @@ public class BanzuController {
     }
 
 
-
     @GetMapping("/getall/{fenzu}")
-    public Banzu getAllByBanzu(@PathVariable("fenzu") Integer fenzu){
-         return iBanzuService.getAllByFezu(fenzu);
+    public Banzu getAllByBanzu(@PathVariable("fenzu") Integer fenzu) {
+        return iBanzuService.getAllByFezu(fenzu);
     }
 }

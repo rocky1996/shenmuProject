@@ -1,6 +1,8 @@
 package com.acat.controller;
 
+import com.acat.model.Banhui;
 import com.acat.service.BanhuiService;
+import com.acat.vo.BanhuiVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
